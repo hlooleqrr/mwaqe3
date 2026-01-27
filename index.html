@@ -1,103 +1,741 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>إعلان حلول تمويلية</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>حلول تمويلية بدون تعقيدات</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background-color: #f9f9f9;
-      color: #222;
-      line-height: 1.8;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
+    :root{
+      --bg0:#070b16;
+      --bg1:#0b1430;
+      --bg2:#061a1f;
+      --card: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.12);
+      --text:#eef5ff;
+      --muted:#c8d5ee;
+      --brand:#00b28f;
+      --brand2:#4aa3ff;
+      --warn:#ffcc66;
+      --danger:#ff6b6b;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 22px;
     }
-    h1, h2 {
-      color: #005c48;
-      text-align: center;
-      margin-top: 40px;
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% 15%, rgba(0,178,143,.18), transparent 60%),
+        radial-gradient(900px 520px at 75% 10%, rgba(74,163,255,.22), transparent 62%),
+        linear-gradient(135deg, var(--bg0), var(--bg1) 55%, var(--bg2));
+      overflow-x:hidden;
     }
-    .section {
-      margin-bottom: 30px;
+
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family: inherit; }
+
+    .container{ width:min(1120px, 92vw); margin:0 auto; }
+
+    .grid-bg{
+      position:fixed; inset:0; pointer-events:none; opacity:.35;
+      background-image: radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(900px 600px at 50% 10%, #000 55%, transparent 85%);
+      z-index:-1;
     }
-    .highlight {
-      background-color: #e0f7f1;
-      padding: 10px;
-      border-right: 5px solid #00b28f;
-      margin-bottom: 20px;
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: rgba(7,11,22,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    ul {
-      padding-right: 20px;
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 12px;
     }
-    ul li {
-      margin-bottom: 10px;
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
     }
-    .note {
-      font-size: 14px;
-      color: #888;
-      text-align: center;
-      margin-top: 40px;
+    .brand-badge{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(0,178,143,.95), rgba(74,163,255,.85));
+      box-shadow: 0 10px 30px rgba(0,178,143,.18);
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .brand small{
+      color:var(--muted); font-weight:800; opacity:.95; display:block; margin-top:2px;
+      font-size: 12px;
+    }
+    .actions{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      font-weight:900;
+      white-space:nowrap;
+      cursor:pointer;
+    }
+    .btn:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.09); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(0,178,143,.95), rgba(0,178,143,.72));
+      border-color: rgba(0,178,143,.55);
+    }
+    .btn.primary:hover{ background: linear-gradient(135deg, rgba(0,178,143,1), rgba(74,163,255,.70)); }
+
+    /* Views */
+    .view{ display:none; }
+    .view.active{ display:block; }
+
+    /* Home hero */
+    .hero{ padding: 42px 0 22px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items:center;
+    }
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--muted);
+      font-weight:900;
+      width:fit-content;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: var(--brand);
+      box-shadow: 0 0 0 6px rgba(0,178,143,.12);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 3.3vw, 44px);
+      line-height: 1.25;
+      font-weight: 1000;
+    }
+    .sub{
+      color: var(--muted);
+      font-weight:800;
+      line-height: 1.9;
+      font-size: 16px;
+      margin: 0 0 18px;
+      max-width: 62ch;
+    }
+
+    .highlight{
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      background: rgba(0,178,143,.10);
+      border:1px solid rgba(0,178,143,.22);
+    }
+    .highlight strong{ color:#eafff8; }
+    .highlight p{ margin: 6px 0; color:#dafdf3; font-weight:850; }
+
+    /* Gates */
+    .gates{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 980px){ .gates{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px){ .gates{ grid-template-columns: 1fr; } }
+
+    .gate{
+      width:100%;
+      text-align:right;
+      position:relative;
+      overflow:hidden;
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      padding: 14px 14px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      min-height: 94px;
+      display:flex; gap:12px; align-items:center;
+      cursor:pointer;
+    }
+    .gate:hover{ transform: translateY(-3px); border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.09); }
+    .gate .ico{
+      width:44px; height:44px;
+      border-radius: 16px;
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(74,163,255,.22), rgba(0,178,143,.18));
+      flex: 0 0 auto;
+    }
+    .gate h3{ margin:0; font-size: 16px; font-weight:1000; }
+    .gate p{ margin:4px 0 0; color:var(--muted); font-weight:850; font-size: 13px; }
+    .gate::after{
+      content:"";
+      position:absolute; inset:-40px -40px auto auto;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
+      opacity:.35;
+      transform: rotate(12deg);
+    }
+
+    /* Wallet animation */
+    .wallet-card{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .wallet-head{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .wallet-title{
+      font-weight:1000;
+      font-size:16px;
+    }
+    .wallet-sub{
+      font-size:12px; color:var(--muted); font-weight:850; margin-top:2px;
+    }
+    .wallet{
+      position:relative;
+      height: 220px;
+      border-radius: 18px;
+      border:1px dashed rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(0,178,143,.10), rgba(74,163,255,.10));
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+    }
+    .wallet-svg{
+      width: 170px;
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,.35));
+      opacity:.98;
+    }
+    .float-item{
+      position:absolute;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 58px;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(8px);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      animation: pop 3.2s ease-in-out infinite;
+    }
+    .float-item span{ font-size: 28px; }
+
+    .i-cash{ animation-delay: .0s; right: 58%; }
+    .i-home{ animation-delay: .25s; right: 42%; }
+    .i-car{  animation-delay: .5s; right: 50%; }
+    .i-card{ animation-delay: .75s; right: 32%; }
+
+    @keyframes pop{
+      0%{ transform: translateX(50%) translateY(18px) scale(.92); opacity: 0; }
+      14%{ opacity: 1; }
+      45%{ transform: translateX(50%) translateY(-70px) scale(1); opacity: 1; }
+      70%{ transform: translateX(50%) translateY(-95px) scale(.98); opacity: .95; }
+      100%{ transform: translateX(50%) translateY(-120px) scale(.95); opacity: 0; }
+    }
+
+    /* Page (inner) */
+    .page{
+      padding: 26px 0 34px;
+    }
+    .page-hero{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow:hidden;
+      position:relative;
+    }
+    .page-hero::before{
+      content:"";
+      position:absolute; inset:-80px -120px auto auto;
+      width: 260px; height:260px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(0,178,143,.28), transparent 60%);
+      opacity:.55;
+    }
+    .page-title{
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+      margin:0 0 6px;
+    }
+    .page-title h2{
+      margin:0;
+      font-size: 22px;
+      font-weight: 1000;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+    .page-desc{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 1.9;
+      max-width: 80ch;
+    }
+
+    .content-grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 14px;
+      align-items:start;
+    }
+    @media(max-width: 980px){
+      .content-grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: 20px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .card h3{
+      margin:0 0 10px;
+      font-size: 18px;
+      font-weight: 1000;
+      display:flex; align-items:center; gap:10px;
+    }
+    .list{
+      margin: 0;
+      padding: 0 18px 0 0;
+      color: var(--muted);
+      font-weight: 850;
+      line-height: 2;
+    }
+    .list li{ margin: 6px 0; }
+    .callout{
+      border-radius: 18px;
+      border:1px solid rgba(0,178,143,.24);
+      background: rgba(0,178,143,.10);
+      padding: 14px;
+    }
+    .callout h4{ margin:0 0 8px; font-size: 16px; font-weight:1000; }
+    .callout p{ margin: 6px 0; color:#dafdf3; font-weight:900; line-height:1.9; }
+
+    .contact-box{
+      display:grid;
+      gap: 10px;
+    }
+    .contact-row{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+    .contact-row .label{ color: var(--muted); font-weight:900; }
+    .contact-row .val{ font-weight:1000; }
+
+    .footer{
+      margin-top: 16px;
+      padding: 18px 0 26px;
+      color: rgba(255,255,255,.55);
+      font-weight: 800;
+      text-align:center;
+    }
+
+    /* Small */
+    @media(max-width: 420px){
+      .btn{ padding:10px 12px; }
+      .wallet{ height: 210px; }
     }
   </style>
 </head>
+
 <body>
+  <div class="grid-bg"></div>
 
-  <h1>نعتبر الأسرع بالإنجاز</h1>
-  <div class="highlight">
-    <p><strong>(معتــــمدون)</strong> - سمعتنا، تقييمنا، خبرة تتجاوز 17 عام</p>
-    <p>نخدم جميع أنحاء المملكة</p>
-    <p>🚨🚨 سو لقطة لشاشة، ممكن تحتاجه لاحقاً</p>
-  </div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" role="banner">
+        <div class="brand-badge">⚡</div>
+        <div>
+          <div>سرعة تملك العقار</div>
+          <small>حلول تمويلية وتسويق ذكي</small>
+        </div>
+      </div>
 
-  <h2>التمويل العقاري</h2>
-  <div class="section">
-    <p>بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟ متلخبط؟ 🥴 متقروش؟ 🤥 محتار وش أفضل بنك؟</p>
-    <ul>
-      <li>ننجزك بأفضل نسبة <strong>حتى لو بالإستثناء، ابشر بالسعد</strong></li>
-      <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong>☺️</li>
-      <li>حل لمن تُطلب عليه الدفعة الأولى</li>
-      <li>بعض البنوك ننجزك فيها بدون تحويل راتب</li>
-      <li>ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل لك</li>
-      <li>نتعاون مع المقييمين لسرعة ودقة التقييم</li>
-      <li>نخدمك عن بُعد من خلال تطبيق البنك، والافراغ واستلام الصك يتم باتصال من وزارة العدل بدون ما تراجعهم</li>
-      <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
-    </ul>
-  </div>
+      <div class="actions">
+        <button class="btn" id="homeBtn" title="الرجوع للبوابات">🏠 البوابات</button>
+        <a class="btn primary" href="#contact" onclick="openView('home')">📞 تواصل</a>
+      </div>
+    </div>
+  </header>
 
-  <h2>التمويل الشخصي</h2>
-  <div class="section">
-    <ul>
-      <li>ننجزك بأقل نسبة <strong>ولو نسويك استثناء</strong>☺️</li>
-      <li>بدون تحويل راتب في بعض البنوك، وبنسبة أقل من البنك اللي عليه الراتب</li>
-      <li>مع تحويل الراتب، ننجزك ونفك الحجز عن التمويل قبل نزول الراتب</li>
-      <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
-      <li><strong>عروض مميزة</strong> على سداد القرض الشخصي والإعادة</li>
-    </ul>
-  </div>
+  <!-- HOME VIEW -->
+  <main class="view active" id="view-home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker"><span class="dot"></span> تمويل أسرع • أوضح • بدون قروشة</div>
+          <h1>حلول تمويلية بدون تعقيدات</h1>
+          <p class="sub">
+            نعتبر الأسرع بالإنجاز — (معتــــمدون) سمعتنا وتقييمنا وخبرة تتجاوز 17 عام. نخدم جميع أنحاء المملكة.
+          </p>
 
-  <h2>الخدمات الأخرى</h2>
-  <div class="section">
-    <ul>
-      <li>سيــــــارات</li>
-      <li>منتج ثروة</li>
-      <li>منتج أسطول</li>
-      <li>منتج نقاط البيع</li>
-      <li>تمويل تجاري وغير ذلك</li>
-      <li>حلول تمويلية مع شركات تمويل معتمدة من البنك المركزي <strong>بأفضل نسب</strong></li>
-    </ul>
-  </div>
+          <div class="highlight">
+            <p><strong>🚨🚨 سو لقطة للشاشة</strong> — ممكن تحتاجه لاحقاً</p>
+            <p>وابشر بالسعـــــــــــــــد 🤝</p>
+          </div>
 
-  <div class="highlight">
-    <h2>تواصل معنا</h2>
-    <p>وابشر بالسعـــــــــــــــد</p>
-    <p><strong>0506214458📞</strong></p>
-    <p><strong>https://hlooleqrr.com/</strong></p>
-    <p>حياك الله بأي وقت</p>
-  </div>
+          <div class="gates" aria-label="بوابات الخدمات">
+            <button class="gate" onclick="openView('realestate')">
+              <div class="ico">🏠</div>
+              <div>
+                <h3>التمويل العقاري</h3>
+                <p>فيلا • دور • شقة • بناء • رهن… بأوضح طريق</p>
+              </div>
+            </button>
 
-  <p class="note">© سرعة تملك العقار والحلول التمويلية</p>
+            <button class="gate" onclick="openView('personal')">
+              <div class="ico">💳</div>
+              <div>
+                <h3>التمويل الشخصي</h3>
+                <p>أقل نسبة • عروض سداد وإعادة • حلول سريعة</p>
+              </div>
+            </button>
 
+            <button class="gate" onclick="openView('services')">
+              <div class="ico">🚗</div>
+              <div>
+                <h3>الخدمات الأخرى</h3>
+                <p>سيارات • ثروة • أسطول • نقاط بيع • تجاري</p>
+              </div>
+            </button>
+
+            <button class="gate" onclick="openView('contact')">
+              <div class="ico">📞</div>
+              <div>
+                <h3>تواصل معنا</h3>
+                <p>اتصال أسرع • نخدمك بكل وقت</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Wallet -->
+        <div class="wallet-card" aria-label="محفظة متحركة">
+          <div class="wallet-head">
+            <div>
+              <div class="wallet-title">محفظة حلولنا</div>
+              <div class="wallet-sub">كاش • عقارات • سيارات • بطاقات</div>
+            </div>
+            <span class="badge">تسويق عصري</span>
+          </div>
+
+          <div class="wallet">
+            <!-- wallet icon -->
+            <svg class="wallet-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#00b28f" stop-opacity="0.95"/>
+                  <stop offset="1" stop-color="#4aa3ff" stop-opacity="0.85"/>
+                </linearGradient>
+              </defs>
+              <rect x="18" y="56" width="204" height="120" rx="22" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.18)" />
+              <rect x="18" y="44" width="204" height="60" rx="22" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.14)" />
+              <rect x="28" y="88" width="184" height="70" rx="18" fill="url(#g1)" opacity="0.95"/>
+              <rect x="150" y="102" width="52" height="40" rx="12" fill="rgba(7,11,22,.55)" stroke="rgba(255,255,255,.18)"/>
+              <circle cx="166" cy="122" r="6" fill="#eaf2ff" opacity="0.95"/>
+              <rect x="34" y="102" width="70" height="10" rx="5" fill="rgba(255,255,255,.55)"/>
+              <rect x="34" y="122" width="90" height="10" rx="5" fill="rgba(255,255,255,.45)"/>
+            </svg>
+
+            <div class="float-item i-cash"><span>💵</span></div>
+            <div class="float-item i-home"><span>🏠</span></div>
+            <div class="float-item i-car"><span>🚗</span></div>
+            <div class="float-item i-card"><span>💳</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container footer">
+      © سرعة تملك العقار والحلول التمويلية
+    </div>
+  </main>
+
+  <!-- REAL ESTATE VIEW -->
+  <main class="view" id="view-realestate">
+    <section class="page">
+      <div class="container">
+        <div class="page-hero">
+          <div class="page-title">
+            <span class="badge">🏠 بوابة</span>
+            <h2>التمويل العقاري</h2>
+          </div>
+          <p class="page-desc">
+            بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟ متلخبط؟ 🥴 متقروش؟ 🤥 محتار وش أفضل بنك؟
+            <br>
+            هنا نخليك تمشيها “صح” وبأوضح طريق — <strong>بدون تعقيدات ولا قروشة</strong> 😵💫
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
+            <button class="btn primary" onclick="openView('contact')">📞 تواصل الآن</button>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <h3>✅ ليه تختارنا؟</h3>
+            <ul class="list">
+              <li>ننجزك بأفضل نسبة <strong>حتى لو بالإستثناء، ابشر بالسعد</strong></li>
+              <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong> ☺️</li>
+              <li>حل لمن تُطلب عليه الدفعة الأولى</li>
+              <li>بعض البنوك ننجزك فيها بدون تحويل راتب</li>
+              <li>ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل لك</li>
+              <li>نتعاون مع المقييمين لسرعة ودقة التقييم</li>
+              <li>نخدمك عن بُعد من خلال تطبيق البنك، والافراغ واستلام الصك يتم باتصال من وزارة العدل بدون ما تراجعهم</li>
+              <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>⚡ سريع وواضح</h3>
+            <div class="callout">
+              <h4>نعتبر الأسرع بالإنجاز</h4>
+              <p><strong>(معتــــمدون)</strong> — سمعتنا، تقييمنا، خبرة تتجاوز 17 عام</p>
+              <p>نخدم جميع أنحاء المملكة</p>
+              <p>🚨🚨 سو لقطة للشاشة، ممكن تحتاجه لاحقاً</p>
+            </div>
+
+            <div style="height:12px"></div>
+
+            <div class="callout" style="border-color:rgba(74,163,255,.26); background: rgba(74,163,255,.10);">
+              <h4>وش تحتاج؟</h4>
+              <p>أرسل بياناتك ونرتب لك الخيارات الأنسب على طول.</p>
+              <p style="color:#dcecff;">بدون دوخة، وبدون لف ودوران.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PERSONAL VIEW -->
+  <main class="view" id="view-personal">
+    <section class="page">
+      <div class="container">
+        <div class="page-hero">
+          <div class="page-title">
+            <span class="badge">💳 بوابة</span>
+            <h2>التمويل الشخصي</h2>
+          </div>
+          <p class="page-desc">
+            إذا تبي تمويل شخصي بأقل نسبة وبطريقة سهلة…
+            هنا نرتب لك الخيار الأنسب — <strong>بدون تعقيدات ولا قروشة</strong> 😵💫
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
+            <button class="btn primary" onclick="openView('contact')">📞 تواصل الآن</button>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <h3>✅ مميزات التمويل الشخصي</h3>
+            <ul class="list">
+              <li>ننجزك بأقل نسبة <strong>ولو نسويك استثناء</strong> ☺️</li>
+              <li>بدون تحويل راتب في بعض البنوك، وبنسبة أقل من البنك اللي عليه الراتب</li>
+              <li>مع تحويل الراتب، ننجزك ونفك الحجز عن التمويل قبل نزول الراتب</li>
+              <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
+              <li><strong>عروض مميزة</strong> على سداد القرض الشخصي والإعادة</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🔥 عروض وحلول</h3>
+            <div class="callout">
+              <h4>نرتب لك الأنسب</h4>
+              <p>نقارن لك الخيارات ونوصل معك لأفضل نتيجة حسب وضعك.</p>
+              <p>أهم شيء: السرعة + وضوح الشروط.</p>
+            </div>
+
+            <div style="height:12px"></div>
+
+            <div class="callout" style="border-color:rgba(255,204,102,.28); background: rgba(255,204,102,.10);">
+              <h4>ملاحظة</h4>
+              <p style="color:#fff2d6;">إذا عندك التزامات، بنعطيك حلول تساعدك تمشيها بأفضل طريقة ممكنة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SERVICES VIEW -->
+  <main class="view" id="view-services">
+    <section class="page">
+      <div class="container">
+        <div class="page-hero">
+          <div class="page-title">
+            <span class="badge">🧩 بوابة</span>
+            <h2>الخدمات الأخرى</h2>
+          </div>
+          <p class="page-desc">
+            حلول متعددة حسب احتياجك — نرتبها لك بشكل واضح وسريع.
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
+            <button class="btn primary" onclick="openView('contact')">📞 تواصل الآن</button>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <h3>🚀 وش نقدم؟</h3>
+            <ul class="list">
+              <li>سيــــــارات</li>
+              <li>منتج ثروة</li>
+              <li>منتج أسطول</li>
+              <li>منتج نقاط البيع</li>
+              <li>تمويل تجاري وغير ذلك</li>
+              <li>حلول تمويلية مع شركات تمويل معتمدة من البنك المركزي <strong>بأفضل نسب</strong></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>🎯 نرتبها لك</h3>
+            <div class="callout">
+              <h4>هدفنا: أسهل قرار لك</h4>
+              <p>ترشيح واضح حسب احتياجك… وبدون لف ودوران.</p>
+              <p>وابشر بالسعد 🤝</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT VIEW -->
+  <main class="view" id="view-contact">
+    <section class="page">
+      <div class="container">
+        <div class="page-hero" id="contact">
+          <div class="page-title">
+            <span class="badge">📞 بوابة</span>
+            <h2>تواصل معنا</h2>
+          </div>
+          <p class="page-desc">
+            حياك الله بأي وقت — وإذا الواتساب عليه ضغط، الاتصال أسرع لخدمتك.
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
+            <a class="btn primary" href="tel:0506214458">📞 اتصال الآن</a>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <h3>📲 بيانات التواصل</h3>
+            <div class="contact-box">
+              <div class="contact-row">
+                <div class="label">رقم الاتصال</div>
+                <div class="val"><a href="tel:0506214458">0506214458</a></div>
+              </div>
+              <div class="contact-row">
+                <div class="label">الموقع</div>
+                <div class="val"><a href="https://hlooleqrr.com/" target="_blank" rel="noopener">hlooleqrr.com</a></div>
+              </div>
+              <div class="contact-row">
+                <div class="label">ملاحظة</div>
+                <div class="val" style="color:#dafdf3;">وابشر بالسعـــــــــــــــد</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>⚡ تذكير سريع</h3>
+            <div class="callout">
+              <h4>نعتبر الأسرع بالإنجاز</h4>
+              <p><strong>(معتــــمدون)</strong> — سمعتنا، تقييمنا، خبرة تتجاوز 17 عام</p>
+              <p>نخدم جميع أنحاء المملكة</p>
+              <p>🚨🚨 سو لقطة للشاشة، ممكن تحتاجه لاحقاً</p>
+            </div>
+
+            <div style="height:12px"></div>
+
+            <div class="callout" style="border-color:rgba(255,107,107,.30); background: rgba(255,107,107,.10);">
+              <h4>ملاحظة واتساب</h4>
+              <p style="color:#ffe4e4;">نظراً للضغط المستمر على الواتساب… التواصل اتصال أسرع لكي نخدمك.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          © سرعة تملك العقار والحلول التمويلية
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const views = ["home","realestate","personal","services","contact"];
+
+    function openView(name){
+      views.forEach(v=>{
+        const el = document.getElementById("view-"+v);
+        if(el) el.classList.remove("active");
+      });
+      const target = document.getElementById("view-"+name);
+      if(target) target.classList.add("active");
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    document.getElementById("homeBtn").addEventListener("click", ()=>openView("home"));
+
+    // اختياري: دعم فتح صفحة مباشرة عبر #hash
+    const hash = (location.hash || "").replace("#","").trim();
+    if(views.includes(hash)) openView(hash);
+  </script>
 </body>
 </html>
