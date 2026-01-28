@@ -9,11 +9,19 @@
 
   <style>
     :root{
-      --text:#0b1220;
+      --ink:#0b1220;
       --muted:#475569;
-      --white:#ffffff;
-      --shadow: 0 18px 60px rgba(2,6,23,.18);
-      --radius: 22px;
+      --paper:#ffffff;
+      --line:rgba(15,23,42,.10);
+      --shadow: 0 18px 60px rgba(2,6,23,.14);
+      --shadow2: 0 10px 26px rgba(2,6,23,.10);
+
+      --blue1:#0ea5e9; --blue2:#2563eb;
+      --green1:#22c55e; --green2:#00b28f;
+      --orange1:#f59e0b; --orange2:#f97316;
+      --vio1:#6366f1; --vio2:#a78bfa;
+
+      --danger:#ef4444;
     }
 
     *{ box-sizing:border-box; }
@@ -21,7 +29,7 @@
     body{
       margin:0;
       font-family:'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
+      color: var(--ink);
       background: #f6f7fb;
       overflow-x:hidden;
     }
@@ -29,12 +37,12 @@
     a{ color:inherit; text-decoration:none; }
     button{ font-family: inherit; }
 
-    .container{ width:min(980px, 92vw); margin:0 auto; }
+    .container{ width:min(1020px, 92vw); margin:0 auto; }
 
-    /* Topbar */
+    /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:20;
-      background: rgba(255,255,255,.86);
+      position:sticky; top:0; z-index:50;
+      background: rgba(255,255,255,.90);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(15,23,42,.08);
     }
@@ -49,140 +57,211 @@
       letter-spacing: .1px;
     }
     .brand-badge{
-      width:38px; height:38px; border-radius:14px;
+      width:40px; height:40px; border-radius:14px;
       display:grid; place-items:center;
       color:#fff;
-      background: linear-gradient(135deg, #00b28f, #4aa3ff);
+      background: linear-gradient(135deg, var(--green2), #4aa3ff);
       box-shadow: 0 12px 30px rgba(0,178,143,.18);
     }
     .brand small{
-      display:block;
-      margin-top:2px;
+      display:block; margin-top:2px;
       color: var(--muted);
       font-weight: 900;
       font-size: 12px;
     }
+
+    .top-actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
 
     .btn{
       display:inline-flex; align-items:center; gap:10px;
       padding:10px 14px;
       border-radius: 14px;
       border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 10px 26px rgba(2,6,23,.10);
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      background: rgba(255,255,255,.96);
+      box-shadow: var(--shadow2);
+      transition: transform .18s ease, border-color .18s ease;
       font-weight: 1000;
       cursor:pointer;
       white-space:nowrap;
     }
     .btn:hover{ transform: translateY(-2px); border-color: rgba(15,23,42,.16); }
+
     .btn.primary{
-      background: linear-gradient(135deg, #00b28f, #22c55e);
+      background: linear-gradient(135deg, var(--green2), var(--green1));
       border-color: rgba(0,178,143,.35);
       color:#fff;
     }
+    .btn.ghost{ background: rgba(255,255,255,.86); }
 
     /* Views */
     .view{ display:none; min-height: calc(100vh - 64px); }
     .view.active{ display:block; }
 
-    /* HOME (بوابات فقط) */
-    .home-wrap{
-      padding: 28px 0 34px;
-    }
-    .home-head{
-      text-align:center;
-      margin: 12px 0 18px;
-    }
-    .home-head h1{
-      margin:0;
-      font-size: clamp(22px, 3.4vw, 36px);
-      font-weight: 1100;
-      letter-spacing: .1px;
-    }
-    .home-head p{
-      margin: 10px auto 0;
-      color: var(--muted);
-      font-weight: 900;
-      max-width: 60ch;
-      line-height: 1.9;
+    /* ===== HOME (محسّن: أوضح + أيقونات أكبر) ===== */
+    .home{
+      padding: 26px 0 98px; /* مساحة للفوتر */
+      background:
+        radial-gradient(900px 480px at 80% 0%, rgba(0,178,143,.14), transparent 60%),
+        radial-gradient(900px 480px at 10% 20%, rgba(37,99,235,.12), transparent 62%),
+        linear-gradient(180deg, #fbfcff, #f6f7fb);
     }
 
+    .hero{
+      text-align:center;
+      margin: 16px 0 18px;
+      padding: 18px 14px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow: 0 16px 50px rgba(2,6,23,.08);
+    }
+    .hero h1{
+      margin:0;
+      font-size: clamp(28px, 3.8vw, 44px);
+      font-weight: 1200;
+      letter-spacing: .2px;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #0b1220, #0b1220, #2563eb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p{
+      margin: 12px auto 0;
+      color: var(--muted);
+      font-weight: 1000;
+      max-width: 70ch;
+      line-height: 1.95;
+      font-size: 15.8px;
+    }
+    .hero .em{ color: var(--danger); font-weight: 1200; }
+
+    /* شبكة الخدمات */
     .gate-grid{
       margin-top: 18px;
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    @media (max-width: 900px){ .gate-grid{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px){ .gate-grid{ grid-template-columns: 1fr; } }
+    @media (max-width: 980px){ .gate-grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px){ .gate-grid{ grid-template-columns: 1fr; } }
 
     .gate{
       width:100%;
-      padding: 18px 14px;
-      border-radius: 22px;
+      padding: 22px 18px;
+      border-radius: 26px;
       border: 1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.96);
       box-shadow: var(--shadow);
       cursor:pointer;
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      display:grid;
-      place-items:center;
-      gap: 10px;
-      text-align:center;
-      position: relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      text-align:right;
+      min-height: 126px;
+      position:relative;
+      overflow:hidden;
     }
     .gate:hover{
       transform: translateY(-3px);
       border-color: rgba(15,23,42,.16);
-      box-shadow: 0 24px 70px rgba(2,6,23,.16);
+      box-shadow: 0 28px 86px rgba(2,6,23,.16);
     }
-    .gate .ico{
-      width: 76px; height: 76px;
-      border-radius: 24px;
+    .gate::after{
+      content:"";
+      position:absolute; inset:-90px -110px auto auto;
+      width: 260px; height:260px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.60), transparent 60%);
+      opacity:.62;
+      pointer-events:none;
+      transform: rotate(12deg);
+    }
+
+    .gate-left{
+      display:flex; align-items:center; gap:16px;
+      z-index:1;
+      width: 100%;
+    }
+
+    .ico{
+      width: 96px; height: 96px;   /* أكبر */
+      border-radius: 30px;
       display:grid; place-items:center;
       color:#fff;
-      font-size: 34px;
+      font-size: 44px;             /* أكبر */
       box-shadow: 0 18px 40px rgba(2,6,23,.18);
+      flex: 0 0 auto;
     }
-    .gate .label{
-      font-weight: 1100;
-      font-size: 16px;
+    .ico-real{ background: linear-gradient(135deg, var(--blue1), var(--blue2)); }
+    .ico-pers{ background: linear-gradient(135deg, var(--green1), var(--green2)); }
+    .ico-serv{ background: linear-gradient(135deg, var(--orange1), var(--orange2)); }
+    .ico-cont{ background: linear-gradient(135deg, var(--vio1), var(--vio2)); }
+
+    .gate-title{
+      font-weight: 1200;
+      font-size: 19px;
       color: #0b1220;
+      letter-spacing: .1px;
+    }
+    .gate-sub{
+      margin-top:7px;
+      color: var(--muted);
+      font-weight: 950;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    /* ألوان الأيقونات في الصفحة الأولى */
-    .ico-real{ background: linear-gradient(135deg, #0ea5e9, #2563eb); }
-    .ico-pers{ background: linear-gradient(135deg, #22c55e, #00b28f); }
-    .ico-serv{ background: linear-gradient(135deg, #f59e0b, #f97316); }
-    .ico-cont{ background: linear-gradient(135deg, #a78bfa, #6366f1); }
+    .arrow{
+      z-index:1;
+      font-weight:1200;
+      color: rgba(2,6,23,.55);
+      font-size: 22px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(15,23,42,.08);
+      background: rgba(255,255,255,.78);
+      flex: 0 0 auto;
+    }
 
-    /* أزرار واتساب/اتصال داخل بوابة التواصل */
+    /* تواصل في الرئيسية: واتساب + اتصال فقط */
+    .gate.contact{
+      cursor: default;
+    }
+    .gate.contact:hover{
+      transform:none;
+      box-shadow: var(--shadow);
+      border-color: rgba(15,23,42,.10);
+    }
     .contact-actions{
       display:flex;
-      gap:10px;
-      margin-top: 6px;
+      gap:12px;
+      align-items:center;
+      justify-content:flex-start;
+      margin-top:10px;
+      z-index:1;
     }
-    .icon-pill{
-      width: 44px; height: 44px;
-      border-radius: 16px;
+    .pill{
+      width: 58px; height: 58px;
+      border-radius: 20px;
       display:grid; place-items:center;
       border: 1px solid rgba(15,23,42,.10);
       background: rgba(255,255,255,.92);
-      box-shadow: 0 12px 26px rgba(2,6,23,.10);
+      box-shadow: 0 14px 34px rgba(2,6,23,.10);
       cursor:pointer;
       transition: transform .18s ease, border-color .18s ease;
       user-select:none;
     }
-    .icon-pill:hover{ transform: translateY(-2px); border-color: rgba(15,23,42,.16); }
-    .icon-pill span{ font-size: 20px; }
+    .pill:hover{ transform: translateY(-2px); border-color: rgba(15,23,42,.16); }
+    .pill span{ font-size: 26px; }
+    .pill-wa{ background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.26); }
+    .pill-call{ background: rgba(37,99,235,.12); border-color: rgba(37,99,235,.26); }
 
-    .pill-wa{ background: rgba(34,197,94,.10); border-color: rgba(34,197,94,.22); }
-    .pill-call{ background: rgba(99,102,241,.10); border-color: rgba(99,102,241,.22); }
-
-    /* صفحات داخلية بخلفيات واضحة ومريحة */
+    /* Inner pages themes */
     .page{
-      padding: 24px 0 34px;
+      padding: 22px 0 98px;
       min-height: calc(100vh - 64px);
     }
 
@@ -204,478 +283,37 @@
         radial-gradient(900px 480px at 10% 20%, rgba(245,158,11,.16), transparent 62%),
         linear-gradient(180deg, #fffaf2, #fff3e3);
     }
-    .theme-cont{
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(99,102,241,.18), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(167,139,250,.16), transparent 62%),
-        linear-gradient(180deg, #f8f7ff, #f1efff);
-    }
 
     .panel{
       border-radius: 24px;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.94);
       border: 1px solid rgba(15,23,42,.10);
       box-shadow: var(--shadow);
       padding: 18px;
     }
 
-    .page-title{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    .page-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
       margin-bottom: 10px;
     }
-    .page-title h2{
+    .page-head h2{
       margin:0;
       font-size: 22px;
       font-weight: 1100;
+      letter-spacing:.1px;
     }
-    .tag{
+    .badge{
       display:inline-flex; align-items:center; gap:8px;
       padding: 6px 10px;
       border-radius: 999px;
       font-weight: 1000;
       font-size: 12px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.85);
-      color: var(--muted);
-      white-space:nowrap;
-    }
-
-    .lead{
-      margin: 10px 0 0;
-      color: #1f2937;
-      font-weight: 900;
-      line-height: 1.95;
-    }
-
-    .grid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr .95fr;
-      gap: 14px;
-      align-items:start;
-    }
-    @media(max-width: 960px){ .grid{ grid-template-columns: 1fr; } }
-
-    .card{
-      border-radius: 20px;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(15,23,42,.10);
-      box-shadow: 0 16px 50px rgba(2,6,23,.10);
-      padding: 16px;
-    }
-    .card h3{
-      margin:0 0 10px;
-      font-size: 18px;
-      font-weight: 1100;
-      display:flex; align-items:center; gap:10px;
-    }
-
-    .list{
-      margin:0;
-      padding: 0 18px 0 0;
-      color: #334155;
-      font-weight: 900;
-      line-height: 2.05;
-    }
-    .list li{ margin: 6px 0; }
-
-    .callout{
-      border-radius: 18px;
-      padding: 14px;
-      border: 1px solid rgba(2,6,23,.10);
-      background: rgba(2,6,23,.03);
-      color:#0b1220;
-    }
-    .callout strong{ font-weight:1100; }
-
-    .contact-row{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
-      padding: 12px;
-      border-radius: 16px;
       border:1px solid rgba(15,23,42,.10);
       background: rgba(255,255,255,.88);
-      margin-top:10px;
-    }
-    .contact-row .label{ color: var(--muted); font-weight: 1000; }
-    .contact-row .val{ font-weight: 1100; }
-
-    .footer{
-      text-align:center;
-      color: rgba(2,6,23,.55);
-      font-weight: 900;
-      padding: 18px 0 26px;
-    }
-  </style>
-</head>
-
-<body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-badge">⚡</div>
-        <div>
-          <div>سرعة تملك العقار</div>
-          <small>حلول تمويلية بدون تعقيدات</small>
-        </div>
-      </div>
-
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="btn" id="homeBtn">🏠 البوابات</button>
-        <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- HOME VIEW (بوابات فقط) -->
-  <main class="view active" id="view-home">
-    <section class="home-wrap">
-      <div class="container">
-        <div class="home-head">
-          <h1>حلول تمويلية بدون تعقيدات</h1>
-          <p>اختر البوابة اللي تهمك.</p>
-        </div>
-
-        <div class="gate-grid" aria-label="بوابات">
-          <button class="gate" onclick="openView('realestate')">
-            <div class="ico ico-real">🏠</div>
-            <div class="label">التمويل العقاري</div>
-          </button>
-
-          <button class="gate" onclick="openView('personal')">
-            <div class="ico ico-pers">💳</div>
-            <div class="label">التمويل الشخصي</div>
-          </button>
-
-          <button class="gate" onclick="openView('services')">
-            <div class="ico ico-serv">🚗</div>
-            <div class="label">الخدمات الأخرى</div>
-          </button>
-
-          <!-- بوابة التواصل: داخلها أيقونتين تعمل بالضغط مباشرة -->
-          <div class="gate" role="group" aria-label="تواصل معنا">
-            <div class="ico ico-cont">📞</div>
-            <div class="label">تواصل معنا</div>
-
-            <div class="contact-actions" aria-label="أزرار التواصل">
-              <!-- واتساب -->
-              <a class="icon-pill pill-wa" href="https://wa.me/966506214458" target="_blank" rel="noopener" title="واتساب">
-                <span>🟢</span>
-              </a>
-
-              <!-- اتصال -->
-              <a class="icon-pill pill-call" href="tel:0506214458" title="اتصال">
-                <span>📞</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="footer">© سرعة تملك العقار والحلول التمويلية</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- REAL ESTATE -->
-  <main class="view theme-real" id="view-realestate">
-    <section class="page">
-      <div class="container">
-        <div class="panel">
-          <div class="page-title">
-            <h2>🏠 التمويل العقاري</h2>
-            <span class="tag">بوابة عقارية</span>
-          </div>
-          <p class="lead">
-            بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟ متلخبط؟ 🥴 متقروش؟ 🤥 محتار وش أفضل بنك؟
-            <br><strong>بدون تعقيدات ولا قروشة</strong> 😵💫
-          </p>
-
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
-            <a class="btn primary" href="tel:0506214458">📞 تواصل الآن</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>✅ مميزات التمويل العقاري</h3>
-            <ul class="list">
-              <li>ننجزك بأفضل نسبة <strong>حتى لو بالإستثناء، ابشر بالسعد</strong></li>
-              <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong>☺️</li>
-              <li>حل لمن تُطلب عليه الدفعة الأولى</li>
-              <li>بعض البنوك ننجزك فيها بدون تحويل راتب</li>
-              <li>ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل لك</li>
-              <li>نتعاون مع المقييمين لسرعة ودقة التقييم</li>
-              <li>نخدمك عن بُعد من خلال تطبيق البنك، والافراغ واستلام الصك يتم باتصال من وزارة العدل بدون ما تراجعهم</li>
-              <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>⚡ سريع وواضح</h3>
-            <div class="callout">
-              <p><strong>(معتــــمدون)</strong> — سمعتنا، تقييمنا، خبرة تتجاوز 17 عام</p>
-              <p>نخدم جميع أنحاء المملكة</p>
-              <p>🚨🚨 سو لقطة لشاشة، ممكن تحتاجه لاحقاً</p>
-              <p><strong>وابشر بالسعـــــــــــــــد</strong></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer">© سرعة تملك العقار والحلول التمويلية</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- PERSONAL -->
-  <main class="view theme-pers" id="view-personal">
-    <section class="page">
-      <div class="container">
-        <div class="panel">
-          <div class="page-title">
-            <h2>💳 التمويل الشخصي</h2>
-            <span class="tag">بوابة شخصية
-
-تم ✅  
-خلّيت “بوابة التواصل” في الصفحة الأولى **بدون ما تفتح صفحة** — صارت **أيقونتين فقط (واتساب + اتصال)** وكل وحدة تشتغل بالضغط مباشرة على **نفس الرقم**.
-
-انسخ هذا الملف كامل كما هو:
-
-```html
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>حلول تمويلية بدون تعقيدات</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --text:#0b1220;
-      --muted:#475569;
-      --shadow: 0 18px 60px rgba(2,6,23,.18);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family:'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background: #f6f7fb;
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    button{ font-family: inherit; }
-
-    .container{ width:min(980px, 92vw); margin:0 auto; }
-
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:20;
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(15,23,42,.08);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 12px 0;
-      gap: 12px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight: 1000;
-      letter-spacing: .1px;
-    }
-    .brand-badge{
-      width:38px; height:38px; border-radius:14px;
-      display:grid; place-items:center;
-      color:#fff;
-      background: linear-gradient(135deg, #00b28f, #4aa3ff);
-      box-shadow: 0 12px 30px rgba(0,178,143,.18);
-    }
-    .brand small{
-      display:block;
-      margin-top:2px;
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 12px;
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius: 14px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 10px 26px rgba(2,6,23,.10);
-      transition: transform .2s ease, border-color .2s ease;
-      font-weight: 1000;
-      cursor:pointer;
-      white-space:nowrap;
-    }
-    .btn:hover{ transform: translateY(-2px); border-color: rgba(15,23,42,.16); }
-    .btn.primary{
-      background: linear-gradient(135deg, #00b28f, #22c55e);
-      border-color: rgba(0,178,143,.35);
-      color:#fff;
-    }
-
-    /* Views */
-    .view{ display:none; min-height: calc(100vh - 64px); }
-    .view.active{ display:block; }
-
-    /* HOME (بوابات فقط) */
-    .home-wrap{ padding: 28px 0 34px; }
-    .home-head{
-      text-align:center;
-      margin: 12px 0 18px;
-    }
-    .home-head h1{
-      margin:0;
-      font-size: clamp(22px, 3.4vw, 36px);
-      font-weight: 1100;
-      letter-spacing: .1px;
-    }
-    .home-head p{
-      margin: 10px auto 0;
-      color: var(--muted);
-      font-weight: 900;
-      max-width: 60ch;
-      line-height: 1.9;
-    }
-
-    .gate-grid{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 900px){ .gate-grid{ grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px){ .gate-grid{ grid-template-columns: 1fr; } }
-
-    .gate{
-      width:100%;
-      padding: 18px 14px;
-      border-radius: 22px;
-      border: 1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.92);
-      box-shadow: var(--shadow);
-      cursor:pointer;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      display:grid;
-      place-items:center;
-      gap: 10px;
-      text-align:center;
-      position: relative;
-    }
-    .gate:hover{
-      transform: translateY(-3px);
-      border-color: rgba(15,23,42,.16);
-      box-shadow: 0 24px 70px rgba(2,6,23,.16);
-    }
-    .gate .ico{
-      width: 76px; height: 76px;
-      border-radius: 24px;
-      display:grid; place-items:center;
-      color:#fff;
-      font-size: 34px;
-      box-shadow: 0 18px 40px rgba(2,6,23,.18);
-    }
-    .gate .label{
-      font-weight: 1100;
-      font-size: 16px;
-      color: #0b1220;
-    }
-
-    /* ألوان الأيقونات */
-    .ico-real{ background: linear-gradient(135deg, #0ea5e9, #2563eb); }
-    .ico-pers{ background: linear-gradient(135deg, #22c55e, #00b28f); }
-    .ico-serv{ background: linear-gradient(135deg, #f59e0b, #f97316); }
-
-    /* بوابة التواصل الخاصة: أيقونتين فقط */
-    .gate-contact{
-      cursor: default;
-    }
-    .gate-contact:hover{
-      transform:none;
-      box-shadow: var(--shadow);
-      border-color: rgba(15,23,42,.10);
-    }
-    .contact-actions{
-      display:flex;
-      gap:12px;
-      margin-top: 6px;
-      justify-content:center;
-    }
-    .icon-pill{
-      width: 58px; height: 58px;
-      border-radius: 20px;
-      display:grid; place-items:center;
-      border: 1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.94);
-      box-shadow: 0 14px 34px rgba(2,6,23,.10);
-      cursor:pointer;
-      transition: transform .18s ease, border-color .18s ease;
-      user-select:none;
-    }
-    .icon-pill:hover{ transform: translateY(-2px); border-color: rgba(15,23,42,.16); }
-    .icon-pill span{ font-size: 24px; }
-
-    .pill-wa{ background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.26); }
-    .pill-call{ background: rgba(37,99,235,.12); border-color: rgba(37,99,235,.26); }
-
-    /* صفحات داخلية بخلفيات واضحة ومريحة */
-    .page{ padding: 24px 0 34px; min-height: calc(100vh - 64px); }
-
-    .theme-real{
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(37,99,235,.18), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(14,165,233,.18), transparent 62%),
-        linear-gradient(180deg, #f7fbff, #eef6ff);
-    }
-    .theme-pers{
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(34,197,94,.18), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(0,178,143,.16), transparent 62%),
-        linear-gradient(180deg, #f7fffb, #effdf6);
-    }
-    .theme-serv{
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(249,115,22,.18), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(245,158,11,.16), transparent 62%),
-        linear-gradient(180deg, #fffaf2, #fff3e3);
-    }
-
-    .panel{
-      border-radius: 24px;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(15,23,42,.10);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    .page-title{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin-bottom: 10px;
-    }
-    .page-title h2{
-      margin:0;
-      font-size: 22px;
-      font-weight: 1100;
-    }
-    .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 1000;
-      font-size: 12px;
-      border:1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.85);
       color: var(--muted);
       white-space:nowrap;
     }
@@ -683,8 +321,18 @@
     .lead{
       margin: 10px 0 0;
       color: #1f2937;
-      font-weight: 900;
+      font-weight: 950;
       line-height: 1.95;
+      font-size: 15.6px;
+    }
+    .lead .q{ color: var(--danger); font-weight: 1200; }
+    .lead strong{ font-weight: 1200; }
+
+    .controls{
+      margin-top: 12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
     .grid{
@@ -698,7 +346,7 @@
 
     .card{
       border-radius: 20px;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.94);
       border: 1px solid rgba(15,23,42,.10);
       box-shadow: 0 16px 50px rgba(2,6,23,.10);
       padding: 16px;
@@ -714,8 +362,9 @@
       margin:0;
       padding: 0 18px 0 0;
       color: #334155;
-      font-weight: 900;
+      font-weight: 950;
       line-height: 2.05;
+      font-size: 14.8px;
     }
     .list li{ margin: 6px 0; }
 
@@ -725,14 +374,52 @@
       border: 1px solid rgba(2,6,23,.10);
       background: rgba(2,6,23,.03);
       color:#0b1220;
+      line-height:1.9;
+      font-weight:950;
     }
-    .callout strong{ font-weight:1100; }
 
-    .footer{
-      text-align:center;
+    /* Fixed footer with date/time + screenshot message */
+    .footer-fixed{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      z-index:60;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(15,23,42,.08);
+    }
+    .footer-inner{
+      width:min(1020px, 92vw);
+      margin:0 auto;
+      padding: 10px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .stamp{
+      display:flex; align-items:center; gap:10px;
+      color: rgba(2,6,23,.72);
+      font-weight: 1100;
+      font-size: 12.6px;
+      white-space:nowrap;
+    }
+    .stamp b{ color:#0b1220; }
+    .snap{
+      color: rgba(2,6,23,.86);
+      font-weight: 1200;
+      font-size: 12.9px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      line-height:1.5;
+    }
+    .snap .em{ color: var(--danger); }
+    .copyright{
       color: rgba(2,6,23,.55);
-      font-weight: 900;
-      padding: 18px 0 26px;
+      font-weight: 1100;
+      font-size: 12px;
+      white-space:nowrap;
     }
   </style>
 </head>
@@ -748,64 +435,91 @@
         </div>
       </div>
 
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <button class="btn" id="homeBtn">🏠 البوابات</button>
-        <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
+      <div class="top-actions">
+        <button class="btn ghost" id="backBtn" title="رجوع">⬅️ رجوع</button>
+        <button class="btn" id="homeBtn" title="الرئيسية">🏠 الرئيسية</button>
+        <a class="btn primary" href="tel:0506214458" title="اتصال الآن">📞 اتصال</a>
       </div>
     </div>
   </header>
 
-  <!-- HOME VIEW (بوابات فقط) -->
+  <!-- HOME (محسّن) -->
   <main class="view active" id="view-home">
-    <section class="home-wrap">
+    <section class="home">
       <div class="container">
-        <div class="home-head">
+        <div class="hero">
           <h1>حلول تمويلية بدون تعقيدات</h1>
-          <p>اختر البوابة اللي تهمك.</p>
+          <p>
+            اختر الخدمة اللي تحتاجها… وبتلقى داخلها كل التفاصيل مع
+            <span class="em">واتساب</span> و<span class="em">اتصال</span> جاهزة.
+          </p>
         </div>
 
-        <div class="gate-grid" aria-label="بوابات">
+        <div class="gate-grid" aria-label="الخدمات">
+          <!-- التمويل العقاري -->
           <button class="gate" onclick="openView('realestate')">
-            <div class="ico ico-real">🏠</div>
-            <div class="label">التمويل العقاري</div>
-          </button>
-
-          <button class="gate" onclick="openView('personal')">
-            <div class="ico ico-pers">💳</div>
-            <div class="label">التمويل الشخصي</div>
-          </button>
-
-          <button class="gate" onclick="openView('services')">
-            <div class="ico ico-serv">🚗</div>
-            <div class="label">الخدمات الأخرى</div>
-          </button>
-
-          <!-- بوابة التواصل: أيقونتين تعمل بالضغط مباشرة -->
-          <div class="gate gate-contact" role="group" aria-label="تواصل معنا">
-            <div class="ico" style="background: linear-gradient(135deg, #6366f1, #a78bfa);">📲</div>
-            <div class="label">تواصل معنا</div>
-
-            <div class="contact-actions" aria-label="أزرار التواصل">
-              <!-- واتساب: يفتح محادثة فورًا -->
-              <a class="icon-pill pill-wa"
-                 href="https://wa.me/966506214458"
-                 target="_blank" rel="noopener"
-                 title="واتساب">
-                <span>🟢</span>
-              </a>
-
-              <!-- اتصال: يفتح الاتصال فورًا -->
-              <a class="icon-pill pill-call"
-                 href="tel:0506214458"
-                 title="اتصال">
-                <span>📞</span>
-              </a>
+            <div class="gate-left">
+              <div class="ico ico-real">🏠</div>
+              <div>
+                <div class="gate-title">التمويل العقاري</div>
+                <div class="gate-sub">فيلا • دور • شقة • بناء • رهن…</div>
+              </div>
             </div>
+            <div class="arrow">›</div>
+          </button>
+
+          <!-- التمويل الشخصي -->
+          <button class="gate" onclick="openView('personal')">
+            <div class="gate-left">
+              <div class="ico ico-pers">💳</div>
+              <div>
+                <div class="gate-title">التمويل الشخصي</div>
+                <div class="gate-sub">أقل نسبة • عروض سداد وإعادة…</div>
+              </div>
+            </div>
+            <div class="arrow">›</div>
+          </button>
+
+          <!-- الخدمات الأخرى -->
+          <button class="gate" onclick="openView('services')">
+            <div class="gate-left">
+              <div class="ico ico-serv">🚗</div>
+              <div>
+                <div class="gate-title">الخدمات الأخرى</div>
+                <div class="gate-sub">سيارات • ثروة • أسطول • نقاط بيع…</div>
+              </div>
+            </div>
+            <div class="arrow">›</div>
+          </button>
+
+          <!-- تواصل (واتساب + اتصال فقط) -->
+          <div class="gate contact" role="group" aria-label="التواصل">
+            <div class="gate-left">
+              <div class="ico ico-cont">📲</div>
+              <div>
+                <div class="gate-title">تواصل معنا</div>
+                <div class="gate-sub">الواتساب سريع… والاتصال أسرع وقت الضغط</div>
+
+                <div class="contact-actions" aria-label="أزرار التواصل">
+                  <a class="pill pill-wa"
+                     href="https://wa.me/966506214458"
+                     target="_blank" rel="noopener"
+                     title="واتساب">
+                    <span>🟢</span>
+                  </a>
+
+                  <a class="pill pill-call"
+                     href="tel:0506214458"
+                     title="اتصال">
+                    <span>📞</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="arrow">✓</div>
           </div>
 
         </div>
-
-        <div class="footer">© سرعة تملك العقار والحلول التمويلية</div>
       </div>
     </section>
   </main>
@@ -815,48 +529,52 @@
     <section class="page">
       <div class="container">
         <div class="panel">
-          <div class="page-title">
+          <div class="page-head">
             <h2>🏠 التمويل العقاري</h2>
-            <span class="tag">بوابة عقارية</span>
+            <span class="badge">خدمة عقارية</span>
           </div>
+
           <p class="lead">
-            بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟ متلخبط؟ 🥴 متقروش؟ 🤥 محتار وش أفضل بنك؟
-            <br><strong>بدون تعقيدات ولا قروشة</strong> 😵💫
+            بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟
+            <span class="q">متلخبط؟</span> 🥴 <span class="q">محتار؟</span> 🤥
+            <br><strong>خلك معنا… بدون تعقيدات ولا قروشة</strong> 😵💫
           </p>
 
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
-            <a class="btn primary" href="tel:0506214458">📞 تواصل الآن</a>
+          <div class="controls">
+            <button class="btn ghost" onclick="goBack()">⬅️ رجوع</button>
+            <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener">🟢 واتساب</a>
+            <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
           </div>
         </div>
 
         <div class="grid">
           <div class="card">
-            <h3>✅ مميزات التمويل العقاري</h3>
+            <h3>✅ وش ننجز لك؟</h3>
             <ul class="list">
               <li>ننجزك بأفضل نسبة <strong>حتى لو بالإستثناء، ابشر بالسعد</strong></li>
-              <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong>☺️</li>
+              <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong> ☺️</li>
               <li>حل لمن تُطلب عليه الدفعة الأولى</li>
               <li>بعض البنوك ننجزك فيها بدون تحويل راتب</li>
               <li>ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل لك</li>
               <li>نتعاون مع المقييمين لسرعة ودقة التقييم</li>
-              <li>نخدمك عن بُعد من خلال تطبيق البنك، والافراغ واستلام الصك يتم باتصال من وزارة العدل بدون ما تراجعهم</li>
+              <li>نخدمك عن بُعد عبر تطبيق البنك… والإفراغ يتم باتصال من وزارة العدل</li>
               <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>⚡ سريع وواضح</h3>
+            <h3>⚡ رسالة سريعة</h3>
             <div class="callout">
-              <p><strong>(معتــــمدون)</strong> — سمعتنا، تقييمنا، خبرة تتجاوز 17 عام</p>
-              <p>نخدم جميع أنحاء المملكة</p>
-              <p>🚨🚨 سو لقطة لشاشة، ممكن تحتاجه لاحقاً</p>
-              <p><strong>وابشر بالسعـــــــــــــــد</strong></p>
+              <div><strong>(معتــــمدون)</strong> — سمعتنا وتقييمنا وخبرة تتجاوز 17 عام</div>
+              <div>نخدم جميع أنحاء المملكة</div>
+              <div style="margin-top:6px;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+              <div style="margin-top:6px; color: rgba(2,6,23,.70);">
+                إذا الواتساب عليه ضغط… الاتصال أسرع لخدمتك.
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="footer">© سرعة تملك العقار والحلول التمويلية</div>
       </div>
     </section>
   </main>
@@ -866,17 +584,21 @@
     <section class="page">
       <div class="container">
         <div class="panel">
-          <div class="page-title">
+          <div class="page-head">
             <h2>💳 التمويل الشخصي</h2>
-            <span class="tag">بوابة شخصية</span>
+            <span class="badge">خدمة شخصية</span>
           </div>
+
           <p class="lead">
-            نرتب لك التمويل الشخصي بأقل نسبة وبطريقة سهلة… <strong>بدون تعقيدات ولا قروشة</strong> 😵💫
+            تبي تمويل شخصي بأقل نسبة وبطريقة سهلة؟
+            <span class="q">محتار؟</span> <span class="q">متقروش؟</span>
+            <br><strong>نرتب لك الأفضل… بدون تعقيدات ولا قروشة</strong> 😵💫
           </p>
 
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
-            <a class="btn primary" href="tel:0506214458">📞 تواصل الآن</a>
+          <div class="controls">
+            <button class="btn ghost" onclick="goBack()">⬅️ رجوع</button>
+            <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener">🟢 واتساب</a>
+            <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
           </div>
         </div>
 
@@ -884,7 +606,7 @@
           <div class="card">
             <h3>✅ مميزات التمويل الشخصي</h3>
             <ul class="list">
-              <li>ننجزك بأقل نسبة <strong>ولو نسويك استثناء</strong>☺️</li>
+              <li>ننجزك بأقل نسبة <strong>ولو نسويك استثناء</strong> ☺️</li>
               <li>بدون تحويل راتب في بعض البنوك، وبنسبة أقل من البنك اللي عليه الراتب</li>
               <li>مع تحويل الراتب، ننجزك ونفك الحجز عن التمويل قبل نزول الراتب</li>
               <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
@@ -893,15 +615,14 @@
           </div>
 
           <div class="card">
-            <h3>🔥 عروض وحلول</h3>
+            <h3>🔥 ترتيب سريع</h3>
             <div class="callout">
-              <p>نعطيك أفضل خيار حسب وضعك وبشكل واضح وسريع.</p>
-              <p><strong>وابشر بالسعـــــــــــــــد</strong></p>
+              <div>أرسل وضعك (راتب/التزامات/المدة)… ونرتب لك الأنسب بشكل واضح.</div>
+              <div style="margin-top:6px;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
             </div>
           </div>
         </div>
 
-        <div class="footer">© سرعة تملك العقار والحلول التمويلية</div>
       </div>
     </section>
   </main>
@@ -911,17 +632,19 @@
     <section class="page">
       <div class="container">
         <div class="panel">
-          <div class="page-title">
+          <div class="page-head">
             <h2>🚗 الخدمات الأخرى</h2>
-            <span class="tag">بوابة خدمات</span>
+            <span class="badge">خدمات إضافية</span>
           </div>
+
           <p class="lead">
-            خدمات متعددة حسب احتياجك — وبأسلوب واضح ومختصر.
+            خدمات متعددة حسب احتياجك… <strong>وبأسلوب واضح ومختصر</strong>.
           </p>
 
-          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn" onclick="openView('home')">⬅️ رجوع للبوابات</button>
-            <a class="btn primary" href="tel:0506214458">📞 تواصل الآن</a>
+          <div class="controls">
+            <button class="btn ghost" onclick="goBack()">⬅️ رجوع</button>
+            <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener">🟢 واتساب</a>
+            <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
           </div>
         </div>
 
@@ -941,21 +664,38 @@
           <div class="card">
             <h3>🎯 نرتبها لك</h3>
             <div class="callout">
-              <p>ترشيح واضح حسب احتياجك… وبدون لف ودوران.</p>
-              <p><strong>وابشر بالسعـــــــــــــــد</strong></p>
+              <div>ترشيح واضح حسب احتياجك… وبدون لف ودوران.</div>
+              <div style="margin-top:6px;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
             </div>
           </div>
         </div>
 
-        <div class="footer">© سرعة تملك العقار والحلول التمويلية</div>
       </div>
     </section>
   </main>
 
+  <!-- Fixed Footer -->
+  <footer class="footer-fixed" aria-label="Footer">
+    <div class="footer-inner">
+      <div class="stamp">
+        <span>🕒</span>
+        <b id="dt">—</b>
+      </div>
+
+      <div class="snap">
+        <span>📸</span>
+        <span><span class="em">خذ لقطة للشاشة</span> واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
+      </div>
+
+      <div class="copyright">© سرعة تملك العقار والحلول التمويلية</div>
+    </div>
+  </footer>
+
   <script>
+    // ===== Views routing with history (زر رجوع) =====
     const views = ["home","realestate","personal","services"];
 
-    function openView(name){
+    function setActive(name){
       views.forEach(v=>{
         const el = document.getElementById("view-"+v);
         if(el) el.classList.remove("active");
@@ -963,9 +703,61 @@
       const target = document.getElementById("view-"+name);
       if(target) target.classList.add("active");
       window.scrollTo({top:0, behavior:"smooth"});
+      updateBackButton();
     }
 
-    document.getElementById("homeBtn").addEventListener("click", ()=>openView("home"));
+    function openView(name){
+      history.pushState({view:name}, "", "#"+name);
+      setActive(name);
+    }
+
+    function goHome(){
+      history.pushState({view:"home"}, "", "#home");
+      setActive("home");
+    }
+
+    function goBack(){
+      if (history.length > 1) history.back();
+      else setActive("home");
+    }
+
+    function updateBackButton(){
+      const current = getCurrentView();
+      const backBtn = document.getElementById("backBtn");
+      backBtn.style.display = (current === "home") ? "none" : "inline-flex";
+    }
+
+    function getCurrentView(){
+      const hash = (location.hash || "#home").replace("#","").trim();
+      return views.includes(hash) ? hash : "home";
+    }
+
+    window.addEventListener("popstate", () => {
+      setActive(getCurrentView());
+    });
+
+    document.getElementById("homeBtn").addEventListener("click", goHome);
+    document.getElementById("backBtn").addEventListener("click", goBack);
+
+    // Init view
+    setActive(getCurrentView());
+
+    // ===== Date & Time in footer =====
+    function pad(n){ return String(n).padStart(2,"0"); }
+    function formatDT(){
+      const d = new Date();
+      const yyyy = d.getFullYear();
+      const mm = pad(d.getMonth()+1);
+      const dd = pad(d.getDate());
+      const hh = pad(d.getHours());
+      const mi = pad(d.getMinutes());
+      const ss = pad(d.getSeconds());
+      return `${yyyy}/${mm}/${dd} — ${hh}:${mi}:${ss}`;
+    }
+    const dtEl = document.getElementById("dt");
+    function tick(){ dtEl.textContent = formatDT(); }
+    tick();
+    setInterval(tick, 1000);
   </script>
 </body>
 </html>
