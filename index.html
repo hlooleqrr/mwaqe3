@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>حلول تمويلية بدون تعقيدات</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <!-- خط رسمي وواضح -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -26,12 +27,22 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
+    /* ✅ تطبيق الخط الرسمي على كل العناصر */
+    body, button, input, select, textarea{
+      font-family:"IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    }
+
     body{
       margin:0;
-      font-family:'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background: #f6f7fb;
       overflow-x:hidden;
+
+      /* ✅ تحسين نعومة القراءة */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     a{ color:inherit; text-decoration:none; }
@@ -53,7 +64,7 @@
     }
     .brand{
       display:flex; align-items:center; gap:10px;
-      font-weight: 1000;
+      font-weight: 700;
       letter-spacing: .1px;
     }
     .brand-badge{
@@ -66,7 +77,7 @@
     .brand small{
       display:block; margin-top:2px;
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 600;
       font-size: 12px;
     }
 
@@ -80,7 +91,7 @@
       background: rgba(255,255,255,.96);
       box-shadow: var(--shadow2);
       transition: transform .18s ease, border-color .18s ease;
-      font-weight: 1000;
+      font-weight: 700;
       cursor:pointer;
       white-space:nowrap;
     }
@@ -118,7 +129,7 @@
     .hero h1{
       margin:0;
       font-size: clamp(28px, 3.8vw, 44px);
-      font-weight: 1200;
+      font-weight: 700;
       letter-spacing: .2px;
       line-height: 1.15;
       background: linear-gradient(135deg, #0b1220, #0b1220, #2563eb);
@@ -129,12 +140,12 @@
     .hero p{
       margin: 12px auto 0;
       color: var(--muted);
-      font-weight: 1000;
+      font-weight: 600;
       max-width: 70ch;
       line-height: 1.95;
       font-size: 15.8px;
     }
-    .hero .em{ color: var(--danger); font-weight: 1200; }
+    .hero .em{ color: var(--danger); font-weight: 700; }
 
     /* شبكة الخدمات */
     .gate-grid{
@@ -187,11 +198,11 @@
     }
 
     .ico{
-      width: 96px; height: 96px;   /* أكبر */
+      width: 96px; height: 96px;
       border-radius: 30px;
       display:grid; place-items:center;
       color:#fff;
-      font-size: 44px;             /* أكبر */
+      font-size: 44px;
       box-shadow: 0 18px 40px rgba(2,6,23,.18);
       flex: 0 0 auto;
     }
@@ -201,7 +212,7 @@
     .ico-cont{ background: linear-gradient(135deg, var(--vio1), var(--vio2)); }
 
     .gate-title{
-      font-weight: 1200;
+      font-weight: 700;
       font-size: 19px;
       color: #0b1220;
       letter-spacing: .1px;
@@ -209,14 +220,14 @@
     .gate-sub{
       margin-top:7px;
       color: var(--muted);
-      font-weight: 950;
+      font-weight: 600;
       font-size: 14px;
       line-height: 1.7;
     }
 
     .arrow{
       z-index:1;
-      font-weight:1200;
+      font-weight:700;
       color: rgba(2,6,23,.55);
       font-size: 22px;
       padding: 10px 12px;
@@ -303,14 +314,14 @@
     .page-head h2{
       margin:0;
       font-size: 22px;
-      font-weight: 1100;
+      font-weight: 700;
       letter-spacing:.1px;
     }
     .badge{
       display:inline-flex; align-items:center; gap:8px;
       padding: 6px 10px;
       border-radius: 999px;
-      font-weight: 1000;
+      font-weight: 700;
       font-size: 12px;
       border:1px solid rgba(15,23,42,.10);
       background: rgba(255,255,255,.88);
@@ -321,12 +332,12 @@
     .lead{
       margin: 10px 0 0;
       color: #1f2937;
-      font-weight: 950;
+      font-weight: 600;
       line-height: 1.95;
       font-size: 15.6px;
     }
-    .lead .q{ color: var(--danger); font-weight: 1200; }
-    .lead strong{ font-weight: 1200; }
+    .lead .q{ color: var(--danger); font-weight: 700; }
+    .lead strong{ font-weight: 700; }
 
     .controls{
       margin-top: 12px;
@@ -354,7 +365,7 @@
     .card h3{
       margin:0 0 10px;
       font-size: 18px;
-      font-weight: 1100;
+      font-weight: 700;
       display:flex; align-items:center; gap:10px;
     }
 
@@ -362,7 +373,7 @@
       margin:0;
       padding: 0 18px 0 0;
       color: #334155;
-      font-weight: 950;
+      font-weight: 600;
       line-height: 2.05;
       font-size: 14.8px;
     }
@@ -375,10 +386,10 @@
       background: rgba(2,6,23,.03);
       color:#0b1220;
       line-height:1.9;
-      font-weight:950;
+      font-weight:600;
     }
 
-    /* Fixed footer with date/time + screenshot message */
+    /* Fixed footer */
     .footer-fixed{
       position:fixed;
       left:0; right:0; bottom:0;
@@ -400,14 +411,14 @@
     .stamp{
       display:flex; align-items:center; gap:10px;
       color: rgba(2,6,23,.72);
-      font-weight: 1100;
+      font-weight: 700;
       font-size: 12.6px;
       white-space:nowrap;
     }
     .stamp b{ color:#0b1220; }
     .snap{
       color: rgba(2,6,23,.86);
-      font-weight: 1200;
+      font-weight: 700;
       font-size: 12.9px;
       display:flex;
       align-items:center;
@@ -417,7 +428,7 @@
     .snap .em{ color: var(--danger); }
     .copyright{
       color: rgba(2,6,23,.55);
-      font-weight: 1100;
+      font-weight: 700;
       font-size: 12px;
       white-space:nowrap;
     }
@@ -443,7 +454,7 @@
     </div>
   </header>
 
-  <!-- HOME (محسّن) -->
+  <!-- HOME -->
   <main class="view active" id="view-home">
     <section class="home">
       <div class="container">
@@ -456,7 +467,6 @@
         </div>
 
         <div class="gate-grid" aria-label="الخدمات">
-          <!-- التمويل العقاري -->
           <button class="gate" onclick="openView('realestate')">
             <div class="gate-left">
               <div class="ico ico-real">🏠</div>
@@ -468,7 +478,6 @@
             <div class="arrow">›</div>
           </button>
 
-          <!-- التمويل الشخصي -->
           <button class="gate" onclick="openView('personal')">
             <div class="gate-left">
               <div class="ico ico-pers">💳</div>
@@ -480,7 +489,6 @@
             <div class="arrow">›</div>
           </button>
 
-          <!-- الخدمات الأخرى -->
           <button class="gate" onclick="openView('services')">
             <div class="gate-left">
               <div class="ico ico-serv">🚗</div>
@@ -492,7 +500,6 @@
             <div class="arrow">›</div>
           </button>
 
-          <!-- تواصل (واتساب + اتصال فقط) -->
           <div class="gate contact" role="group" aria-label="التواصل">
             <div class="gate-left">
               <div class="ico ico-cont">📲</div>
@@ -692,7 +699,6 @@
   </footer>
 
   <script>
-    // ===== Views routing with history (زر رجوع) =====
     const views = ["home","realestate","personal","services"];
 
     function setActive(name){
@@ -739,10 +745,8 @@
     document.getElementById("homeBtn").addEventListener("click", goHome);
     document.getElementById("backBtn").addEventListener("click", goBack);
 
-    // Init view
     setActive(getCurrentView());
 
-    // ===== Date & Time in footer =====
     function pad(n){ return String(n).padStart(2,"0"); }
     function formatDT(){
       const d = new Date();
