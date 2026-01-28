@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>حلول تمويلية بدون تعقيدات</title>
 
-  <!-- خط رسمي وواضح -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -24,9 +23,7 @@
 
       --danger:#ef4444;
 
-      /* ✅ تكبير عام مريح */
       --base: 18px;
-      --radius: 26px;
     }
 
     *{ box-sizing:border-box; }
@@ -39,10 +36,9 @@
     body{
       margin:0;
       color: var(--ink);
-      background: #f4f6fb; /* هادي */
+      background: #f4f6fb;
       overflow-x:hidden;
       font-size: var(--base);
-
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -55,7 +51,7 @@
 
     /* Top bar */
     .topbar{
-      position:sticky; top:0; z-index:50;
+      position:sticky; top:0; z-index:80;
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(15,23,42,.08);
@@ -113,73 +109,55 @@
     .view{ display:none; min-height: calc(100vh - 64px); }
     .view.active{ display:block; }
 
-    /* =========================
-       HOME (فيديو متحرك هادي)
-       ========================= */
+    /* ============ HOME video background ============ */
     .home{
       position:relative;
-      padding: 26px 0 160px; /* مساحة للفوتر + شريط الجوال */
-      background: linear-gradient(180deg, #fbfcff, #f4f6fb);
+      padding: 26px 0 170px; /* مساحة للفوتر + شريط الجوال */
+      background: #f4f6fb;
       overflow:hidden;
     }
 
-    /* طبقة "فيديو" متحرك - ناعم ومريح */
-    .home::before{
-      content:"";
-      position:absolute; inset:-30%;
-      background:
-        radial-gradient(900px 520px at 85% 15%, rgba(0,178,143,.16), transparent 60%),
-        radial-gradient(900px 520px at 10% 25%, rgba(37,99,235,.12), transparent 62%),
-        radial-gradient(700px 420px at 50% 80%, rgba(99,102,241,.10), transparent 60%),
-        linear-gradient(-45deg, rgba(255,255,255,.40), rgba(255,255,255,.10));
-      filter: blur(10px) saturate(1.05);
-      transform: translate3d(0,0,0);
-      animation: filmMove 10s ease-in-out infinite alternate;
-      opacity: .95;
-      pointer-events:none;
+    /* الفيديو نفسه */
+    .hero-video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      z-index:0;
+      filter: saturate(1.05) contrast(1.03);
+      transform: scale(1.02); /* يعطي امتلاء */
     }
 
-    /* لمعة متحركة خفيفة (تعطي إحساس فيديو) */
-    .home::after{
-      content:"";
-      position:absolute; inset:-40%;
+    /* طبقة تهدئة العين + تباين */
+    .video-overlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
       background:
-        linear-gradient(120deg,
-          transparent 0%,
-          rgba(255,255,255,.18) 35%,
-          transparent 70%);
-      transform: rotate(10deg);
-      animation: lightSweep 7.5s ease-in-out infinite;
-      opacity: .35;
+        radial-gradient(900px 520px at 85% 15%, rgba(0,178,143,.18), transparent 60%),
+        radial-gradient(900px 520px at 10% 25%, rgba(37,99,235,.14), transparent 62%),
+        linear-gradient(180deg, rgba(244,246,251,.70), rgba(244,246,251,.92));
+      backdrop-filter: blur(0px);
       pointer-events:none;
-    }
-
-    @keyframes filmMove{
-      0%   { transform: translate(-1.5%, -1.2%) scale(1.02); }
-      50%  { transform: translate(1.3%, -0.6%) scale(1.03); }
-      100% { transform: translate(0.6%, 1.2%) scale(1.02); }
-    }
-    @keyframes lightSweep{
-      0%   { transform: translateX(-18%) rotate(10deg); }
-      50%  { transform: translateX(8%) rotate(10deg); }
-      100% { transform: translateX(22%) rotate(10deg); }
     }
 
     .hero{
       position:relative;
       text-align:center;
       margin: 16px 0 18px;
-      padding: 20px 14px;
+      padding: 22px 14px;
       border-radius: 28px;
-      background: rgba(255,255,255,.90);
+      background: rgba(255,255,255,.88);
       border:1px solid rgba(15,23,42,.08);
-      box-shadow: 0 16px 50px rgba(2,6,23,.08);
-      z-index:1;
+      box-shadow: 0 16px 50px rgba(2,6,23,.10);
+      z-index:2;
     }
+
     .hero h1{
       margin:0;
-      font-size: clamp(30px, 4.2vw, 48px);
-      font-weight: 800;
+      font-size: clamp(32px, 4.4vw, 50px);
+      font-weight: 900;
       letter-spacing: .2px;
       line-height: 1.15;
       background: linear-gradient(135deg, #0b1220, #0b1220, #2563eb);
@@ -189,18 +167,17 @@
     }
     .hero p{
       margin: 12px auto 0;
-      color: var(--muted);
-      font-weight: 700;
+      color: #334155;
+      font-weight: 800;
       max-width: 72ch;
       line-height: 1.95;
-      font-size: 17px;
+      font-size: 18px;
     }
-    .hero .em{ color: var(--danger); font-weight: 800; }
 
     /* شبكة البوابات */
     .gate-grid{
       position:relative;
-      z-index:1;
+      z-index:2;
       margin-top: 18px;
       display:grid;
       grid-template-columns: repeat(2, 1fr);
@@ -214,7 +191,7 @@
       padding: 22px 18px;
       border-radius: 28px;
       border: 1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.96);
+      background: rgba(255,255,255,.94);
       box-shadow: var(--shadow);
       cursor:pointer;
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
@@ -223,10 +200,10 @@
       justify-content:space-between;
       gap: 14px;
       text-align:right;
-      min-height: 150px;
+      min-height: 155px;
       position:relative;
       overflow:hidden;
-      animation: popIn .45s ease both;
+      z-index:2;
     }
     .gate:hover{
       transform: translateY(-3px);
@@ -243,10 +220,6 @@
       pointer-events:none;
       transform: rotate(12deg);
     }
-    @keyframes popIn{
-      from{ transform: translateY(10px); opacity:.0; }
-      to  { transform: translateY(0); opacity:1; }
-    }
 
     .gate-left{
       display:flex; align-items:center; gap:16px;
@@ -256,11 +229,11 @@
 
     /* ✅ أيقونات أكبر */
     .ico{
-      width: 112px; height: 112px;
+      width: 114px; height: 114px;
       border-radius: 34px;
       display:grid; place-items:center;
       color:#fff;
-      font-size: 54px;
+      font-size: 56px;
       box-shadow: 0 18px 40px rgba(2,6,23,.16);
       flex: 0 0 auto;
     }
@@ -269,19 +242,17 @@
     .ico-serv{ background: linear-gradient(135deg, var(--orange1), var(--orange2)); }
     .ico-cont{ background: linear-gradient(135deg, var(--vio1), var(--vio2)); }
 
-    /* ✅ عناوين أكبر */
     .gate-title{
       font-weight: 900;
       font-size: 22px;
       color: #0b1220;
       letter-spacing: .1px;
     }
-    /* ✅ نص أكبر */
     .gate-sub{
       margin-top:8px;
       color: #334155;
-      font-weight: 700;
-      font-size: 16.2px;
+      font-weight: 800;
+      font-size: 16.6px;
       line-height: 1.75;
     }
 
@@ -317,7 +288,7 @@
       flex-wrap:wrap;
     }
     .pill{
-      width: 64px; height: 64px;
+      width: 66px; height: 66px;
       border-radius: 22px;
       display:grid; place-items:center;
       border: 1px solid rgba(15,23,42,.10);
@@ -332,27 +303,27 @@
     .pill-wa{ background: rgba(34,197,94,.12); border-color: rgba(34,197,94,.28); }
     .pill-call{ background: rgba(37,99,235,.12); border-color: rgba(37,99,235,.28); }
 
-    /* Pages themes (هادية بدون إزعاج) */
+    /* Pages themes (هادية) */
     .page{
-      padding: 22px 0 160px;
+      padding: 22px 0 170px;
       min-height: calc(100vh - 64px);
     }
 
     .theme-real{
       background:
-        radial-gradient(900px 480px at 80% 0%, rgba(37,99,235,.12), transparent 60%),
+        radial-gradient(900px 480px at 80% 0%, rgba(37,99,235,.11), transparent 60%),
         radial-gradient(900px 480px at 10% 20%, rgba(14,165,233,.10), transparent 62%),
         linear-gradient(180deg, #f8fbff, #f2f6ff);
     }
     .theme-pers{
       background:
-        radial-gradient(900px 480px at 80% 0%, rgba(34,197,94,.12), transparent 60%),
+        radial-gradient(900px 480px at 80% 0%, rgba(34,197,94,.11), transparent 60%),
         radial-gradient(900px 480px at 10% 20%, rgba(0,178,143,.10), transparent 62%),
         linear-gradient(180deg, #f8fffb, #f1fbf6);
     }
     .theme-serv{
       background:
-        radial-gradient(900px 480px at 80% 0%, rgba(249,115,22,.12), transparent 60%),
+        radial-gradient(900px 480px at 80% 0%, rgba(249,115,22,.11), transparent 60%),
         radial-gradient(900px 480px at 10% 20%, rgba(245,158,11,.10), transparent 62%),
         linear-gradient(180deg, #fffaf3, #fbf6ee);
     }
@@ -375,7 +346,7 @@
     }
     .page-head h2{
       margin:0;
-      font-size: 26px; /* ✅ أكبر */
+      font-size: 26px;
       font-weight: 900;
       letter-spacing:.1px;
     }
@@ -396,7 +367,7 @@
       color: #1f2937;
       font-weight: 800;
       line-height: 1.95;
-      font-size: 17.2px; /* ✅ أكبر */
+      font-size: 17.4px;
     }
     .lead .q{ color: var(--danger); font-weight: 900; }
     .lead strong{ font-weight: 900; }
@@ -426,7 +397,7 @@
     }
     .card h3{
       margin:0 0 10px;
-      font-size: 20px; /* ✅ أكبر */
+      font-size: 20px;
       font-weight: 900;
       display:flex; align-items:center; gap:10px;
     }
@@ -437,7 +408,7 @@
       color: #334155;
       font-weight: 800;
       line-height: 2.05;
-      font-size: 16.5px; /* ✅ أكبر */
+      font-size: 16.6px;
     }
     .list li{ margin: 7px 0; }
 
@@ -449,15 +420,15 @@
       color:#0b1220;
       line-height:1.95;
       font-weight:800;
-      font-size: 16.5px; /* ✅ أكبر */
+      font-size: 16.6px;
     }
 
-    /* شريط رقم الجوال (واضح) */
+    /* ✅ شريط رقم الجوال (واضح جدًا) */
     .phone-bar{
       position:fixed;
       left:0; right:0;
       bottom: 64px; /* فوق الفوتر */
-      z-index:65;
+      z-index:85;
       background: rgba(255,255,255,.96);
       border-top: 1px solid rgba(15,23,42,.10);
       backdrop-filter: blur(10px);
@@ -485,7 +456,7 @@
     }
     .phone-number{
       font-weight: 900;
-      font-size: 18px;
+      font-size: 19px;
       padding: 10px 14px;
       border-radius: 16px;
       border: 1px solid rgba(15,23,42,.10);
@@ -493,13 +464,12 @@
       box-shadow: var(--shadow2);
       white-space:nowrap;
     }
-    .phone-actions a{ display:inline-flex; align-items:center; gap:10px; }
 
     /* Fixed footer */
     .footer-fixed{
       position:fixed;
       left:0; right:0; bottom:0;
-      z-index:60;
+      z-index:80;
       background: rgba(255,255,255,.92);
       backdrop-filter: blur(10px);
       border-top: 1px solid rgba(15,23,42,.08);
@@ -539,14 +509,13 @@
       white-space:nowrap;
     }
 
-    /* تحسين للموبايل أكثر */
+    /* موبايل */
     @media (max-width: 520px){
-      :root{ --base: 18px; }
       .btn{ padding: 12px 14px; font-size: 15px; }
-      .ico{ width: 108px; height: 108px; font-size: 52px; }
-      .gate{ min-height: 154px; }
+      .ico{ width: 110px; height: 110px; font-size: 54px; }
+      .gate{ min-height: 160px; }
       .page-head h2{ font-size: 24px; }
-      .phone-number{ font-size: 18px; }
+      .phone-number{ font-size: 19px; }
     }
   </style>
 </head>
@@ -573,12 +542,18 @@
   <!-- HOME -->
   <main class="view active" id="view-home">
     <section class="home">
+
+      <!-- ✅ فيديو الخلفية (ضع hero.mp4 بجانب ملف HTML) -->
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
+      <div class="video-overlay" aria-hidden="true"></div>
+
       <div class="container">
         <div class="hero">
           <h1>حلول تمويلية بدون تعقيدات</h1>
           <p>
-            اختَر الخدمة اللي تبيها… وبتدخل تفاصيلها مباشرة
-            <span class="em">وبكل وضوح</span>.
+            اختَر الخدمة اللي تبيها… وبتدخل تفاصيلها مباشرة وبكل وضوح.
           </p>
 
           <div class="gate-grid">
@@ -798,7 +773,7 @@
     </section>
   </main>
 
-  <!-- ✅ شريط رقم الجوال (واضح جدًا) -->
+  <!-- ✅ شريط رقم الجوال -->
   <div class="phone-bar" aria-label="رقم الجوال">
     <div class="phone-inner">
       <div class="phone-title">
@@ -807,12 +782,8 @@
       </div>
 
       <div class="phone-actions">
-        <a class="phone-number" href="tel:0506214458" title="اتصال">
-          📞 0506214458
-        </a>
-        <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener" title="واتساب">
-          🟢 واتساب
-        </a>
+        <a class="phone-number" href="tel:0506214458" title="اتصال">📞 0506214458</a>
+        <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener" title="واتساب">🟢 واتساب</a>
       </div>
     </div>
   </div>
@@ -827,7 +798,7 @@
 
       <div class="snap">
         <span>📸</span>
-        <span><span class="em">خذ لقطة للشاشة</span> واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
+        <span><span style="color:var(--danger);font-weight:900;">خذ لقطة للشاشة</span> واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
       </div>
 
       <div class="copyright">© سرعة تملك العقار والحلول التمويلية</div>
