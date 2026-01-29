@@ -4,250 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حلول تمويلية ذكية - سرعة تملك العقار</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        
+        @keyframes float-up {
+            0% { opacity: 0; transform: translateY(20px); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100px); }
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #ffffff;
-            color: #1e3a8a;
-            overflow-x: hidden;
-        }
-
-        html, body {
-            scroll-behavior: smooth;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Background Animations */
-        @keyframes gradientShift {
+        
+        @keyframes gradient-shift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Main Container */
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        @media (min-width: 640px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding: 0 2rem;
-            }
-        }
-
-        /* Home Section */
-        .home-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
+        
+        .home-animated {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 50%, #fef3c7 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
             position: relative;
             overflow: hidden;
         }
-
-        .home-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #87CEEB 0%, #90EE90 25%, #FFD700 50%, #87CEEB 75%, #90EE90 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            z-index: 0;
-        }
-
-        .home-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            z-index: 1;
-        }
-
-        .home-content {
+        
+        .realestate-animated {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
             position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            animation: fadeInUp 1s ease-out;
+            overflow: hidden;
         }
-
-        .home-content h1 {
-            font-size: clamp(2rem, 8vw, 4rem);
-            font-weight: 900;
-            color: #1e3a8a;
-            margin-bottom: 2rem;
-            text-shadow: 0 1px 3px rgba(255,255,255,0.2);
-            line-height: 1.2;
+        
+        .personal-animated {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
         }
-
-        .home-content p {
-            font-size: clamp(1.25rem, 4vw, 2rem);
-            color: #1e40af;
-            font-weight: 900;
-            margin-bottom: 2.5rem;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
-            line-height: 1.6;
+        
+        .services-animated {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fed7aa 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
         }
-
-        /* Service Cards */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.15);
+        
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            animation: slideInRight 0.6s ease-out;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(2, 6, 23, 0.12);
         }
-
-        .service-card:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-card:nth-child(1) .service-icon {
-            background: linear-gradient(135deg, #60a5fa, #3b82f6);
-        }
-
-        .service-card:nth-child(2) .service-icon {
-            background: linear-gradient(135deg, #4ade80, #22c55e);
-        }
-
-        .service-card:nth-child(3) .service-icon {
-            background: linear-gradient(135deg, #fb923c, #f97316);
-        }
-
-        .service-title {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            font-weight: 900;
-            color: #1e3a8a;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
-        }
-
-        .service-desc {
-            font-size: clamp(0.875rem, 2vw, 1rem);
-            color: #1e40af;
-            font-weight: 900;
-            text-shadow: 0 0.5px 1px rgba(255,255,255,0.05);
-            margin-top: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 900;
-            color: #1e3a8a;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-desc {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            color: #1e40af;
-            font-weight: 900;
-            text-shadow: 0 0.5px 1px rgba(255,255,255,0.05);
-        }
-
-        /* Phone Bar */
+        
+        .hidden { display: none !important; }
+        .visible { display: block !important; }
+        
         .phone-bar {
             position: fixed;
             bottom: 80px;
@@ -258,7 +77,7 @@
             margin-left: auto;
             margin-right: 1.5rem;
         }
-
+        
         @media (max-width: 768px) {
             .phone-bar {
                 left: 1rem;
@@ -266,341 +85,63 @@
                 margin-right: 0;
             }
         }
-
-        .phone-bar-content {
-            background: linear-gradient(to right, #2563eb, #1d4ed8);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            border: 1px solid rgba(147, 197, 253, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .phone-icons {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            flex-shrink: 0;
-        }
-
-        .phone-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1.125rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        @media (min-width: 640px) {
-            .phone-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.25rem;
-            }
-        }
-
-        .phone-icon.call {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .phone-icon.call:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .phone-icon.whatsapp {
-            background: rgba(34, 197, 94, 0.8);
-        }
-
-        .phone-icon.whatsapp:hover {
-            background: rgba(34, 197, 94, 1);
-        }
-
-        .phone-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .phone-label {
-            color: white;
-            font-weight: 900;
-            font-size: 0.75rem;
-            line-height: 1.25;
-        }
-
-        @media (min-width: 640px) {
-            .phone-label {
-                font-size: 0.875rem;
-            }
-        }
-
-        .phone-number {
-            color: #dbeafe;
-            font-weight: 700;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        @media (min-width: 640px) {
-            .phone-number {
-                font-size: 0.875rem;
-            }
-        }
-
-        /* Footer */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 80;
-            background: linear-gradient(to right, #0f172a, #1e293b);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #334155;
-            box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0.375rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.25rem;
-            flex-wrap: wrap;
-            text-align: center;
-        }
-
-        @media (min-width: 640px) {
-            .footer-content {
-                padding: 0.5rem 1rem;
-                gap: 0.5rem;
-            }
-        }
-
-        .footer-text {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #94a3b8;
-        }
-
-        @media (min-width: 640px) {
-            .footer-text {
-                font-size: 0.875rem;
-            }
-        }
-
-        /* Page Sections */
-        .page-section {
-            min-height: 100vh;
-            padding: 2rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .page-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #87CEEB 0%, #90EE90 25%, #FFD700 50%, #87CEEB 75%, #90EE90 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            z-index: 0;
-        }
-
-        .page-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            z-index: 1;
-        }
-
-        .page-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-        .page-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .page-title {
-            font-size: clamp(1.875rem, 5vw, 2.25rem);
-            font-weight: 900;
-            color: #1e3a8a;
-            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
-        }
-
-        .badge {
-            padding: 0.5rem 1rem;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            border-radius: 9999px;
-            font-weight: 900;
-            font-size: clamp(0.75rem, 2vw, 1rem);
-        }
-
-        .page-description {
-            font-size: clamp(1rem, 2.5vw, 1.75rem);
-            color: #1e40af;
-            font-weight: 900;
-            margin-bottom: 2rem;
-            text-shadow: 0 0.5px 1px rgba(255,255,255,0.1);
-            line-height: 1.6;
-        }
-
-        .back-button {
-            padding: 0.5rem 1rem;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.5rem;
-            font-weight: 900;
-            color: #1e3a8a;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.875rem;
-        }
-
-        .back-button:hover {
-            background: #f1f5f9;
-            transform: translateX(5px);
-        }
-
-        .content-sections {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .content-box {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
-            padding: 2rem;
-        }
-
-        .content-box h3 {
-            font-size: 1.75rem;
-            font-weight: 900;
-            color: #1e3a8a;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0.5px 1px rgba(255,255,255,0.1);
-        }
-
-        .content-box ul, .content-box div {
-            list-style: none;
-            space-y: 1rem;
-        }
-
-        .content-box li, .content-box div > div {
-            font-size: 1.25rem;
-            color: #1e40af;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-shadow: 0 0.5px 1px rgba(255,255,255,0.05);
-        }
-
-        .content-box strong {
-            color: #1e3a8a;
-        }
-
-        /* Main content padding */
-        main {
-            padding-bottom: 6rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            .phone-bar {
-                bottom: 60px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .page-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-
-        /* Hide/Show sections */
-        .hidden {
-            display: none !important;
-        }
-
-        .visible {
-            display: block !important;
-        }
     </style>
 </head>
-<body>
-    <main id="main-content">
+<body class="bg-white">
+    <main id="main-content" class="pb-24">
         <!-- HOME SECTION -->
-        <section id="home-view" class="home-section visible">
-            <div class="container">
-                <div class="home-content">
-                    <h1>حلول تمويلية بدون تعقيدات</h1>
-                    <p>اختَر الخدمة اللي تبيها… وبتدخل تفاصيلها مباشرة وبكل وضوح</p>
+        <section id="home-view" class="home-animated min-h-screen flex items-center justify-center py-8 sm:py-12 visible">
+            <div class="container mx-auto px-4 relative z-20">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 text-blue-950" style="text-shadow: 0 1px 3px rgba(255,255,255,0.2)">
+                        حلول تمويلية بدون تعقيدات
+                    </h1>
+                    <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-blue-900 font-black mb-10 leading-relaxed" style="text-shadow: 0 1px 2px rgba(255,255,255,0.1)">
+                        اختَر الخدمة اللي تبيها… وبتدخل تفاصيلها مباشرة وبكل وضوح
+                    </p>
 
-                    <div class="services-grid">
-                        <div class="service-card" onclick="showPage('realestate')">
-                            <div class="service-icon">🏠</div>
-                            <div style="text-align: right;">
-                                <div class="service-title">التمويل العقاري</div>
-                                <div class="service-desc">🏢 فيلا • دور • شقة • بناء • رهن…</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                        <button onclick="showPage('realestate')" class="group bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 rounded-2xl p-6 text-right transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden relative">
+                            <div class="relative z-10 flex items-center justify-between gap-4">
+                                <div>
+                                    <div class="text-2xl sm:text-3xl md:text-4xl font-black text-blue-950" style="text-shadow: 0 1px 2px rgba(255,255,255,0.1)">التمويل العقاري</div>
+                                    <div class="text-sm sm:text-base md:text-lg lg:text-xl text-blue-900 font-black mt-3" style="text-shadow: 0 0.5px 1px rgba(255,255,255,0.05)">🏢 فيلا • دور • شقة • بناء • رهن…</div>
+                                </div>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-4xl shadow-lg flex-shrink-0">🏠</div>
                             </div>
-                        </div>
+                        </button>
 
-                        <div class="service-card" onclick="showPage('personal')">
-                            <div class="service-icon">💳</div>
-                            <div style="text-align: right;">
-                                <div class="service-title">التمويل الشخصي</div>
-                                <div class="service-desc">💰 أقل نسبة • شراء مديونية • سداد وإعادة…</div>
+                        <button onclick="showPage('personal')" class="group bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 rounded-2xl p-6 text-right transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden relative">
+                            <div class="relative z-10 flex items-center justify-between gap-4">
+                                <div>
+                                    <div class="text-2xl sm:text-3xl md:text-4xl font-black text-blue-950" style="text-shadow: 0 1px 2px rgba(255,255,255,0.1)">التمويل الشخصي</div>
+                                    <div class="text-sm sm:text-base md:text-lg lg:text-xl text-blue-900 font-black mt-3" style="text-shadow: 0 0.5px 1px rgba(255,255,255,0.05)">💰 أقل نسبة • شراء مديونية • سداد وإعادة…</div>
+                                </div>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-4xl shadow-lg flex-shrink-0">💳</div>
                             </div>
-                        </div>
+                        </button>
 
-                        <div class="service-card" onclick="showPage('services')">
-                            <div class="service-icon">🚗</div>
-                            <div style="text-align: right;">
-                                <div class="service-title">الخدمات الأخرى</div>
-                                <div class="service-desc">🎯 سيارات • ثروة • أسطول • نقاط بيع…</div>
+                        <button onclick="showPage('services')" class="group bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 rounded-2xl p-6 text-right transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden relative md:col-span-2">
+                            <div class="relative z-10 flex items-center justify-between gap-4">
+                                <div>
+                                    <div class="text-2xl sm:text-3xl md:text-4xl font-black text-blue-950" style="text-shadow: 0 1px 2px rgba(255,255,255,0.1)">الخدمات الأخرى</div>
+                                    <div class="text-sm sm:text-base md:text-lg lg:text-xl text-blue-900 font-black mt-3" style="text-shadow: 0 0.5px 1px rgba(255,255,255,0.05)">🎯 سيارات • ثروة • أسطول • نقاط بيع…</div>
+                                </div>
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-4xl shadow-lg flex-shrink-0">🚗</div>
                             </div>
-                        </div>
+                        </button>
                     </div>
 
-                    <div class="contact-section">
-                        <div style="text-align: right;">
-                            <div class="contact-title">📱 تواصل معنا مباشرة</div>
-                            <div class="contact-desc">اتصال أو واتساب… وابشر بالسعد</div>
+                    <div class="mt-8 bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30">
+                        <div class="flex items-center justify-between gap-4 flex-wrap">
+                            <div class="text-right">
+                                <div class="text-2xl sm:text-3xl md:text-4xl font-black text-blue-950" style="text-shadow: 0 1px 2px rgba(255,255,255,0.1)">📱 تواصل معنا مباشرة</div>
+                                <div class="text-lg sm:text-xl md:text-2xl text-blue-900 font-black mt-2" style="text-shadow: 0 0.5px 1px rgba(255,255,255,0.05)">اتصال أو واتساب… وابشر بالسعد</div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="https://wa.me/966506214458" target="_blank" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" title="واتساب">🟢</a>
+                                <a href="tel:0506214458" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-2xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" title="اتصال">📞</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -608,59 +149,43 @@
         </section>
 
         <!-- REAL ESTATE SECTION -->
-        <section id="realestate-view" class="page-section hidden">
-            <div class="container">
-                <div class="page-content">
-                    <div class="page-header">
-                        <h2 class="page-title">🏠 التمويل العقاري</h2>
-                        <span class="badge">خدمة عقارية</span>
+        <section id="realestate-view" class="realestate-animated min-h-screen py-8 sm:py-12 hidden">
+            <div class="container mx-auto px-4 relative z-20">
+                <div class="content-overlay">
+                    <div class="flex items-center justify-between gap-4 mb-8 flex-wrap">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-blue-950">🏠 التمويل العقاري</h2>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-full text-lg sm:text-xl md:text-2xl font-black">خدمة عقارية</span>
                     </div>
-
-                    <p class="page-description">
+                    <p class="text-lg sm:text-xl md:text-3xl lg:text-4xl text-blue-900 font-black mb-8 leading-relaxed" style="text-shadow: 0 1px 4px rgba(255,255,255,0.2)">
                         بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟
-                        <span style="color: #dc2626;"> متلخبط؟</span> 🤮 <span style="color: #dc2626;">محتار؟</span> 🥥
+                        <span class="text-red-600"> متلخبط؟</span> 🤮 <span class="text-red-600">محتار؟</span> 🥥
                         <br>
                         <strong>خلك معنا… بدون تعقيدات ولا قروشة</strong> 🤵💫
                     </p>
-
-                    <button class="back-button" onclick="showPage('home')">← العودة</button>
-
-                    <div class="content-sections" style="margin-top: 2rem;">
-                        <div class="content-box">
-                            <h3>✅ وش ننجز لك؟</h3>
-                            <ul>
-                                <li>شراء عقار بأفضل شروط وأقل نسبة</li>
-                                <li>بناء عقار من الصفر</li>
-                                <li>رهن عقار موجود</li>
-                                <li>إعادة تمويل</li>
-                                <li>تمويل مع شركات معتمدة من البنك المركزي</li>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <button onclick="showPage('home')" class="px-4 py-2 bg-white border border-gray-300 rounded-lg font-bold text-blue-950 hover:bg-gray-50">← رجوع</button>
+                        <a href="https://wa.me/966506214458" target="_blank" class="px-4 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">واتساب</a>
+                        <a href="tel:0506214458" class="px-4 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">اتصال</a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white/80 rounded-xl p-8 border border-slate-200">
+                            <h3 class="text-4xl font-black text-blue-950 mb-6">✅ وش ننجز لك؟</h3>
+                            <ul class="space-y-4 text-blue-900 font-black text-2xl">
+                                <li>ننجزك بأفضل نسبة <strong>حتى لو بالإستثناء، ابشر بالسعد</strong></li>
+                                <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong> ☺️</li>
+                                <li>حل لمن تُطلب عليه الدفعة الأولى</li>
+                                <li>بعض البنوك ننجزك فيها بدون تحويل راتب</li>
+                                <li>ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل لك</li>
+                                <li>نتعاون مع المقييمين لسرعة ودقة التقييم</li>
+                                <li>نخدمك عن بُعد عبر تطبيق البنك… والإفراغ يتم باتصال من وزارة العدل</li>
+                                <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
                             </ul>
                         </div>
-
-                        <div class="content-box">
-                            <h3>⚡ رسالة سريعة</h3>
-                            <div>
+                        <div class="bg-white/80 rounded-xl p-8 border border-slate-200">
+                            <h3 class="text-4xl font-black text-blue-950 mb-6">⚡ رسالة سريعة</h3>
+                            <div class="text-blue-900 font-black text-2xl">
                                 <div>نحن نتعامل مع أفضل البنوك والشركات التمويلية</div>
-                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
-                            </div>
-                        </div>
-
-                        <div class="content-box">
-                            <h3>✅ مميزات التمويل العقاري</h3>
-                            <ul>
-                                <li>أقل نسبة فائدة في السوق</li>
-                                <li>فترات سداد طويلة تصل إلى 30 سنة</li>
-                                <li>معاملة سهلة وسريعة</li>
-                                <li>دعم كامل من فريقنا</li>
-                                <li>ضمانات قانونية كاملة</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-box">
-                            <h3>🔥 ترتيب سريع</h3>
-                            <div>
-                                <div>نرتب لك الأفضل حسب احتياجك… وبدون لف ودوران.</div>
-                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                                <div class="mt-4"><strong>وابشر بالسعـــــــــــــــد</strong></div>
                             </div>
                         </div>
                     </div>
@@ -668,28 +193,29 @@
             </div>
         </section>
 
-        <!-- PERSONAL FINANCE SECTION -->
-        <section id="personal-view" class="page-section hidden">
-            <div class="container">
-                <div class="page-content">
-                    <div class="page-header">
-                        <h2 class="page-title">💳 التمويل الشخصي</h2>
-                        <span class="badge" style="background: linear-gradient(135deg, #22c55e, #16a34a);">خدمة شخصية</span>
+        <!-- PERSONAL SECTION -->
+        <section id="personal-view" class="personal-animated min-h-screen py-8 sm:py-12 hidden">
+            <div class="container mx-auto px-4 relative z-20">
+                <div class="content-overlay">
+                    <div class="flex items-center justify-between gap-4 mb-8 flex-wrap">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-blue-950">💳 التمويل الشخصي</h2>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-green-600 text-white rounded-full text-lg sm:text-xl md:text-2xl font-black">خدمة شخصية</span>
                     </div>
-
-                    <p class="page-description">
+                    <p class="text-lg sm:text-xl md:text-3xl lg:text-4xl text-blue-900 font-black mb-8 leading-relaxed" style="text-shadow: 0 1px 4px rgba(255,255,255,0.2)">
                         تبي تمويل شخصي بأقل نسبة وبطريقة سهلة؟
-                        <span style="color: #dc2626;"> محتار؟</span> <span style="color: #dc2626;">متقروش؟</span>
+                        <span class="text-red-600"> محتار؟</span> <span class="text-red-600">متقروش؟</span>
                         <br>
                         <strong>نرتب لك الأفضل… بدون تعقيدات ولا قروشة</strong> 🤵💫
                     </p>
-
-                    <button class="back-button" onclick="showPage('home')">← العودة</button>
-
-                    <div class="content-sections" style="margin-top: 2rem;">
-                        <div class="content-box">
-                            <h3>✅ مميزات التمويل الشخصي</h3>
-                            <ul>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <button onclick="showPage('home')" class="px-4 py-2 bg-white border border-gray-300 rounded-lg font-bold text-blue-950 hover:bg-gray-50">← رجوع</button>
+                        <a href="https://wa.me/966506214458" target="_blank" class="px-4 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">واتساب</a>
+                        <a href="tel:0506214458" class="px-4 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">اتصال</a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white/80 rounded-xl p-8 border border-slate-200">
+                            <h3 class="text-4xl font-black text-blue-950 mb-6">✅ مميزات التمويل الشخصي</h3>
+                            <ul class="space-y-4 text-blue-900 font-black text-2xl">
                                 <li>أقل نسبة فائدة</li>
                                 <li>موافقة سريعة جداً</li>
                                 <li>صرف فوري</li>
@@ -697,31 +223,11 @@
                                 <li>فترات سداد مرنة</li>
                             </ul>
                         </div>
-
-                        <div class="content-box">
-                            <h3>🔥 ترتيب سريع</h3>
-                            <div>
+                        <div class="bg-white/80 rounded-xl p-8 border border-slate-200">
+                            <h3 class="text-4xl font-black text-blue-950 mb-6">🔥 ترتيب سريع</h3>
+                            <div class="text-blue-900 font-black text-2xl">
                                 <div>نرتب لك أفضل عرض تمويلي… بدون تعقيدات.</div>
-                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
-                            </div>
-                        </div>
-
-                        <div class="content-box">
-                            <h3>💰 الخدمات</h3>
-                            <ul>
-                                <li>تمويل شخصي عام</li>
-                                <li>شراء مديونية</li>
-                                <li>سداد وإعادة تمويل</li>
-                                <li>تمويل للموظفين والعاملين</li>
-                                <li>تمويل للعاملين بالقطاع الخاص</li>
-                            </ul>
-                        </div>
-
-                        <div class="content-box">
-                            <h3>⚡ رسالة سريعة</h3>
-                            <div>
-                                <div>نحن نوفر لك أفضل الخيارات التمويلية</div>
-                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                                <div class="mt-4"><strong>وابشر بالسعـــــــــــــــد</strong></div>
                             </div>
                         </div>
                     </div>
@@ -730,38 +236,37 @@
         </section>
 
         <!-- SERVICES SECTION -->
-        <section id="services-view" class="page-section hidden">
-            <div class="container">
-                <div class="page-content">
-                    <div class="page-header">
-                        <h2 class="page-title">🚗 الخدمات الأخرى</h2>
-                        <span class="badge" style="background: linear-gradient(135deg, #f97316, #ea580c);">خدمات إضافية</span>
+        <section id="services-view" class="services-animated min-h-screen py-8 sm:py-12 hidden">
+            <div class="container mx-auto px-4 relative z-20">
+                <div class="content-overlay">
+                    <div class="flex items-center justify-between gap-4 mb-8 flex-wrap">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-blue-950">🚗 الخدمات الأخرى</h2>
+                        <span class="px-4 sm:px-6 py-2 sm:py-3 bg-orange-600 text-white rounded-full text-lg sm:text-xl md:text-2xl font-black">خدمات إضافية</span>
                     </div>
-
-                    <p class="page-description">
+                    <p class="text-lg sm:text-xl md:text-3xl lg:text-4xl text-blue-900 font-black mb-8 leading-relaxed" style="text-shadow: 0 1px 4px rgba(255,255,255,0.2)">
                         خدمات متعددة حسب احتياجك… <strong>وبأسلوب واضح ومختصر</strong>.
                     </p>
-
-                    <button class="back-button" onclick="showPage('home')">← العودة</button>
-
-                    <div class="content-sections" style="margin-top: 2rem;">
-                        <div class="content-box">
-                            <h3>🚀 خدماتنا</h3>
-                            <ul>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <button onclick="showPage('home')" class="px-4 py-2 bg-white border border-gray-300 rounded-lg font-bold text-blue-950 hover:bg-gray-50">← رجوع</button>
+                        <a href="https://wa.me/966506214458" target="_blank" class="px-4 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">واتساب</a>
+                        <a href="tel:0506214458" class="px-4 py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600">اتصال</a>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white/80 rounded-xl p-8 border border-slate-200">
+                            <h3 class="text-4xl font-black text-blue-950 mb-6">🚀 خدماتنا</h3>
+                            <ul class="space-y-4 text-blue-900 font-black text-2xl">
                                 <li>سيــــــارات</li>
                                 <li>منتج ثروة</li>
                                 <li>منتج أسطول</li>
                                 <li>منتج نقاط البيع</li>
                                 <li>تمويل تجاري وغير ذلك</li>
-                                <li>حلول تمويلية مع شركات تمويل معتمدة من البنك المركزي <strong>بأفضل نسب</strong></li>
                             </ul>
                         </div>
-
-                        <div class="content-box">
-                            <h3>🎯 نرتبها لك</h3>
-                            <div>
+                        <div class="bg-white/80 rounded-xl p-8 border border-slate-200">
+                            <h3 class="text-4xl font-black text-blue-950 mb-6">🎯 نرتبها لك</h3>
+                            <div class="text-blue-900 font-black text-2xl">
                                 <div>ترشيح واضح حسب احتياجك… وبدون لف ودوران.</div>
-                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                                <div class="mt-4"><strong>وابشر بالسعـــــــــــــــد</strong></div>
                             </div>
                         </div>
                     </div>
@@ -772,43 +277,45 @@
 
     <!-- Phone Bar -->
     <div class="phone-bar">
-        <div class="phone-bar-content">
-            <div class="phone-icons">
-                <a href="tel:0506214458" class="phone-icon call" title="اتصال">📞</a>
-                <a href="https://wa.me/966506214458" target="_blank" rel="noopener noreferrer" class="phone-icon whatsapp" title="واتساب">
-                    <svg style="width: 100%; height: 100%; fill: white;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.781 1.149c-1.488.557-2.64 1.565-3.404 2.857-.779 1.454-1.194 3.108-.575 4.753.61 1.645 2.062 2.927 3.399 3.251 1.337.324 2.926.236 4.247-.481 1.234-.659 2.194-1.676 2.637-2.976.442-1.324.35-2.926-.424-4.247-.773-1.32-2.282-2.645-3.925-3.012a9.768 9.768 0 00-1.175-.09zM12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="phone-info">
-                <div class="phone-label">اتصل أو واتساب</div>
-                <div class="phone-number">0506214458</div>
+        <div class="bg-gradient-to-r from-blue-600 to-blue-700 backdrop-blur-md rounded-3xl shadow-2xl p-4 sm:p-5 border border-blue-400/50">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2 flex-1 min-w-0">
+                    <div class="flex items-center gap-1 flex-shrink-0">
+                        <a href="tel:0506214458" class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-all text-lg sm:text-xl" title="اتصال">📞</a>
+                        <a href="https://wa.me/966506214458" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-green-400/80 hover:bg-green-500 rounded-full transition-all" title="واتساب">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.781 1.149c-1.488.557-2.64 1.565-3.404 2.857-.779 1.454-1.194 3.108-.575 4.753.61 1.645 2.062 2.927 3.399 3.251 1.337.324 2.926.236 4.247-.481 1.234-.659 2.194-1.676 2.637-2.976.442-1.324.35-2.926-.424-4.247-.773-1.32-2.282-2.645-3.925-3.012a9.768 9.768 0 00-1.175-.09zM12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"/></svg>
+                        </a>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="text-white font-black text-xs sm:text-sm leading-tight">اتصل أو واتساب</div>
+                        <div class="text-blue-100 font-bold text-xs sm:text-sm truncate">0506214458</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <span class="footer-text">📸 خذ لقطة للشاشة واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
-            <span class="footer-text">•</span>
-            <span class="footer-text">© سرعة تملك العقار والحلول التمويلية</span>
+    <footer class="fixed bottom-0 left-0 right-0 z-80 bg-gradient-to-r from-slate-900 to-slate-800 backdrop-blur-md border-t border-slate-700 shadow-lg">
+        <div class="container mx-auto px-4 py-1.5 sm:py-2">
+            <div class="flex items-center justify-center gap-1 sm:gap-2 flex-wrap text-xs font-bold text-slate-400 text-center">
+                <span>📸 خذ لقطة للشاشة واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
+                <span>•</span>
+                <span>© سرعة تملك العقار والحلول التمويلية</span>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Page Navigation
         function showPage(page) {
             const pages = ['home', 'realestate', 'personal', 'services'];
             pages.forEach(p => {
                 const element = document.getElementById(p + '-view');
                 if (element) {
-                    element.classList.remove('visible');
                     element.classList.add('hidden');
+                    element.classList.remove('visible');
                 }
             });
-
             const targetPage = document.getElementById(page + '-view');
             if (targetPage) {
                 targetPage.classList.remove('hidden');
@@ -816,31 +323,6 @@
                 window.scrollTo(0, 0);
             }
         }
-
-        // Update time
-        function updateTime() {
-            const now = new Date();
-            const yyyy = now.getFullYear();
-            const mm = String(now.getMonth() + 1).padStart(2, '0');
-            const dd = String(now.getDate()).padStart(2, '0');
-            const hh = String(now.getHours()).padStart(2, '0');
-            const mi = String(now.getMinutes()).padStart(2, '0');
-            const ss = String(now.getSeconds()).padStart(2, '0');
-            
-            // Update footer if needed
-            const timeElement = document.querySelector('.footer-text');
-            if (timeElement) {
-                // Time can be added to footer if needed
-            }
-        }
-
-        updateTime();
-        setInterval(updateTime, 1000);
-
-        // Initialize
-        window.addEventListener('load', () => {
-            showPage('home');
-        });
     </script>
 </body>
 </html>
