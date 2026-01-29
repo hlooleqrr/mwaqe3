@@ -1,1047 +1,846 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>حلول تمويلية ذكية - سرعة الانجاز بدون تعقيدات</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-      color: #0b1220;
-      background: #f4f6fb;
-      overflow-x: hidden;
-      font-size: 18px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      border: none;
-      cursor: pointer;
-    }
-
-    .container {
-      width: min(1040px, 92vw);
-      margin: 0 auto;
-    }
-
-    /* ============ ANIMATIONS ============ */
-    @keyframes float-up {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-100px);
-      }
-    }
-
-    @keyframes gradient-shift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ============ HEADER ============ */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 80;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-      gap: 12px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: 0.1px;
-    }
-
-    .brand-badge {
-      width: 42px;
-      height: 42px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: linear-gradient(135deg, #00b28f, #4aa3ff);
-      box-shadow: 0 12px 30px rgba(0, 178, 143, 0.16);
-      font-size: 20px;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 2px;
-      color: #475569;
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 10px 26px rgba(2, 6, 23, 0.09);
-      transition: transform 0.18s ease, border-color 0.18s ease;
-      font-weight: 800;
-      cursor: pointer;
-      white-space: nowrap;
-      font-size: 16px;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      border-color: rgba(15, 23, 42, 0.16);
-    }
-
-    .btn.primary {
-      background: linear-gradient(135deg, #00b28f, #22c55e);
-      border-color: rgba(0, 178, 143, 0.35);
-      color: #fff;
-    }
-
-    .btn.ghost {
-      background: rgba(255, 255, 255, 0.88);
-    }
-
-    /* ============ VIEWS ============ */
-    .view {
-      display: none;
-      min-height: calc(100vh - 64px);
-    }
-
-    .view.active {
-      display: block;
-      animation: fadeInUp 0.5s ease-out;
-    }
-
-    /* ============ HOME BACKGROUND ============ */
-    .home {
-      position: relative;
-      padding: 26px 0 170px;
-      background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 50%, #fef3c7 100%);
-      overflow: hidden;
-    }
-
-    .home::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(900px 520px at 85% 15%, rgba(0, 178, 143, 0.18), transparent 60%),
-                  radial-gradient(900px 520px at 10% 25%, rgba(37, 99, 235, 0.14), transparent 62%),
-                  linear-gradient(180deg, rgba(244, 246, 251, 0.70), rgba(244, 246, 251, 0.92));
-      z-index: 0;
-      pointer-events: none;
-      animation: gradient-shift 15s ease infinite;
-    }
-
-    .hero {
-      position: relative;
-      text-align: center;
-      margin: 16px 0 18px;
-      padding: 22px 14px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      box-shadow: 0 16px 50px rgba(2, 6, 23, 0.10);
-      z-index: 2;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(32px, 4.4vw, 50px);
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      line-height: 1.15;
-      background: linear-gradient(135deg, #0b1220, #0b1220, #2563eb);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      margin: 12px auto 0;
-      color: #334155;
-      font-weight: 800;
-      max-width: 72ch;
-      line-height: 1.95;
-      font-size: 18px;
-    }
-
-    /* ============ GATE GRID ============ */
-    .gate-grid {
-      position: relative;
-      z-index: 2;
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 620px) {
-      .gate-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .gate {
-      width: 100%;
-      padding: 22px 18px;
-      border-radius: 28px;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 18px 60px rgba(2, 6, 23, 0.12);
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      text-align: right;
-      min-height: 155px;
-      position: relative;
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    .gate:hover {
-      transform: translateY(-3px);
-      border-color: rgba(15, 23, 42, 0.16);
-      box-shadow: 0 28px 86px rgba(2, 6, 23, 0.14);
-    }
-
-    .gate::after {
-      content: '';
-      position: absolute;
-      inset: -90px -110px auto auto;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.58), transparent 60%);
-      opacity: 0.60;
-      pointer-events: none;
-      transform: rotate(12deg);
-    }
-
-    .gate-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      z-index: 1;
-      width: 100%;
-    }
-
-    .ico {
-      width: 114px;
-      height: 114px;
-      border-radius: 34px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-size: 56px;
-      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.16);
-      flex: 0 0 auto;
-    }
-
-    .ico-real {
-      background: linear-gradient(135deg, #0ea5e9, #2563eb);
-    }
-
-    .ico-pers {
-      background: linear-gradient(135deg, #22c55e, #00b28f);
-    }
-
-    .ico-serv {
-      background: linear-gradient(135deg, #f59e0b, #f97316);
-    }
-
-    .ico-cont {
-      background: linear-gradient(135deg, #6366f1, #a78bfa);
-    }
-
-    .gate-title {
-      font-weight: 900;
-      font-size: 22px;
-      color: #0b1220;
-      letter-spacing: 0.1px;
-    }
-
-    .gate-sub {
-      margin-top: 8px;
-      color: #334155;
-      font-weight: 800;
-      font-size: 16.6px;
-      line-height: 1.75;
-    }
-
-    .arrow {
-      z-index: 1;
-      font-weight: 900;
-      color: rgba(2, 6, 23, 0.55);
-      font-size: 24px;
-      padding: 12px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
-      background: rgba(255, 255, 255, 0.80);
-      flex: 0 0 auto;
-    }
-
-    /* ============ CONTACT SECTION ============ */
-    .gate.contact {
-      cursor: default;
-      grid-column: 1 / -1;
-    }
-
-    .gate.contact:hover {
-      transform: none;
-      box-shadow: 0 18px 60px rgba(2, 6, 23, 0.12);
-      border-color: rgba(15, 23, 42, 0.10);
-    }
-
-    .contact-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: flex-start;
-      margin-top: 12px;
-      z-index: 1;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      width: 66px;
-      height: 66px;
-      border-radius: 22px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 14px 34px rgba(2, 6, 23, 0.09);
-      cursor: pointer;
-      transition: transform 0.18s ease, border-color 0.18s ease;
-      user-select: none;
-      font-size: 28px;
-    }
-
-    .pill:hover {
-      transform: translateY(-2px);
-      border-color: rgba(15, 23, 42, 0.16);
-    }
-
-    .pill-wa {
-      background: rgba(34, 197, 94, 0.12);
-      border-color: rgba(34, 197, 94, 0.28);
-    }
-
-    .pill-call {
-      background: rgba(37, 99, 235, 0.12);
-      border-color: rgba(37, 99, 235, 0.28);
-    }
-
-    /* ============ PAGES ============ */
-    .page {
-      padding: 22px 0 170px;
-      min-height: calc(100vh - 64px);
-    }
-
-    .theme-real {
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(37, 99, 235, 0.11), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(14, 165, 233, 0.10), transparent 62%),
-        linear-gradient(180deg, #f8fbff, #f2f6ff);
-    }
-
-    .theme-pers {
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(34, 197, 94, 0.11), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(0, 178, 143, 0.10), transparent 62%),
-        linear-gradient(180deg, #f8fffb, #f1fbf6);
-    }
-
-    .theme-serv {
-      background:
-        radial-gradient(900px 480px at 80% 0%, rgba(249, 115, 22, 0.11), transparent 60%),
-        radial-gradient(900px 480px at 10% 20%, rgba(245, 158, 11, 0.10), transparent 62%),
-        linear-gradient(180deg, #fffaf3, #fbf6ee);
-    }
-
-    .panel {
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      box-shadow: 0 18px 60px rgba(2, 6, 23, 0.12);
-      padding: 18px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .page-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .page-head h2 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 0.1px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 13px;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: rgba(255, 255, 255, 0.88);
-      color: #475569;
-      white-space: nowrap;
-    }
-
-    .lead {
-      margin: 10px 0 0;
-      color: #1f2937;
-      font-weight: 800;
-      line-height: 1.95;
-      font-size: 17.4px;
-    }
-
-    .lead .q {
-      color: #ef4444;
-      font-weight: 900;
-    }
-
-    .lead strong {
-      font-weight: 900;
-    }
-
-    .controls {
-      margin-top: 12px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: 1fr 0.95fr;
-      gap: 14px;
-      align-items: start;
-    }
-
-    @media (max-width: 960px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      box-shadow: 0 16px 50px rgba(2, 6, 23, 0.09);
-      padding: 16px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .list {
-      margin: 0;
-      padding: 0 18px 0 0;
-      color: #334155;
-      font-weight: 800;
-      line-height: 2.05;
-      font-size: 16.6px;
-    }
-
-    .list li {
-      margin: 7px 0;
-    }
-
-    .callout {
-      border-radius: 18px;
-      padding: 14px;
-      border: 1px solid rgba(2, 6, 23, 0.10);
-      background: rgba(2, 6, 23, 0.03);
-      color: #0b1220;
-      line-height: 1.95;
-      font-weight: 800;
-      font-size: 16.6px;
-    }
-
-    /* ============ PHONE BAR ============ */
-    .phone-bar {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 64px;
-      z-index: 85;
-      background: rgba(255, 255, 255, 0.96);
-      border-top: 1px solid rgba(15, 23, 42, 0.10);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 -16px 40px rgba(2, 6, 23, 0.08);
-    }
-
-    .phone-inner {
-      width: min(1040px, 92vw);
-      margin: 0 auto;
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .phone-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      color: #0b1220;
-      font-size: 16px;
-      white-space: nowrap;
-    }
-
-    .phone-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .phone-number {
-      font-weight: 900;
-      font-size: 19px;
-      padding: 10px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(15, 23, 42, 0.10);
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 10px 26px rgba(2, 6, 23, 0.09);
-      white-space: nowrap;
-      display: inline-block;
-      text-decoration: none;
-      color: #0b1220;
-    }
-
-    /* ============ FOOTER ============ */
-    .footer-fixed {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 80;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(15, 23, 42, 0.08);
-    }
-
-    .footer-inner {
-      width: min(1040px, 92vw);
-      margin: 0 auto;
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .stamp {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(2, 6, 23, 0.72);
-      font-weight: 900;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .stamp b {
-      color: #0b1220;
-    }
-
-    .snap {
-      color: rgba(2, 6, 23, 0.86);
-      font-weight: 900;
-      font-size: 13px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      line-height: 1.5;
-    }
-
-    .snap .em {
-      color: #ef4444;
-    }
-
-    .copyright {
-      color: rgba(2, 6, 23, 0.55);
-      font-weight: 900;
-      font-size: 12.5px;
-      white-space: nowrap;
-    }
-
-    /* ============ MOBILE ============ */
-    @media (max-width: 520px) {
-      .btn {
-        padding: 12px 14px;
-        font-size: 15px;
-      }
-      .ico {
-        width: 110px;
-        height: 110px;
-        font-size: 54px;
-      }
-      .gate {
-        min-height: 160px;
-      }
-      .page-head h2 {
-        font-size: 24px;
-      }
-      .phone-number {
-        font-size: 19px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلول تمويلية ذكية - سرعة تملك العقار</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #1e3a8a;
+            overflow-x: hidden;
+        }
+
+        html, body {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Background Animations */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Home Section */
+        .home-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #87CEEB 0%, #90EE90 25%, #FFD700 50%, #87CEEB 75%, #90EE90 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: 0;
+        }
+
+        .home-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            z-index: 1;
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .home-content h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 900;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.2);
+            line-height: 1.2;
+        }
+
+        .home-content p {
+            font-size: clamp(1.25rem, 4vw, 2rem);
+            color: #1e40af;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
+            line-height: 1.6;
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideInRight 0.6s ease-out;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:nth-child(1) .service-icon {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+        }
+
+        .service-title {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 900;
+            color: #1e3a8a;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
+        }
+
+        .service-desc {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            color: #1e40af;
+            font-weight: 900;
+            text-shadow: 0 0.5px 1px rgba(255,255,255,0.05);
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 900;
+            color: #1e3a8a;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-desc {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: #1e40af;
+            font-weight: 900;
+            text-shadow: 0 0.5px 1px rgba(255,255,255,0.05);
+        }
+
+        /* Phone Bar */
+        .phone-bar {
+            position: fixed;
+            bottom: 80px;
+            left: 1rem;
+            right: 1rem;
+            z-index: 85;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .phone-bar {
+                left: 1rem;
+                right: 1rem;
+                margin-right: 0;
+            }
+        }
+
+        .phone-bar-content {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border: 1px solid rgba(147, 197, 253, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .phone-icons {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .phone-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        @media (min-width: 640px) {
+            .phone-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+        }
+
+        .phone-icon.call {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .phone-icon.call:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .phone-icon.whatsapp {
+            background: rgba(34, 197, 94, 0.8);
+        }
+
+        .phone-icon.whatsapp:hover {
+            background: rgba(34, 197, 94, 1);
+        }
+
+        .phone-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .phone-label {
+            color: white;
+            font-weight: 900;
+            font-size: 0.75rem;
+            line-height: 1.25;
+        }
+
+        @media (min-width: 640px) {
+            .phone-label {
+                font-size: 0.875rem;
+            }
+        }
+
+        .phone-number {
+            color: #dbeafe;
+            font-weight: 700;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (min-width: 640px) {
+            .phone-number {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 80;
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #334155;
+            box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.375rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .footer-content {
+                padding: 0.5rem 1rem;
+                gap: 0.5rem;
+            }
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+        }
+
+        @media (min-width: 640px) {
+            .footer-text {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Page Sections */
+        .page-section {
+            min-height: 100vh;
+            padding: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #87CEEB 0%, #90EE90 25%, #FFD700 50%, #87CEEB 75%, #90EE90 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: 0;
+        }
+
+        .page-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            z-index: 1;
+        }
+
+        .page-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .page-title {
+            font-size: clamp(1.875rem, 5vw, 2.25rem);
+            font-weight: 900;
+            color: #1e3a8a;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.1);
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border-radius: 9999px;
+            font-weight: 900;
+            font-size: clamp(0.75rem, 2vw, 1rem);
+        }
+
+        .page-description {
+            font-size: clamp(1rem, 2.5vw, 1.75rem);
+            color: #1e40af;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-shadow: 0 0.5px 1px rgba(255,255,255,0.1);
+            line-height: 1.6;
+        }
+
+        .back-button {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-weight: 900;
+            color: #1e3a8a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+        }
+
+        .back-button:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .content-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .content-box h3 {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0.5px 1px rgba(255,255,255,0.1);
+        }
+
+        .content-box ul, .content-box div {
+            list-style: none;
+            space-y: 1rem;
+        }
+
+        .content-box li, .content-box div > div {
+            font-size: 1.25rem;
+            color: #1e40af;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 0.5px 1px rgba(255,255,255,0.05);
+        }
+
+        .content-box strong {
+            color: #1e3a8a;
+        }
+
+        /* Main content padding */
+        main {
+            padding-bottom: 6rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .phone-bar {
+                bottom: 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Hide/Show sections */
+        .hidden {
+            display: none !important;
+        }
+
+        .visible {
+            display: block !important;
+        }
+    </style>
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-badge">⚡</div>
-        <div>
-          <div>سرعة تملك العقار</div>
-          <small>حلول تمويلية بدون تعقيدات</small>
-        </div>
-      </div>
+    <main id="main-content">
+        <!-- HOME SECTION -->
+        <section id="home-view" class="home-section visible">
+            <div class="container">
+                <div class="home-content">
+                    <h1>حلول تمويلية بدون تعقيدات</h1>
+                    <p>اختَر الخدمة اللي تبيها… وبتدخل تفاصيلها مباشرة وبكل وضوح</p>
 
-      <div class="top-actions">
-        <button class="btn ghost" id="backBtn" title="رجوع" style="display: none;">⬅️ رجوع</button>
-        <button class="btn" id="homeBtn" title="الرئيسية">🏠 الرئيسية</button>
-        <a class="btn primary" href="tel:0506214458" title="اتصال الآن">📞 اتصال</a>
-      </div>
+                    <div class="services-grid">
+                        <div class="service-card" onclick="showPage('realestate')">
+                            <div class="service-icon">🏠</div>
+                            <div style="text-align: right;">
+                                <div class="service-title">التمويل العقاري</div>
+                                <div class="service-desc">🏢 فيلا • دور • شقة • بناء • رهن…</div>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showPage('personal')">
+                            <div class="service-icon">💳</div>
+                            <div style="text-align: right;">
+                                <div class="service-title">التمويل الشخصي</div>
+                                <div class="service-desc">💰 أقل نسبة • شراء مديونية • سداد وإعادة…</div>
+                            </div>
+                        </div>
+
+                        <div class="service-card" onclick="showPage('services')">
+                            <div class="service-icon">🚗</div>
+                            <div style="text-align: right;">
+                                <div class="service-title">الخدمات الأخرى</div>
+                                <div class="service-desc">🎯 سيارات • ثروة • أسطول • نقاط بيع…</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-section">
+                        <div style="text-align: right;">
+                            <div class="contact-title">📱 تواصل معنا مباشرة</div>
+                            <div class="contact-desc">اتصال أو واتساب… وابشر بالسعد</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REAL ESTATE SECTION -->
+        <section id="realestate-view" class="page-section hidden">
+            <div class="container">
+                <div class="page-content">
+                    <div class="page-header">
+                        <h2 class="page-title">🏠 التمويل العقاري</h2>
+                        <span class="badge">خدمة عقارية</span>
+                    </div>
+
+                    <p class="page-description">
+                        بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟
+                        <span style="color: #dc2626;"> متلخبط؟</span> 🤮 <span style="color: #dc2626;">محتار؟</span> 🥥
+                        <br>
+                        <strong>خلك معنا… بدون تعقيدات ولا قروشة</strong> 🤵💫
+                    </p>
+
+                    <button class="back-button" onclick="showPage('home')">← العودة</button>
+
+                    <div class="content-sections" style="margin-top: 2rem;">
+                        <div class="content-box">
+                            <h3>✅ وش ننجز لك؟</h3>
+                            <ul>
+                                <li>شراء عقار بأفضل شروط وأقل نسبة</li>
+                                <li>بناء عقار من الصفر</li>
+                                <li>رهن عقار موجود</li>
+                                <li>إعادة تمويل</li>
+                                <li>تمويل مع شركات معتمدة من البنك المركزي</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>⚡ رسالة سريعة</h3>
+                            <div>
+                                <div>نحن نتعامل مع أفضل البنوك والشركات التمويلية</div>
+                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>✅ مميزات التمويل العقاري</h3>
+                            <ul>
+                                <li>أقل نسبة فائدة في السوق</li>
+                                <li>فترات سداد طويلة تصل إلى 30 سنة</li>
+                                <li>معاملة سهلة وسريعة</li>
+                                <li>دعم كامل من فريقنا</li>
+                                <li>ضمانات قانونية كاملة</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>🔥 ترتيب سريع</h3>
+                            <div>
+                                <div>نرتب لك الأفضل حسب احتياجك… وبدون لف ودوران.</div>
+                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERSONAL FINANCE SECTION -->
+        <section id="personal-view" class="page-section hidden">
+            <div class="container">
+                <div class="page-content">
+                    <div class="page-header">
+                        <h2 class="page-title">💳 التمويل الشخصي</h2>
+                        <span class="badge" style="background: linear-gradient(135deg, #22c55e, #16a34a);">خدمة شخصية</span>
+                    </div>
+
+                    <p class="page-description">
+                        تبي تمويل شخصي بأقل نسبة وبطريقة سهلة؟
+                        <span style="color: #dc2626;"> محتار؟</span> <span style="color: #dc2626;">متقروش؟</span>
+                        <br>
+                        <strong>نرتب لك الأفضل… بدون تعقيدات ولا قروشة</strong> 🤵💫
+                    </p>
+
+                    <button class="back-button" onclick="showPage('home')">← العودة</button>
+
+                    <div class="content-sections" style="margin-top: 2rem;">
+                        <div class="content-box">
+                            <h3>✅ مميزات التمويل الشخصي</h3>
+                            <ul>
+                                <li>أقل نسبة فائدة</li>
+                                <li>موافقة سريعة جداً</li>
+                                <li>صرف فوري</li>
+                                <li>لا توجد رسوم إدارية خفية</li>
+                                <li>فترات سداد مرنة</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>🔥 ترتيب سريع</h3>
+                            <div>
+                                <div>نرتب لك أفضل عرض تمويلي… بدون تعقيدات.</div>
+                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>💰 الخدمات</h3>
+                            <ul>
+                                <li>تمويل شخصي عام</li>
+                                <li>شراء مديونية</li>
+                                <li>سداد وإعادة تمويل</li>
+                                <li>تمويل للموظفين والعاملين</li>
+                                <li>تمويل للعاملين بالقطاع الخاص</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>⚡ رسالة سريعة</h3>
+                            <div>
+                                <div>نحن نوفر لك أفضل الخيارات التمويلية</div>
+                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services-view" class="page-section hidden">
+            <div class="container">
+                <div class="page-content">
+                    <div class="page-header">
+                        <h2 class="page-title">🚗 الخدمات الأخرى</h2>
+                        <span class="badge" style="background: linear-gradient(135deg, #f97316, #ea580c);">خدمات إضافية</span>
+                    </div>
+
+                    <p class="page-description">
+                        خدمات متعددة حسب احتياجك… <strong>وبأسلوب واضح ومختصر</strong>.
+                    </p>
+
+                    <button class="back-button" onclick="showPage('home')">← العودة</button>
+
+                    <div class="content-sections" style="margin-top: 2rem;">
+                        <div class="content-box">
+                            <h3>🚀 خدماتنا</h3>
+                            <ul>
+                                <li>سيــــــارات</li>
+                                <li>منتج ثروة</li>
+                                <li>منتج أسطول</li>
+                                <li>منتج نقاط البيع</li>
+                                <li>تمويل تجاري وغير ذلك</li>
+                                <li>حلول تمويلية مع شركات تمويل معتمدة من البنك المركزي <strong>بأفضل نسب</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="content-box">
+                            <h3>🎯 نرتبها لك</h3>
+                            <div>
+                                <div>ترشيح واضح حسب احتياجك… وبدون لف ودوران.</div>
+                                <div style="margin-top: 1rem;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Phone Bar -->
+    <div class="phone-bar">
+        <div class="phone-bar-content">
+            <div class="phone-icons">
+                <a href="tel:0506214458" class="phone-icon call" title="اتصال">📞</a>
+                <a href="https://wa.me/966506214458" target="_blank" rel="noopener noreferrer" class="phone-icon whatsapp" title="واتساب">
+                    <svg style="width: 100%; height: 100%; fill: white;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.781 1.149c-1.488.557-2.64 1.565-3.404 2.857-.779 1.454-1.194 3.108-.575 4.753.61 1.645 2.062 2.927 3.399 3.251 1.337.324 2.926.236 4.247-.481 1.234-.659 2.194-1.676 2.637-2.976.442-1.324.35-2.926-.424-4.247-.773-1.32-2.282-2.645-3.925-3.012a9.768 9.768 0 00-1.175-.09zM12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="phone-info">
+                <div class="phone-label">اتصل أو واتساب</div>
+                <div class="phone-number">0506214458</div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- HOME -->
-  <main class="view active" id="view-home">
-    <section class="home">
-      <div class="container">
-        <div class="hero">
-          <h1>حلول تمويلية بدون تعقيدات</h1>
-          <p>
-            اختَر الخدمة اللي تبيها… وبتدخل تفاصيلها مباشرة وبكل وضوح.
-          </p>
-
-          <div class="gate-grid">
-            <button class="gate" onclick="openView('realestate')">
-              <div class="gate-left">
-                <div class="ico ico-real">🏠</div>
-                <div>
-                  <div class="gate-title">التمويل العقاري</div>
-                  <div class="gate-sub">فيلا • دور • شقة • بناء • رهن…</div>
-                </div>
-              </div>
-              <div class="arrow">›</div>
-            </button>
-
-            <button class="gate" onclick="openView('personal')">
-              <div class="gate-left">
-                <div class="ico ico-pers">💳</div>
-                <div>
-                  <div class="gate-title">التمويل الشخصي</div>
-                  <div class="gate-sub">أقل نسبة • شراء مديونية • سداد وإعادة…</div>
-                </div>
-              </div>
-              <div class="arrow">›</div>
-            </button>
-
-            <button class="gate" onclick="openView('services')">
-              <div class="gate-left">
-                <div class="ico ico-serv">🚗</div>
-                <div>
-                  <div class="gate-title">الخدمات الأخرى</div>
-                  <div class="gate-sub">سيارات • ثروة • أسطول • نقاط بيع…</div>
-                </div>
-              </div>
-              <div class="arrow">›</div>
-            </button>
-
-            <div class="gate contact" role="group" aria-label="التواصل">
-              <div class="gate-left">
-                <div class="ico ico-cont">📲</div>
-                <div>
-                  <div class="gate-title">تواصل معنا</div>
-                  <div class="gate-sub">اتصال أو واتساب… وابشر بالسعد</div>
-
-                  <div class="contact-actions" aria-label="أزرار التواصل">
-                    <a class="pill pill-wa"
-                       href="https://wa.me/966506214458"
-                       target="_blank" rel="noopener"
-                       title="واتساب">
-                      🟢
-                    </a>
-
-                    <a class="pill pill-call"
-                       href="tel:0506214458"
-                       title="اتصال">
-                      📞
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="arrow">✓</div>
-            </div>
-          </div>
-
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span class="footer-text">📸 خذ لقطة للشاشة واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
+            <span class="footer-text">•</span>
+            <span class="footer-text">© سرعة تملك العقار والحلول التمويلية</span>
         </div>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- REAL ESTATE -->
-  <main class="view theme-real" id="view-realestate">
-    <section class="page">
-      <div class="container">
-        <div class="panel">
-          <div class="page-head">
-            <h2>🏠 التمويل العقاري</h2>
-            <span class="badge">خدمة عقارية</span>
-          </div>
+    <script>
+        // Page Navigation
+        function showPage(page) {
+            const pages = ['home', 'realestate', 'personal', 'services'];
+            pages.forEach(p => {
+                const element = document.getElementById(p + '-view');
+                if (element) {
+                    element.classList.remove('visible');
+                    element.classList.add('hidden');
+                }
+            });
 
-          <p class="lead">
-            بتشتري فيلا، دور، شقة 🏠؟ أو بتبني 🏗️؟ أو ترهن عن طريق البنك؟
-            <span class="q">متلخبط؟</span> 🥴 <span class="q">محتار؟</span> 🤥
-            <br><strong>خلك معنا… بدون تعقيدات ولا قروشة</strong> 😵💫
-          </p>
+            const targetPage = document.getElementById(page + '-view');
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('visible');
+                window.scrollTo(0, 0);
+            }
+        }
 
-          <div class="controls">
-            <button class="btn ghost" onclick="goBack()">⬅️ رجوع</button>
-            <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener">🟢 واتساب</a>
-            <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
-          </div>
-        </div>
+        // Update time
+        function updateTime() {
+            const now = new Date();
+            const yyyy = now.getFullYear();
+            const mm = String(now.getMonth() + 1).padStart(2, '0');
+            const dd = String(now.getDate()).padStart(2, '0');
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mi = String(now.getMinutes()).padStart(2, '0');
+            const ss = String(now.getSeconds()).padStart(2, '0');
+            
+            // Update footer if needed
+            const timeElement = document.querySelector('.footer-text');
+            if (timeElement) {
+                // Time can be added to footer if needed
+            }
+        }
 
-        <div class="grid">
-          <div class="card">
-            <h3>✅ وش ننجز لك؟</h3>
-            <ul class="list">
-              <li>ننجزك بأفضل نسبة <strong>حتى لو بالإستثناء، ابشر بالسعد</strong></li>
-              <li>الإقساط في بعض البنوك تبدأ بـ <strong>500 ريال أول 5 سنوات</strong> ☺️</li>
-              <li>حل لمن تُطلب عليه الدفعة الأولى</li>
-              <li>بعض البنوك ننجزك فيها بدون تحويل راتب</li>
-              <li>ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل لك</li>
-              <li>نتعاون مع المقييمين لسرعة ودقة التقييم</li>
-              <li>نخدمك عن بُعد عبر تطبيق البنك… والإفراغ يتم باتصال من وزارة العدل</li>
-              <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
-            </ul>
-          </div>
+        updateTime();
+        setInterval(updateTime, 1000);
 
-          <div class="card">
-            <h3>⚡ رسالة سريعة</h3>
-            <div class="callout">
-              <div><strong>(معتــــمدون)</strong> — سمعتنا وتقييمنا وخبرة تتجاوز 17 عام</div>
-              <div>نخدم جميع أنحاء المملكة</div>
-              <div style="margin-top:8px;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
-              <div style="margin-top:8px; color: rgba(2,6,23,.70);">
-                تواصل معنا اتصال أو واتساب.
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- PERSONAL -->
-  <main class="view theme-pers" id="view-personal">
-    <section class="page">
-      <div class="container">
-        <div class="panel">
-          <div class="page-head">
-            <h2>💳 التمويل الشخصي</h2>
-            <span class="badge">خدمة شخصية</span>
-          </div>
-
-          <p class="lead">
-            تبي تمويل شخصي بأقل نسبة وبطريقة سهلة؟
-            <span class="q">محتار؟</span> <span class="q">متقروش؟</span>
-            <br><strong>نرتب لك الأفضل… بدون تعقيدات ولا قروشة</strong> 😵💫
-          </p>
-
-          <div class="controls">
-            <button class="btn ghost" onclick="goBack()">⬅️ رجوع</button>
-            <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener">🟢 واتساب</a>
-            <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>✅ مميزات التمويل الشخصي</h3>
-            <ul class="list">
-              <li>ننجزك بأقل نسبة <strong>ولو نسويك استثناء</strong> ☺️</li>
-              <li>بدون تحويل راتب في بعض البنوك، وبنسبة أقل من البنك اللي عليه الراتب</li>
-              <li>ننجزك بإفضل عروض البنوك في شراء المديونية</li>
-              <li>مع تحويل الراتب، ننجزك ونفك الحجز عن التمويل قبل نزول الراتب</li>
-              <li><strong>بدون تعقيدات ولا قروشة</strong> 😵💫</li>
-              <li><strong>عروض مميزة</strong> على سداد القرض الشخصي والإعادة</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>🔥 ترتيب سريع</h3>
-            <div class="callout">
-              <div>أرسل وضعك (راتب/التزامات/المدة)… ونرتب لك الأنسب بشكل واضح.</div>
-              <div style="margin-top:8px;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- SERVICES -->
-  <main class="view theme-serv" id="view-services">
-    <section class="page">
-      <div class="container">
-        <div class="panel">
-          <div class="page-head">
-            <h2>🚗 الخدمات الأخرى</h2>
-            <span class="badge">خدمات إضافية</span>
-          </div>
-
-          <p class="lead">
-            خدمات متعددة حسب احتياجك… <strong>وبأسلوب واضح ومختصر</strong>.
-          </p>
-
-          <div class="controls">
-            <button class="btn ghost" onclick="goBack()">⬅️ رجوع</button>
-            <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener">🟢 واتساب</a>
-            <a class="btn primary" href="tel:0506214458">📞 اتصال</a>
-          </div>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>🚀 خدماتنا</h3>
-            <ul class="list">
-              <li>سيــــــارات</li>
-              <li>منتج ثروة</li>
-              <li>منتج أسطول</li>
-              <li>منتج نقاط البيع</li>
-              <li>تمويل تجاري وغير ذلك</li>
-              <li>حلول تمويلية مع شركات تمويل معتمدة من البنك المركزي <strong>بأفضل نسب</strong></li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>🎯 نرتبها لك</h3>
-            <div class="callout">
-              <div>ترشيح واضح حسب احتياجك… وبدون لف ودوران.</div>
-              <div style="margin-top:8px;"><strong>وابشر بالسعـــــــــــــــد</strong></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Phone Bar -->
-  <div class="phone-bar" aria-label="رقم الجوال">
-    <div class="phone-inner">
-      <div class="phone-title">
-        <span>📱</span>
-        <span>رقم الجوال للتواصل المباشر</span>
-      </div>
-
-      <div class="phone-actions">
-        <a class="phone-number" href="tel:0506214458" title="اتصال">📞 0506214458</a>
-        <a class="btn" href="https://wa.me/966506214458" target="_blank" rel="noopener" title="واتساب">🟢 واتساب</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Fixed Footer -->
-  <footer class="footer-fixed" aria-label="Footer">
-    <div class="footer-inner">
-      <div class="stamp">
-        <span>🕒</span>
-        <b id="dt">—</b>
-      </div>
-
-      <div class="snap">
-        <span>📸</span>
-        <span><span class="em">خذ لقطة للشاشة</span> واحتفظ بها… يمكن تحتاجها لاحقًا.</span>
-      </div>
-
-      <div class="copyright">© سرعة تملك العقار والحلول التمويلية</div>
-    </div>
-  </footer>
-
-  <script>
-    const views = ["home", "realestate", "personal", "services"];
-
-    function setActive(name) {
-      views.forEach(v => {
-        const el = document.getElementById("view-" + v);
-        if (el) el.classList.remove("active");
-      });
-      const target = document.getElementById("view-" + name);
-      if (target) target.classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      updateBackButton();
-    }
-
-    function openView(name) {
-      history.pushState({ view: name }, "", "#" + name);
-      setActive(name);
-    }
-
-    function goHome() {
-      history.pushState({ view: "home" }, "", "#home");
-      setActive("home");
-    }
-
-    function goBack() {
-      if (history.length > 1) history.back();
-      else setActive("home");
-    }
-
-    function updateBackButton() {
-      const current = getCurrentView();
-      const backBtn = document.getElementById("backBtn");
-      backBtn.style.display = (current === "home") ? "none" : "inline-flex";
-    }
-
-    function getCurrentView() {
-      const hash = (location.hash || "#home").replace("#", "").trim();
-      return views.includes(hash) ? hash : "home";
-    }
-
-    window.addEventListener("popstate", () => {
-      setActive(getCurrentView());
-    });
-
-    document.getElementById("homeBtn").addEventListener("click", goHome);
-    document.getElementById("backBtn").addEventListener("click", goBack);
-
-    setActive(getCurrentView());
-
-    function pad(n) {
-      return String(n).padStart(2, "0");
-    }
-
-    function formatDT() {
-      const d = new Date();
-      const yyyy = d.getFullYear();
-      const mm = pad(d.getMonth() + 1);
-      const dd = pad(d.getDate());
-      const hh = pad(d.getHours());
-      const mi = pad(d.getMinutes());
-      const ss = pad(d.getSeconds());
-      return `${yyyy}/${mm}/${dd} — ${hh}:${mi}:${ss}`;
-    }
-
-    const dtEl = document.getElementById("dt");
-
-    function tick() {
-      dtEl.textContent = formatDT();
-    }
-
-    tick();
-    setInterval(tick, 1000);
-  </script>
+        // Initialize
+        window.addEventListener('load', () => {
+            showPage('home');
+        });
+    </script>
 </body>
 </html>
