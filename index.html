@@ -1,19 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
+
+<meta charset="utf-8">
 
 <meta
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
 
-<title>حلول تمويلية | بدون تعقيدات</title>
+<meta
+  name="theme-color"
+  content="#ffffff"
+>
 
-<meta name="theme-color" content="#ffffff">
+<title>
+حلول تمويلية | بدون تعقيدات
+</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
 
 <link
   href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap"
@@ -22,164 +36,179 @@
 
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-  defer
-></script>
+  defer>
+</script>
+
 
 <style>
 
 :root{
-  --bg:#f5f7f9;
-  --white:#ffffff;
-  --text:#172126;
-  --soft:#637279;
-  --muted:#8c989d;
-  --blue:#316de5;
-  --blue2:#5185eb;
-  --blue-soft:#edf3ff;
-  --green:#17795c;
-  --green-soft:#edf8f4;
-  --warm:#ad6d59;
-  --warm2:#ce8870;
-  --warm-soft:#faf3ef;
-  --gold:#b97d26;
-  --gold-soft:#fff3dd;
-  --purple:#675fca;
-  --border:rgba(29,45,54,.075);
+  --bg:#f6f7f9;
+  --white:#fff;
+  --ink:#172126;
+  --soft:#66767d;
+  --muted:#8e989d;
+  --blue:#326de3;
+  --blue2:#4b80e8;
+  --blue-soft:#eef3ff;
+  --green:#147356;
+  --green-soft:#eef8f4;
+  --warm:#a96954;
+  --warm2:#c98268;
+  --warm-soft:#fbf2ee;
+  --gold:#b57c26;
+  --gold-soft:#fff3df;
+  --violet:#655dc8;
+  --line:rgba(29,45,54,.07);
   --shadow:0 14px 42px rgba(27,42,50,.07);
   --shadow-lg:0 26px 70px rgba(27,42,50,.12);
 }
+
 
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
 }
 
+
 html{
   scroll-behavior:smooth;
 }
+
 
 body{
   margin:0;
   min-height:100vh;
   font-family:"Tajawal",sans-serif;
-  color:var(--text);
+  color:var(--ink);
+
   background:
     linear-gradient(
       180deg,
-      #ffffff 0%,
-      #f9fafb 50%,
+      #fff 0%,
+      #fafbfc 52%,
       #f3f5f7 100%
     );
+
   overflow-x:hidden;
-  padding-bottom:110px;
+
+  padding-bottom:112px;
 }
+
 
 button,
 a{
   font:inherit;
 }
 
+
 button{
   border:0;
 }
 
+
 a{
-  color:inherit;
   text-decoration:none;
+  color:inherit;
 }
+
 
 svg{
   display:block;
 }
 
-/* =========================
-   خلفية
-========================= */
 
-.background{
+.app{
+  width:100%;
+  max-width:880px;
+  margin:auto;
+}
+
+
+
+/* الخلفية */
+
+.bg{
   position:fixed;
   inset:0;
   z-index:-10;
-  pointer-events:none;
   overflow:hidden;
+  pointer-events:none;
 }
+
 
 .glow{
   position:absolute;
   border-radius:50%;
-  filter:blur(85px);
-  opacity:.07;
+  filter:blur(90px);
+  opacity:.065;
 }
 
-.glow.one{
-  width:380px;
-  height:380px;
-  right:-180px;
-  top:-180px;
-  background:#4d83e8;
+
+.g1{
+  width:400px;
+  height:400px;
+  right:-200px;
+  top:-190px;
+  background:#4e83e8;
 }
 
-.glow.two{
-  width:350px;
-  height:350px;
-  left:-200px;
-  top:42%;
-  background:#ce8e74;
+
+.g2{
+  width:360px;
+  height:360px;
+  left:-210px;
+  top:39%;
+  background:#d48c72;
 }
 
-.glow.three{
-  width:350px;
-  height:350px;
-  right:-180px;
+
+.g3{
+  width:360px;
+  height:360px;
+  right:-190px;
   bottom:-190px;
-  background:#7c6fd4;
+  background:#6f67d0;
 }
 
-.app{
-  width:100%;
-  max-width:850px;
-  margin:auto;
-}
 
-/* =========================
-   الهيدر
-========================= */
+
+/* الهيدر */
 
 .header{
   position:sticky;
   top:0;
-  z-index:500;
+  z-index:600;
 
   padding:
     max(8px,env(safe-area-inset-top))
     14px
     7px;
 
-  background:rgba(255,255,255,.91);
+  background:
+    rgba(255,255,255,.92);
 
-  backdrop-filter:
-    blur(23px)
-    saturate(145%);
-
-  -webkit-backdrop-filter:
-    blur(23px)
-    saturate(145%);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 
   border-bottom:
-    1px solid rgba(32,48,57,.045);
+    1px solid
+    rgba(32,48,57,.045);
 }
 
+
 .header-inner{
-  width:100%;
-  max-width:850px;
+  max-width:880px;
   min-height:62px;
   margin:auto;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:12px;
 }
+
 
 .brand{
   display:flex;
@@ -188,15 +217,16 @@ svg{
   min-width:0;
 }
 
+
 .brand-logo{
   width:45px;
   height:45px;
   flex:0 0 auto;
 
+  border-radius:16px;
+
   display:grid;
   place-items:center;
-
-  border-radius:16px;
 
   color:#fff;
 
@@ -204,7 +234,7 @@ svg{
     linear-gradient(
       145deg,
       #356ddd,
-      #6f62cf
+      #7163d0
     );
 
   box-shadow:
@@ -212,44 +242,55 @@ svg{
     rgba(58,85,172,.18);
 }
 
+
 .brand-logo svg{
   width:24px;
   height:24px;
 }
+
 
 .brand-title{
   font-size:15px;
   font-weight:900;
 }
 
+
 .brand-sub{
   margin-top:2px;
+
   color:#7b898f;
-  font-size:10.3px;
+
+  font-size:10.4px;
   font-weight:700;
+
   white-space:nowrap;
 }
 
+
 .brand-sub strong{
-  color:#177156;
+  color:#176f56;
 }
+
 
 .back-btn{
   min-width:80px;
   height:42px;
+
   padding:0 12px;
 
+  border-radius:14px;
+
   display:none;
+
   align-items:center;
   justify-content:center;
-  gap:6px;
 
-  border-radius:14px;
+  gap:6px;
 
   color:#48585f;
   background:#fff;
 
-  border:1px solid var(--border);
+  border:1px solid var(--line);
 
   box-shadow:
     0 6px 18px
@@ -261,18 +302,20 @@ svg{
   cursor:pointer;
 }
 
+
 .back-btn svg{
   width:18px;
   height:18px;
 }
 
+
 body.detail-mode .back-btn{
   display:flex;
 }
 
-/* =========================
-   الترحيب
-========================= */
+
+
+/* الترحيب والتاريخ */
 
 .welcome-wrap{
   padding:
@@ -280,6 +323,7 @@ body.detail-mode .back-btn{
     14px
     2px;
 }
+
 
 .welcome{
   padding:17px 18px;
@@ -289,6 +333,7 @@ body.detail-mode .back-btn{
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:14px;
 
   background:#fff;
@@ -300,18 +345,18 @@ body.detail-mode .back-btn{
   box-shadow:var(--shadow);
 }
 
-.welcome-right{
-  min-width:0;
-}
 
 .greeting{
   color:#3466c6;
+
   font-size:20px;
-  line-height:1.3;
+  line-height:1.25;
+
   font-weight:900;
 }
 
-.welcome-text{
+
+.welcome-word{
   margin-top:4px;
 
   color:#6f7e84;
@@ -320,10 +365,12 @@ body.detail-mode .back-btn{
   font-weight:700;
 }
 
+
 .date-box{
   flex:0 0 auto;
   text-align:left;
 }
+
 
 .live-time{
   direction:rtl;
@@ -336,6 +383,7 @@ body.detail-mode .back-btn{
   white-space:nowrap;
 }
 
+
 .date-line{
   margin-top:3px;
 
@@ -347,9 +395,9 @@ body.detail-mode .back-btn{
   white-space:nowrap;
 }
 
-/* =========================
-   نصيحة اليوم
-========================= */
+
+
+/* نصيحة اليوم */
 
 .tip-wrap{
   padding:
@@ -357,6 +405,7 @@ body.detail-mode .back-btn{
     14px
     0;
 }
+
 
 .tip-bar{
   height:43px;
@@ -379,14 +428,17 @@ body.detail-mode .back-btn{
     rgba(52,39,34,.035);
 }
 
+
 .tip-label{
   height:100%;
+
   flex:0 0 auto;
 
   padding:0 13px;
 
   display:flex;
   align-items:center;
+
   gap:7px;
 
   color:#fff;
@@ -394,8 +446,8 @@ body.detail-mode .back-btn{
   background:
     linear-gradient(
       135deg,
-      #a76854,
-      #c9856d
+      var(--warm),
+      var(--warm2)
     );
 
   font-size:10.5px;
@@ -403,6 +455,7 @@ body.detail-mode .back-btn{
 
   white-space:nowrap;
 }
+
 
 .tip-label-icon{
   width:22px;
@@ -417,18 +470,22 @@ body.detail-mode .back-btn{
     rgba(255,255,255,.14);
 }
 
+
 .tip-label-icon svg{
   width:13px;
   height:13px;
 }
+
 
 .tip-window{
   flex:1;
   min-width:0;
 
   overflow:hidden;
+
   direction:ltr;
 }
+
 
 .tip-track{
   width:max-content;
@@ -436,20 +493,21 @@ body.detail-mode .back-btn{
   display:flex;
   align-items:center;
 
-  gap:100px;
+  gap:110px;
 
-  padding:
-    0 110px;
+  padding:0 140px;
 
   animation:
     tipMove
-    980s
+    1900s
     linear
     infinite;
 }
 
+
 .tip-item{
   direction:rtl;
+
   white-space:nowrap;
 
   color:#6c787d;
@@ -457,6 +515,7 @@ body.detail-mode .back-btn{
   font-size:11px;
   font-weight:600;
 }
+
 
 .tip-item::before{
   content:"•";
@@ -466,7 +525,9 @@ body.detail-mode .back-btn{
   color:#b97963;
 }
 
+
 @keyframes tipMove{
+
   from{
     transform:translateX(0);
   }
@@ -474,44 +535,31 @@ body.detail-mode .back-btn{
   to{
     transform:translateX(-50%);
   }
+
 }
 
-/* =========================
-   الشاشات
 
-   الرئيسية ظاهرة افتراضيًا
-   حتى بدون JavaScript
-========================= */
+
+/* الصفحات */
 
 .page-screen{
   display:none;
 }
 
-#home{
-  display:block;
-}
 
 .page-screen.active{
   display:block;
-}
 
-body.js-ready .page-screen{
-  display:none;
-}
-
-body.js-ready .page-screen.active{
-  display:block;
-}
-
-.page-screen.active{
   animation:
     pageIn
-    .32s
+    .22s
     ease
     both;
 }
 
+
 @keyframes pageIn{
+
   from{
     opacity:0;
     transform:translateY(10px);
@@ -521,11 +569,22 @@ body.js-ready .page-screen.active{
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
-/* =========================
-   الرئيسية
-========================= */
+
+#home{
+  display:block;
+}
+
+
+#home:not(.active){
+  display:none;
+}
+
+
+
+/* الرئيسية */
 
 .hero{
   padding:
@@ -535,6 +594,7 @@ body.js-ready .page-screen.active{
 
   text-align:center;
 }
+
 
 .hero h1{
   margin:0;
@@ -553,9 +613,11 @@ body.js-ready .page-screen.active{
   letter-spacing:-1px;
 }
 
+
 .hero h1 span{
   color:#3568cf;
 }
+
 
 .hero-sub{
   margin-top:7px;
@@ -566,6 +628,7 @@ body.js-ready .page-screen.active{
   font-weight:650;
 }
 
+
 .choose-title{
   margin-top:30px;
 
@@ -575,9 +638,9 @@ body.js-ready .page-screen.active{
   font-weight:900;
 }
 
-/* =========================
-   القائمة الرئيسية
-========================= */
+
+
+/* بطاقات الرئيسية */
 
 .service-list{
   padding:
@@ -590,6 +653,7 @@ body.js-ready .page-screen.active{
   gap:13px;
 }
 
+
 .service-card{
   width:100%;
   min-height:130px;
@@ -598,6 +662,7 @@ body.js-ready .page-screen.active{
 
   display:flex;
   align-items:center;
+
   gap:14px;
 
   position:relative;
@@ -608,12 +673,9 @@ body.js-ready .page-screen.active{
 
   background:#fff;
 
-  border:
-    1px solid
-    var(--border);
+  border:1px solid var(--line);
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 
   cursor:pointer;
 
@@ -621,9 +683,11 @@ body.js-ready .page-screen.active{
     transform .18s ease;
 }
 
+
 .service-card:active{
   transform:scale(.985);
 }
+
 
 .service-image{
   width:107px;
@@ -645,6 +709,7 @@ body.js-ready .page-screen.active{
     );
 }
 
+
 .service-image img{
   width:100%;
   height:100%;
@@ -654,15 +719,18 @@ body.js-ready .page-screen.active{
   object-fit:cover;
 }
 
+
 .service-copy{
   flex:1;
   min-width:0;
 }
 
+
 .service-name{
   font-size:18px;
   font-weight:900;
 }
+
 
 .service-desc{
   margin-top:5px;
@@ -674,6 +742,7 @@ body.js-ready .page-screen.active{
 
   font-weight:600;
 }
+
 
 .service-arrow{
   width:38px;
@@ -691,14 +760,92 @@ body.js-ready .page-screen.active{
   background:#f3f5f7;
 }
 
+
 .service-arrow svg{
   width:18px;
   height:18px;
 }
 
-/* =========================
-   تواصل الرئيسية
-========================= */
+
+
+/* صورة 500 ريال الحقيقية */
+
+.money-thumb{
+  width:107px;
+  height:106px;
+
+  flex:0 0 auto;
+
+  position:relative;
+
+  border-radius:21px;
+
+  background:#eef2f4;
+
+  border:
+    1px solid
+    rgba(24,58,86,.08);
+
+  overflow:hidden;
+}
+
+
+.real-money-stack{
+  position:absolute;
+
+  inset:0;
+
+  display:grid;
+  place-items:center;
+
+  overflow:hidden;
+}
+
+
+.real-money-stack img{
+  position:absolute;
+
+  width:92px;
+  height:auto;
+
+  border-radius:7px;
+
+  box-shadow:
+    0 7px 16px
+    rgba(26,43,52,.14);
+
+  object-fit:cover;
+}
+
+
+.real-money-stack img:nth-child(1){
+  transform:
+    translate(-5px,10px)
+    rotate(-6deg);
+
+  opacity:.84;
+}
+
+
+.real-money-stack img:nth-child(2){
+  transform:
+    translate(6px,5px)
+    rotate(5deg);
+
+  opacity:.92;
+}
+
+
+.real-money-stack img:nth-child(3){
+  transform:
+    translate(0,-3px);
+
+  z-index:2;
+}
+
+
+
+/* التواصل */
 
 .quick-contact{
   margin:
@@ -719,10 +866,14 @@ body.js-ready .page-screen.active{
 
   background:#fff;
 
-  border:1px solid var(--border);
+  border:
+    1px solid
+    var(--line);
 
-  box-shadow:var(--shadow);
+  box-shadow:
+    var(--shadow);
 }
+
 
 .quick-call,
 .quick-wa{
@@ -731,6 +882,7 @@ body.js-ready .page-screen.active{
   display:flex;
   align-items:center;
   justify-content:center;
+
   gap:8px;
 
   border-radius:17px;
@@ -739,24 +891,27 @@ body.js-ready .page-screen.active{
   font-weight:900;
 }
 
+
 .quick-call{
   color:#315fb7;
   background:#eff4fc;
 }
+
 
 .quick-wa{
   color:#19765b;
   background:#f0f8f5;
 }
 
+
 .quick-contact svg{
   width:20px;
   height:20px;
 }
 
-/* =========================
-   التفاصيل
-========================= */
+
+
+/* التفاصيل */
 
 .detail-page{
   padding:
@@ -764,6 +919,7 @@ body.js-ready .page-screen.active{
     14px
     28px;
 }
+
 
 .detail-head{
   padding:13px;
@@ -774,11 +930,12 @@ body.js-ready .page-screen.active{
 
   border:
     1px solid
-    var(--border);
+    var(--line);
 
   box-shadow:
     var(--shadow-lg);
 }
+
 
 .detail-title{
   padding:
@@ -787,12 +944,14 @@ body.js-ready .page-screen.active{
     15px;
 }
 
+
 .detail-title h2{
   margin:0;
 
   font-size:27px;
   font-weight:900;
 }
+
 
 .detail-title p{
   margin:
@@ -806,9 +965,9 @@ body.js-ready .page-screen.active{
   font-weight:650;
 }
 
-/* =========================
-   صور العقاري
-========================= */
+
+
+/* صور العقار */
 
 .property-gallery{
   height:205px;
@@ -821,6 +980,7 @@ body.js-ready .page-screen.active{
   gap:7px;
 }
 
+
 .property-side{
   display:grid;
 
@@ -829,6 +989,7 @@ body.js-ready .page-screen.active{
 
   gap:7px;
 }
+
 
 .real-photo{
   overflow:hidden;
@@ -843,6 +1004,7 @@ body.js-ready .page-screen.active{
     );
 }
 
+
 .real-photo img{
   width:100%;
   height:100%;
@@ -852,159 +1014,89 @@ body.js-ready .page-screen.active{
   object-fit:cover;
 }
 
-/* =========================
-   الشخصي
-========================= */
 
-.personal-gallery{
-  height:195px;
+
+/* قائمة العقاري */
+
+.submenu{
+  margin-top:12px;
 
   display:grid;
 
   grid-template-columns:
-    1.4fr 1fr;
+    repeat(2,1fr);
 
-  gap:7px;
+  gap:9px;
 }
 
-.money-image{
-  overflow:hidden;
 
-  border-radius:19px;
+.submenu-card{
+  min-height:148px;
+
+  padding:8px;
+
+  border-radius:18px;
+
+  background:#fff;
+
+  border:
+    1px solid
+    rgba(35,52,61,.055);
+
+  box-shadow:
+    0 6px 18px
+    rgba(28,43,51,.035);
+
+  overflow:hidden;
+}
+
+
+.submenu-photo{
+  width:100%;
+  height:86px;
+
+  border-radius:13px;
+
+  overflow:hidden;
 
   background:#e9edef;
 }
 
-.money-image img{
+
+.submenu-photo img{
   width:100%;
   height:100%;
+
+  display:block;
 
   object-fit:cover;
 }
 
-.personal-side{
-  display:grid;
 
-  grid-template-rows:
-    1fr 1fr;
+.submenu-title{
+  margin-top:8px;
 
-  gap:7px;
-}
-
-.riyal-box,
-.speed-box{
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  flex-direction:column;
-
-  border-radius:18px;
-}
-
-.riyal-box{
-  color:#1b7258;
-
-  background:
-    linear-gradient(
-      145deg,
-      #edf7f2,
-      #fff
-    );
-
-  border:
-    1px solid
-    rgba(25,123,91,.10);
-}
-
-.money-note{
-  width:82px;
-  height:45px;
-
-  margin-bottom:5px;
-
-  position:relative;
-}
-
-.money-note::before,
-.money-note::after{
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  border-radius:7px;
-
-  background:#e5f2ec;
-
-  border:
-    1px solid
-    rgba(23,120,89,.17);
-}
-
-.money-note::before{
-  transform:rotate(-5deg);
-}
-
-.money-note::after{
-  transform:rotate(3deg);
-}
-
-.money-note strong{
-  position:absolute;
-
-  inset:0;
-
-  z-index:3;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  font-size:16px;
+  font-size:12.2px;
   font-weight:900;
+
+  color:#33454c;
 }
 
-.riyal-box small{
-  color:#789087;
 
-  font-size:9px;
-  font-weight:800;
+.submenu-note{
+  margin-top:2px;
+
+  font-size:9.7px;
+  line-height:1.4;
+
+  color:#899499;
+
+  font-weight:650;
 }
 
-.speed-box{
-  color:#a26e21;
 
-  background:
-    linear-gradient(
-      145deg,
-      #fff3dd,
-      #fff
-    );
 
-  border:
-    1px solid
-    rgba(191,132,40,.10);
-}
-
-.speed-box svg{
-  width:31px;
-  height:31px;
-}
-
-.speed-box strong{
-  margin-top:5px;
-
-  font-size:10px;
-  font-weight:900;
-}
-
-/* =========================
-   المحتوى
-========================= */
+/* المحتوى */
 
 .content-card{
   margin-top:14px;
@@ -1017,11 +1109,3412 @@ body.js-ready .page-screen.active{
 
   border:
     1px solid
-    var(--border);
+    var(--line);
 
   box-shadow:
     var(--shadow);
 }
 
+
 .question-card{
   margin-bottom:14px;
+
+  padding:16px;
+
+  border-radius:18px;
+
+  background:#f7f9fb;
+
+  border:
+    1px solid
+    rgba(44,62,71,.05);
+}
+
+
+.question-card strong{
+  display:block;
+
+  margin-bottom:6px;
+
+  color:#315fba;
+
+  font-size:12px;
+  font-weight:900;
+}
+
+
+.question-card p{
+  margin:0;
+
+  color:#44575f;
+
+  font-size:14px;
+  line-height:1.9;
+
+  font-weight:650;
+}
+
+
+.features{
+  display:grid;
+  gap:9px;
+}
+
+
+.feature{
+  min-height:57px;
+
+  padding:13px;
+
+  display:flex;
+  align-items:flex-start;
+
+  gap:10px;
+
+  border-radius:17px;
+
+  color:#415159;
+
+  background:#f8fafb;
+
+  border:
+    1px solid
+    rgba(36,52,61,.05);
+
+  font-size:14px;
+  line-height:1.7;
+
+  font-weight:650;
+}
+
+
+.feature-icon{
+  width:30px;
+  height:30px;
+
+  flex:0 0 auto;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:10px;
+
+  color:#326bd3;
+
+  background:#eaf1fd;
+}
+
+
+.feature-icon.green{
+  color:#17795a;
+  background:#eaf6f1;
+}
+
+
+.feature-icon.warm{
+  color:#a46e20;
+  background:#fff1d8;
+}
+
+
+.feature-icon svg{
+  width:17px;
+  height:17px;
+}
+
+
+.feature strong{
+  color:#2e67ca;
+  font-weight:900;
+}
+
+
+
+/* الخبرة */
+
+.experience{
+  margin-top:11px;
+
+  padding:15px;
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  border-radius:19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff8ec,
+      #fff
+    );
+
+  border:
+    1px solid
+    rgba(195,139,45,.13);
+}
+
+
+.exp-icon{
+  width:43px;
+  height:43px;
+
+  flex:0 0 auto;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  color:#b98029;
+
+  background:#fff0d3;
+}
+
+
+.exp-icon svg{
+  width:23px;
+  height:23px;
+}
+
+
+.experience strong{
+  display:block;
+
+  font-size:14px;
+  font-weight:900;
+}
+
+
+.experience small{
+  display:block;
+
+  margin-top:2px;
+
+  color:#7c898e;
+
+  font-size:10.5px;
+  font-weight:650;
+}
+
+
+
+/* التمويل الشخصي */
+
+.personal-gallery{
+  height:195px;
+
+  display:grid;
+
+  grid-template-columns:
+    1.25fr 1fr;
+
+  gap:7px;
+}
+
+
+.money-panel{
+  border-radius:19px;
+
+  background:#eef2f4;
+
+  border:
+    1px solid
+    rgba(30,58,79,.08);
+
+  position:relative;
+
+  overflow:hidden;
+
+  display:grid;
+  place-items:center;
+}
+
+
+.money-panel .real-money-stack img{
+  width:128px;
+}
+
+
+.money-panel .real-money-stack img:nth-child(1){
+  transform:
+    translate(-10px,15px)
+    rotate(-6deg);
+}
+
+
+.money-panel .real-money-stack img:nth-child(2){
+  transform:
+    translate(10px,9px)
+    rotate(5deg);
+}
+
+
+.money-panel .real-money-stack img:nth-child(3){
+  transform:
+    translate(0,-3px);
+}
+
+
+.personal-side{
+  display:grid;
+
+  grid-template-rows:
+    1fr 1fr;
+
+  gap:7px;
+}
+
+
+.personal-photo-card{
+  position:relative;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  background:#e9edef;
+}
+
+
+.personal-photo-card img{
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+}
+
+
+.personal-photo-card::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(18,28,33,.28),
+      transparent 58%
+    );
+}
+
+
+.personal-photo-card strong{
+  position:absolute;
+
+  right:9px;
+  bottom:8px;
+
+  z-index:2;
+
+  color:#fff;
+
+  font-size:9.8px;
+  font-weight:900;
+
+  text-shadow:
+    0 1px 5px
+    rgba(0,0,0,.32);
+}
+
+
+
+/* الخدمات الأخرى */
+
+.other-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+}
+
+
+.other-card{
+  min-height:153px;
+
+  padding:10px;
+
+  border-radius:21px;
+
+  background:#fff;
+
+  border:
+    1px solid
+    var(--line);
+
+  box-shadow:
+    0 7px 22px
+    rgba(28,43,51,.04);
+
+  cursor:pointer;
+}
+
+
+.other-photo{
+  height:91px;
+
+  overflow:hidden;
+
+  border-radius:16px;
+
+  background:#e8ecef;
+}
+
+
+.other-photo img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+
+.other-icon-box{
+  height:91px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:16px;
+}
+
+
+.other-icon-box svg{
+  width:39px;
+  height:39px;
+}
+
+
+.pos-bg{
+  color:#197b5c;
+  background:#eaf6f1;
+}
+
+
+.business-bg{
+  color:#5c62c8;
+  background:#eff0ff;
+}
+
+
+.fast-bg{
+  color:#a87525;
+  background:#fff3de;
+}
+
+
+.other-name{
+  margin-top:9px;
+
+  color:#35474e;
+
+  font-size:12.5px;
+  line-height:1.4;
+
+  font-weight:900;
+}
+
+
+
+/* فتح الحلول */
+
+.extra{
+  max-height:0;
+
+  margin-top:0;
+
+  opacity:0;
+
+  overflow:hidden;
+
+  transition:
+    max-height .35s ease,
+    opacity .3s ease,
+    margin .3s ease;
+}
+
+
+.extra.open{
+  max-height:180px;
+
+  margin-top:10px;
+
+  opacity:1;
+}
+
+
+.extra-message{
+  padding:15px;
+
+  display:flex;
+  align-items:flex-start;
+
+  gap:10px;
+
+  border-radius:18px;
+
+  color:#40555d;
+
+  background:#f0f8f5;
+
+  border:
+    1px solid
+    rgba(26,126,93,.09);
+
+  font-size:13.5px;
+  line-height:1.8;
+
+  font-weight:700;
+}
+
+
+.extra-message svg{
+  width:24px;
+  height:24px;
+
+  flex:0 0 auto;
+
+  color:#187a5b;
+}
+
+
+
+/* التواصل */
+
+.contact-card{
+  margin-top:14px;
+
+  padding:18px;
+
+  border-radius:25px;
+
+  background:#fff;
+
+  border:
+    1px solid
+    var(--line);
+
+  box-shadow:
+    var(--shadow);
+}
+
+
+.contact-card h3{
+  margin:0;
+
+  font-size:18px;
+  font-weight:900;
+}
+
+
+.contact-card p{
+  margin:
+    3px
+    0
+    0;
+
+  color:#879196;
+
+  font-size:11px;
+  font-weight:650;
+}
+
+
+.contact-actions{
+  margin-top:13px;
+
+  display:grid;
+
+  grid-template-columns:
+    1.35fr 1fr;
+
+  gap:9px;
+}
+
+
+.contact-call,
+.contact-wa{
+  min-height:53px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  border-radius:17px;
+
+  font-size:13.5px;
+  font-weight:900;
+}
+
+
+.contact-call{
+  color:#295ebc;
+  background:#edf3ff;
+}
+
+
+.contact-wa{
+  color:#17775b;
+  background:#eef8f4;
+}
+
+
+.contact-actions svg{
+  width:19px;
+  height:19px;
+}
+
+
+
+/* الفوتر */
+
+.site-footer{
+  margin:
+    22px
+    14px
+    7px;
+
+  padding:15px;
+
+  border-radius:20px;
+
+  text-align:center;
+
+  background:
+    rgba(255,255,255,.78);
+
+  border:
+    1px solid
+    rgba(31,47,56,.05);
+}
+
+
+.footer-date{
+  color:#45565d;
+
+  font-size:10.5px;
+  font-weight:800;
+}
+
+
+.footer-copy{
+  margin-top:4px;
+
+  color:#929ca0;
+
+  font-size:10px;
+  font-weight:650;
+}
+
+
+
+/* القائمة السفلية */
+
+.bottom-wrap{
+  position:fixed;
+
+  right:0;
+  left:0;
+  bottom:0;
+
+  z-index:700;
+
+  padding:
+    8px
+    11px
+    max(
+      10px,
+      env(safe-area-inset-bottom)
+    );
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(244,247,249,1) 45%,
+      rgba(244,247,249,.82) 76%,
+      transparent
+    );
+}
+
+
+.bottom-nav{
+  width:100%;
+  max-width:620px;
+
+  height:72px;
+
+  margin:auto;
+
+  padding:7px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:5px;
+
+  border-radius:25px;
+
+  background:
+    rgba(255,255,255,.97);
+
+  border:1px solid #fff;
+
+  box-shadow:
+    0 18px 52px
+    rgba(26,42,50,.15);
+
+  backdrop-filter:blur(22px);
+}
+
+
+.nav-item{
+  height:56px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:3px;
+
+  border-radius:17px;
+
+  background:transparent;
+
+  cursor:pointer;
+
+  color:#758288;
+
+  font-size:10px;
+  font-weight:850;
+}
+
+
+.nav-item svg{
+  width:20px;
+  height:20px;
+}
+
+
+.nav-home{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #316ade,
+      #4a7de4
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(47,103,214,.20);
+}
+
+
+.nav-call{
+  color:#315eb3;
+  background:#f1f5fc;
+}
+
+
+.nav-wa{
+  color:#187359;
+  background:#f0f7f4;
+}
+
+
+.nav-shot{
+  color:#8d6656;
+  background:#faf3ef;
+}
+
+
+
+/* التنبيه */
+
+.toast{
+  position:fixed;
+
+  right:50%;
+
+  bottom:
+    calc(
+      103px +
+      env(safe-area-inset-bottom)
+    );
+
+  z-index:1000;
+
+  transform:
+    translateX(50%)
+    translateY(15px);
+
+  padding:
+    11px
+    16px;
+
+  border-radius:14px;
+
+  color:#fff;
+
+  background:
+    rgba(25,38,44,.92);
+
+  font-size:12px;
+  font-weight:800;
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.23s ease;
+}
+
+
+.toast.show{
+  opacity:1;
+  visibility:visible;
+
+  transform:
+    translateX(50%)
+    translateY(0);
+}
+
+
+
+/* الكمبيوتر */
+
+@media(min-width:720px){
+
+  .service-list{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+  .service-card{
+    min-height:280px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .service-image,
+  .money-thumb{
+    width:100%;
+    height:155px;
+  }
+
+  .property-gallery{
+    height:260px;
+  }
+
+  .personal-gallery{
+    height:250px;
+  }
+
+  .submenu{
+    grid-template-columns:
+      repeat(4,1fr);
+  }
+
+}
+
+
+
+/* الجوال */
+
+@media(max-width:480px){
+
+  .tip-track{
+    animation-duration:1900s;
+  }
+
+  .page-screen.active{
+    animation-duration:.18s;
+  }
+
+  .header{
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+
+}
+
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    animation:none!important;
+    scroll-behavior:auto!important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     الأيقونات
+===================================================== -->
+
+<svg
+  width="0"
+  height="0"
+  style="position:absolute"
+  aria-hidden="true"
+>
+
+<defs>
+
+
+<symbol
+  id="bank"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M8 25h48"/>
+  <path d="M13 25v27"/>
+  <path d="M24 25v27"/>
+  <path d="M40 25v27"/>
+  <path d="M51 25v27"/>
+  <path d="M8 52h48"/>
+  <path d="M32 7 7 19h50L32 7Z"/>
+
+</symbol>
+
+
+<symbol
+  id="home-icon"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="m3 11 9-8 9 8"/>
+  <path d="M5 10v10h14V10"/>
+  <path d="M9 20v-6h6v6"/>
+
+</symbol>
+
+
+<symbol
+  id="phone"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/>
+
+</symbol>
+
+
+<symbol
+  id="message"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+>
+
+  <path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9.5 9.5 0 0 1-3.8-.8L3 21l1.7-5A8.5 8.5 0 1 1 21 11.5Z"/>
+
+</symbol>
+
+
+<symbol
+  id="arrow-left"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="m15 18-6-6 6-6"/>
+
+</symbol>
+
+
+<symbol
+  id="back"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M19 12H5"/>
+  <path d="m12 19-7-7 7-7"/>
+
+</symbol>
+
+
+<symbol
+  id="check"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="m5 12 4 4L19 6"/>
+
+</symbol>
+
+
+<symbol
+  id="camera"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M14.5 4 16 7h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4l1.5-3h5Z"/>
+
+  <circle cx="12" cy="13" r="4"/>
+
+</symbol>
+
+
+<symbol
+  id="bulb"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+>
+
+  <path d="M9 18h6"/>
+  <path d="M10 22h4"/>
+  <path d="M8.5 15.5A7 7 0 1 1 15.5 15.5c-.9.8-1.5 1.6-1.5 2.5h-4c0-.9-.6-1.7-1.5-2.5Z"/>
+
+</symbol>
+
+
+<symbol
+  id="speed"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M10 44a23 23 0 1 1 44 0"/>
+  <path d="m32 38 13-15"/>
+  <circle cx="32" cy="38" r="4"/>
+  <path d="M16 44h32"/>
+
+</symbol>
+
+
+<symbol
+  id="cash"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+>
+
+  <rect x="7" y="15" width="50" height="34" rx="5"/>
+  <circle cx="32" cy="32" r="8"/>
+
+</symbol>
+
+
+<symbol
+  id="pos"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+>
+
+  <rect x="17" y="7" width="30" height="50" rx="6"/>
+  <rect x="22" y="13" width="20" height="12" rx="2"/>
+  <path d="M24 34h3M31 34h3M38 34h3"/>
+  <path d="M24 41h3M31 41h3M38 41h3"/>
+  <path d="M24 48h17"/>
+
+</symbol>
+
+
+<symbol
+  id="business"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+>
+
+  <rect x="9" y="21" width="46" height="33" rx="4"/>
+  <path d="M23 21v-8h18v8"/>
+  <path d="M9 33h46"/>
+
+</symbol>
+
+
+<symbol
+  id="star"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+>
+
+  <path d="m12 2 3 6 6.5 1-4.8 4.7 1.1 6.6L12 17.2l-5.8 3.1 1.1-6.6L2.5 9 9 8l3-6Z"/>
+
+</symbol>
+
+
+<symbol
+  id="house"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M8 30 32 9l24 21"/>
+  <path d="M14 27v28h36V27"/>
+  <path d="M26 55V40h12v15"/>
+
+</symbol>
+
+
+<symbol
+  id="build"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M11 54h42"/>
+  <path d="M17 54V27l15-8 15 8v27"/>
+  <path d="M44 12h9v24"/>
+  <path d="M40 12h17"/>
+
+</symbol>
+
+
+<symbol
+  id="land"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <path d="M8 45 24 35l15 7 17-11"/>
+  <path d="M8 45v8h48v-22"/>
+
+</symbol>
+
+
+<symbol
+  id="plan"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+
+  <rect x="12" y="8" width="40" height="48" rx="5"/>
+  <path d="M20 18h24M20 28h24M20 38h15"/>
+  <path d="m39 44 4 4 8-9"/>
+
+</symbol>
+
+
+</defs>
+
+</svg>
+
+
+
+<div class="bg">
+
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="glow g3"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     الهيدر
+===================================================== -->
+
+<header class="header">
+
+  <div class="header-inner">
+
+
+    <div class="brand">
+
+
+      <div class="brand-logo">
+
+        <svg>
+          <use href="#bank"></use>
+        </svg>
+
+      </div>
+
+
+      <div>
+
+        <div class="brand-title">
+          حلول تمويلية
+        </div>
+
+        <div class="brand-sub">
+
+          خدمات وحلول تمويلية
+
+          <strong>
+            بدون تعقيدات
+          </strong>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <button
+      type="button"
+      class="back-btn"
+      onclick="goHome()"
+    >
+
+      <svg>
+        <use href="#back"></use>
+      </svg>
+
+      رجوع
+
+    </button>
+
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     الترحيب
+===================================================== -->
+
+<div class="welcome-wrap">
+
+  <div class="welcome">
+
+
+    <div>
+
+      <div
+        class="greeting"
+        id="greeting"
+      >
+        حياك الله
+      </div>
+
+      <div class="welcome-word">
+        حياك الله 👋
+      </div>
+
+    </div>
+
+
+
+    <div class="date-box">
+
+      <div
+        class="live-time"
+        id="liveTime"
+      ></div>
+
+      <div
+        class="date-line"
+        id="hijriDate"
+      ></div>
+
+      <div
+        class="date-line"
+        id="gregorianDate"
+      ></div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     نصيحة اليوم
+===================================================== -->
+
+<div class="tip-wrap">
+
+  <div class="tip-bar">
+
+
+    <div class="tip-label">
+
+      <span class="tip-label-icon">
+
+        <svg>
+          <use href="#bulb"></use>
+        </svg>
+
+      </span>
+
+      نصيحة اليوم
+
+    </div>
+
+
+    <div class="tip-window">
+
+      <div
+        class="tip-track"
+        id="tipTrack"
+      ></div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<main
+  class="app"
+  id="captureArea"
+>
+
+
+
+<!-- =====================================================
+     الرئيسية
+===================================================== -->
+
+<section
+  id="home"
+  class="page-screen active"
+>
+
+
+  <div class="hero">
+
+    <h1>
+      حلول تمويلية
+      <span>
+        متعددة
+      </span>
+    </h1>
+
+    <div class="hero-sub">
+      بدون تعقيدات
+    </div>
+
+    <div class="choose-title">
+      اختر الخدمة المناسبة لك
+    </div>
+
+  </div>
+
+
+
+  <div class="service-list">
+
+
+    <!-- التمويل العقاري -->
+
+    <button
+      type="button"
+      class="service-card"
+      onclick="openPage('real-estate')"
+    >
+
+      <div class="service-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=720&q=78"
+          alt="فيلا"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        >
+
+      </div>
+
+
+      <div class="service-copy">
+
+        <div class="service-name">
+          التمويل العقاري
+        </div>
+
+        <div class="service-desc">
+          شراء • بناء ذاتي • رهن • بيع على الخارطة
+        </div>
+
+      </div>
+
+
+      <div class="service-arrow">
+
+        <svg>
+          <use href="#arrow-left"></use>
+        </svg>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- التمويل الشخصي -->
+
+    <button
+      type="button"
+      class="service-card"
+      onclick="openPage('personal-finance')"
+    >
+
+
+      <div class="money-thumb">
+
+        <div class="real-money-stack">
+
+          <img
+            src="https://www.sama.gov.sa/ar-sa/Currency/PublishingImages/Sixth%20Issue%20500%20Riyal%20Note.png"
+            alt="500 ريال سعودي"
+            loading="eager"
+            decoding="async"
+          >
+
+          <img
+            src="https://www.sama.gov.sa/ar-sa/Currency/PublishingImages/Sixth%20Issue%20500%20Riyal%20Note.png"
+            alt=""
+            loading="eager"
+            decoding="async"
+          >
+
+          <img
+            src="https://www.sama.gov.sa/ar-sa/Currency/PublishingImages/Sixth%20Issue%20500%20Riyal%20Note.png"
+            alt="500 ريال سعودي"
+            loading="eager"
+            decoding="async"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="service-copy">
+
+        <div class="service-name">
+          التمويل الشخصي
+        </div>
+
+        <div class="service-desc">
+          حلول تمويل وسداد وإعادة
+        </div>
+
+      </div>
+
+
+      <div class="service-arrow">
+
+        <svg>
+          <use href="#arrow-left"></use>
+        </svg>
+
+      </div>
+
+    </button>
+
+
+
+    <!-- الخدمات الأخرى -->
+
+    <button
+      type="button"
+      class="service-card"
+      onclick="openPage('services')"
+    >
+
+      <div class="service-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=720&q=76"
+          alt="سيارة"
+          loading="lazy"
+          decoding="async"
+        >
+
+      </div>
+
+
+      <div class="service-copy">
+
+        <div class="service-name">
+          الخدمات الأخرى
+        </div>
+
+        <div class="service-desc">
+          سيارات • ثروة • أسطول • نقاط بيع • تمويل تجاري
+        </div>
+
+      </div>
+
+
+      <div class="service-arrow">
+
+        <svg>
+          <use href="#arrow-left"></use>
+        </svg>
+
+      </div>
+
+    </button>
+
+
+  </div>
+
+
+
+  <div class="quick-contact">
+
+
+    <a
+      href="tel:0506214458"
+      class="quick-call"
+    >
+
+      <svg>
+        <use href="#phone"></use>
+      </svg>
+
+      اتصال مباشر
+
+    </a>
+
+
+    <a
+      href="https://wa.me/966506214458"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="quick-wa"
+    >
+
+      <svg>
+        <use href="#message"></use>
+      </svg>
+
+      واتساب
+
+    </a>
+
+
+  </div>
+
+
+
+  <div class="site-footer">
+
+    <div class="footer-date liveFooter"></div>
+
+    <div class="footer-copy">
+      © سرعة تملك العقار والحلول التمويلية
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     التمويل العقاري
+===================================================== -->
+
+<section
+  id="real-estate"
+  class="page-screen"
+>
+
+
+  <div class="detail-page">
+
+
+    <div class="detail-head">
+
+
+      <div class="detail-title">
+
+        <h2>
+          التمويل العقاري
+        </h2>
+
+        <p>
+          كل حلول التملك والبناء والرهن في مكان واحد
+        </p>
+
+      </div>
+
+
+
+      <div class="property-gallery">
+
+
+        <div class="real-photo">
+
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=760&q=76"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          >
+
+        </div>
+
+
+        <div class="property-side">
+
+
+          <div class="real-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=560&q=76"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+
+          <div class="real-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=560&q=76"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="submenu">
+
+
+        <div class="submenu-card">
+
+          <div class="submenu-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=420&q=68"
+              alt="فيلا"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="submenu-title">
+            شراء فيلا، دور أو شقة
+          </div>
+
+          <div class="submenu-note">
+            نرتب لك الأنسب بين جهات التمويل
+          </div>
+
+        </div>
+
+
+
+        <div class="submenu-card">
+
+          <div class="submenu-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=420&q=68"
+              alt="بناء"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="submenu-title">
+            البناء الذاتي
+          </div>
+
+          <div class="submenu-note">
+            حلول البناء ومراحل التمويل
+          </div>
+
+        </div>
+
+
+
+        <div class="submenu-card">
+
+          <div class="submenu-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=420&q=68"
+              alt="عقار"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="submenu-title">
+            رهن العقار
+          </div>
+
+          <div class="submenu-note">
+            حلول الرهن حسب حالتك
+          </div>
+
+        </div>
+
+
+
+        <div class="submenu-card">
+
+          <div class="submenu-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=420&q=68"
+              alt="مشروع عقاري"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="submenu-title">
+            البيع على الخارطة
+          </div>
+
+          <div class="submenu-note">
+            للمشاريع المحجوزة والمؤهلة
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="content-card">
+
+
+      <div class="question-card">
+
+        <strong>
+          وش احتياجك العقاري؟
+        </strong>
+
+        <p>
+          بتشتري فيلا، دور، شقة 🏠؟
+          أو تبني 🏗️؟
+          أو ترهن؟
+          او حجزت من مشاريع البيع على الخارطة؟
+          متلخبط؟
+          محتار وش أفضل بنك؟
+        </p>
+
+      </div>
+
+
+
+      <div class="features">
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            ننجزك بأفضل نسبة حتى لو بالإستثناء،
+            <strong>
+              ابشر بالسعد
+            </strong>
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            الإقساط تبدأ بـ
+            <strong>
+              500 ريال لأول 5 سنوات
+            </strong>
+            ☺️
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            حل لمن تُطلب عليه الدفعة الأولى
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            بعض البنوك بدون تحويل راتب
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            ننجزك قبل تحويل الراتب إذا كانت النسبة الأفضل
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            تقييم سعر سريع بالتعاون مع مقيمين لسرعة الإنجاز
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            إفراغ واستلام الصك إلكتروني
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon green">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            <strong>
+              بدون تعقيدات ولا قروشة
+            </strong>
+            😵💫
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="experience">
+
+        <span class="exp-icon">
+
+          <svg>
+            <use href="#star"></use>
+          </svg>
+
+        </span>
+
+        <div>
+
+          <strong>
+            (معتــــمدون) - خبرة تتجاوز 18 سنة
+          </strong>
+
+          <small>
+            نخدم جميع أنحاء المملكة
+          </small>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="contact-card">
+
+      <h3>
+        تواصل معنا
+      </h3>
+
+      <p>
+        اختر الطريقة الأنسب لك
+      </p>
+
+
+      <div class="contact-actions">
+
+
+        <a
+          href="tel:0506214458"
+          class="contact-call"
+        >
+
+          <svg>
+            <use href="#phone"></use>
+          </svg>
+
+          اتصال مباشر
+
+        </a>
+
+
+        <a
+          href="https://wa.me/966506214458"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-wa"
+        >
+
+          <svg>
+            <use href="#message"></use>
+          </svg>
+
+          واتساب
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="site-footer">
+
+      <div class="footer-date liveFooter"></div>
+
+      <div class="footer-copy">
+        © سرعة تملك العقار والحلول التمويلية
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     التمويل الشخصي
+===================================================== -->
+
+<section
+  id="personal-finance"
+  class="page-screen"
+>
+
+
+  <div class="detail-page">
+
+
+    <div class="detail-head">
+
+
+      <div class="detail-title">
+
+        <h2>
+          التمويل الشخصي
+        </h2>
+
+        <p>
+          حلول تمويل شخصية متنوعة
+        </p>
+
+      </div>
+
+
+
+      <div class="personal-gallery">
+
+
+        <div class="money-panel">
+
+          <div class="real-money-stack">
+
+
+            <img
+              src="https://www.sama.gov.sa/ar-sa/Currency/PublishingImages/Sixth%20Issue%20500%20Riyal%20Note.png"
+              alt="500 ريال سعودي"
+              loading="lazy"
+              decoding="async"
+            >
+
+
+            <img
+              src="https://www.sama.gov.sa/ar-sa/Currency/PublishingImages/Sixth%20Issue%20500%20Riyal%20Note.png"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            >
+
+
+            <img
+              src="https://www.sama.gov.sa/ar-sa/Currency/PublishingImages/Sixth%20Issue%20500%20Riyal%20Note.png"
+              alt="500 ريال سعودي"
+              loading="lazy"
+              decoding="async"
+            >
+
+
+          </div>
+
+        </div>
+
+
+
+        <div class="personal-side">
+
+
+          <div class="personal-photo-card">
+
+            <img
+              src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=420&q=68"
+              alt="نقود"
+              loading="lazy"
+              decoding="async"
+            >
+
+            <strong>
+              نقود وتمويل
+            </strong>
+
+          </div>
+
+
+
+          <div class="personal-photo-card">
+
+            <img
+              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=420&q=68"
+              alt="حلول تمويلية"
+              loading="lazy"
+              decoding="async"
+            >
+
+            <strong>
+              حلول أخرى متنوعة
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="content-card">
+
+
+      <div class="features">
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            ننجزك بأقل نسبة
+            <strong>
+              ولو نسويك استثناء
+            </strong>
+            ☺️
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            بدون تحويل راتب في بعض البنوك،
+            وبنسبة أقل من البنك اللي عليه الراتب
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            مع تحويل الراتب نفك الحجز قبل نزول أول راتب
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon green">
+            <svg><use href="#check"></use></svg>
+          </span>
+
+          <span>
+            <strong>
+              بدون تعقيدات ولا قروشة
+            </strong>
+            😵💫
+          </span>
+
+        </div>
+
+
+
+        <div class="feature">
+
+          <span class="feature-icon">
+            <svg><use href="#cash"></use></svg>
+          </span>
+
+          <span>
+            <strong>
+              عروض مميزة
+            </strong>
+            على سداد القرض الشخصي والإعادة
+          </span>
+
+        </div>
+
+
+
+        <div
+          class="feature"
+          onclick="togglePersonal()"
+          style="cursor:pointer"
+        >
+
+          <span class="feature-icon warm">
+
+            <svg>
+              <use href="#speed"></use>
+            </svg>
+
+          </span>
+
+          <span>
+            <strong>
+              حلول أخرى متنوعة
+            </strong>
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="personalExtra"
+        class="extra"
+      >
+
+        <div class="extra-message">
+
+          <svg>
+            <use href="#speed"></use>
+          </svg>
+
+          <span>
+            نوفر حلول تمويلية تناسب كل حالة،
+            وننجزها بأسرع وقت وبدون تعقيدات.
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="contact-card">
+
+      <h3>
+        تواصل معنا
+      </h3>
+
+      <p>
+        اختر الطريقة الأنسب لك
+      </p>
+
+
+      <div class="contact-actions">
+
+
+        <a
+          href="tel:0506214458"
+          class="contact-call"
+        >
+
+          <svg>
+            <use href="#phone"></use>
+          </svg>
+
+          اتصال مباشر
+
+        </a>
+
+
+        <a
+          href="https://wa.me/966506214458"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-wa"
+        >
+
+          <svg>
+            <use href="#message"></use>
+          </svg>
+
+          واتساب
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="site-footer">
+
+      <div class="footer-date liveFooter"></div>
+
+      <div class="footer-copy">
+        © سرعة تملك العقار والحلول التمويلية
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     الخدمات الأخرى
+===================================================== -->
+
+<section
+  id="services"
+  class="page-screen"
+>
+
+
+  <div class="detail-page">
+
+
+    <div class="detail-head">
+
+      <div class="detail-title">
+
+        <h2>
+          الخدمات الأخرى
+        </h2>
+
+        <p>
+          خدمات وحلول تمويلية متنوعة
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="content-card">
+
+
+      <div class="other-grid">
+
+
+        <div class="other-card">
+
+          <div class="other-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=520&q=70"
+              alt="سيارة"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="other-name">
+            تمويل سيارات
+          </div>
+
+        </div>
+
+
+
+        <div class="other-card">
+
+          <div class="other-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=520&q=70"
+              alt="عقار"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="other-name">
+            منتج ثروة
+          </div>
+
+        </div>
+
+
+
+        <div class="other-card">
+
+          <div class="other-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=520&q=70"
+              alt="سيارات"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="other-name">
+            منتج أسطول
+          </div>
+
+        </div>
+
+
+
+        <div class="other-card">
+
+          <div class="other-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=520&q=70"
+              alt="نقاط بيع ودفع"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="other-name">
+            نقاط البيع
+          </div>
+
+        </div>
+
+
+
+        <div class="other-card">
+
+          <div class="other-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=520&q=70"
+              alt="تمويل تجاري"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="other-name">
+            تمويل تجاري وغيره
+          </div>
+
+        </div>
+
+
+
+        <div
+          class="other-card"
+          onclick="toggleServices()"
+        >
+
+          <div class="other-photo">
+
+            <img
+              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=520&q=70"
+              alt="حلول تمويلية"
+              loading="lazy"
+              decoding="async"
+            >
+
+          </div>
+
+          <div class="other-name">
+            حلول متعددة متنوعة
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div
+        id="servicesExtra"
+        class="extra"
+      >
+
+        <div class="extra-message">
+
+          <svg>
+            <use href="#speed"></use>
+          </svg>
+
+          <span>
+            نوفر حلول تمويلية تناسب كل حالة،
+            وننجزها بأسرع وقت وبدون تعقيدات.
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <div
+        class="feature"
+        style="margin-top:11px"
+      >
+
+        <span class="feature-icon green">
+
+          <svg>
+            <use href="#check"></use>
+          </svg>
+
+        </span>
+
+        <span>
+          حلول مع البنوك وشركات التمويل
+          <strong>
+            بأفضل النسب المتاحة
+          </strong>
+          وبأسرع وقت وبدون تعقيدات.
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="contact-card">
+
+      <h3>
+        تواصل معنا
+      </h3>
+
+      <p>
+        اختر الطريقة الأنسب لك
+      </p>
+
+
+      <div class="contact-actions">
+
+
+        <a
+          href="tel:0506214458"
+          class="contact-call"
+        >
+
+          <svg>
+            <use href="#phone"></use>
+          </svg>
+
+          اتصال مباشر
+
+        </a>
+
+
+        <a
+          href="https://wa.me/966506214458"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-wa"
+        >
+
+          <svg>
+            <use href="#message"></use>
+          </svg>
+
+          واتساب
+
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="site-footer">
+
+      <div class="footer-date liveFooter"></div>
+
+      <div class="footer-copy">
+        © سرعة تملك العقار والحلول التمويلية
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     القائمة السفلية
+===================================================== -->
+
+<div class="bottom-wrap">
+
+  <nav class="bottom-nav">
+
+
+    <button
+      type="button"
+      class="nav-item nav-home"
+      onclick="goHome()"
+    >
+
+      <svg>
+        <use href="#home-icon"></use>
+      </svg>
+
+      الرئيسية
+
+    </button>
+
+
+
+    <a
+      href="tel:0506214458"
+      class="nav-item nav-call"
+    >
+
+      <svg>
+        <use href="#phone"></use>
+      </svg>
+
+      اتصال
+
+    </a>
+
+
+
+    <a
+      href="https://wa.me/966506214458"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="nav-item nav-wa"
+    >
+
+      <svg>
+        <use href="#message"></use>
+      </svg>
+
+      واتساب
+
+    </a>
+
+
+
+    <button
+      type="button"
+      class="nav-item nav-shot"
+      onclick="takeScreenshot()"
+    >
+
+      <svg>
+        <use href="#camera"></use>
+      </svg>
+
+      خذ لقطة
+
+    </button>
+
+
+  </nav>
+
+</div>
+
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+
+<script>
+
+/* =====================================================
+   التاريخ
+===================================================== */
+
+function normalizeArabicDigits(text){
+
+  return String(
+    text || ""
+  )
+  .replace(
+    /[\u200E\u200F]/g,
+    ""
+  )
+  .trim();
+
+}
+
+
+
+function buildHijriDate(date){
+
+  try{
+
+    const f =
+      new Intl.DateTimeFormat(
+        "ar-SA-u-ca-islamic-umalqura",
+        {
+          weekday:"long",
+          day:"numeric",
+          month:"long",
+          year:"numeric"
+        }
+      );
+
+
+    const p =
+      f.formatToParts(date);
+
+
+    const v =
+      t =>
+        p.find(
+          x => x.type === t
+        )?.value || "";
+
+
+    return normalizeArabicDigits(
+      `${v("weekday")}، ${v("day")} ${v("month")} ${v("year")} هـ`
+    );
+
+  }
+
+  catch(e){
+
+    return "";
+
+  }
+
+}
+
+
+
+function buildGregorianDate(date){
+
+  const f =
+    new Intl.DateTimeFormat(
+      "ar-SA-u-ca-gregory",
+      {
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
+    );
+
+
+  const p =
+    f.formatToParts(date);
+
+
+  const v =
+    t =>
+      p.find(
+        x => x.type === t
+      )?.value || "";
+
+
+  return normalizeArabicDigits(
+    `${v("day")} ${v("month")} ${v("year")} م`
+  );
+
+}
+
+
+
+/* =====================================================
+   صباح الخير / مساء الخير
+
+   هذا هو التعديل المطلوب فقط.
+   يعتمد على وقت جهاز العميل.
+===================================================== */
+
+function updateDateTime(){
+
+  const now =
+    new Date();
+
+
+  const hour =
+    now.getHours();
+
+
+  const greeting =
+    hour < 12
+      ? "صباح الخير"
+      : "مساء الخير";
+
+
+  document
+    .getElementById(
+      "greeting"
+    )
+    .textContent =
+      greeting;
+
+
+  document
+    .getElementById(
+      "liveTime"
+    )
+    .textContent =
+      new Intl.DateTimeFormat(
+        "ar-SA",
+        {
+          hour:"numeric",
+          minute:"2-digit",
+          hour12:true
+        }
+      )
+      .format(now);
+
+
+  const h =
+    buildHijriDate(now);
+
+
+  const g =
+    buildGregorianDate(now);
+
+
+  document
+    .getElementById(
+      "hijriDate"
+    )
+    .textContent =
+      h;
+
+
+  document
+    .getElementById(
+      "gregorianDate"
+    )
+    .textContent =
+      g;
+
+
+  document
+    .querySelectorAll(
+      ".liveFooter"
+    )
+    .forEach(
+      el => {
+
+        el.textContent =
+          `${h} • ${g}`;
+
+      }
+    );
+
+}
+
+
+
+/* =====================================================
+   النصائح
+===================================================== */
+
+const tips = [
+
+"قبل تأخذ تمويل اسأل نفسك: هل الحاجة تستاهل الالتزام؟",
+
+"لا تقارن بالقسط فقط، قارن إجمالي اللي راح تدفعه.",
+
+"قارن أكثر من عرض قبل ما تقرر.",
+
+"اقرأ العقد كامل قبل الموافقة.",
+
+"اعرف كم يبقى من راتبك بعد الأقساط.",
+
+"لا تجعل هدفك أكبر مبلغ تمويل.",
+
+"اختر قسط تقدر تتحمله براحة.",
+
+"قارن النسبة والمدة والقسط وإجمالي الأرباح.",
+
+"النسبة الأقل مو دائمًا العرض الأفضل.",
+
+"قبل العقار احسب القسط ومصاريف البيت.",
+
+"راجع تقريرك الائتماني قبل التقديم.",
+
+"اعرف السداد المبكر من البداية.",
+
+"قبل نقل المديونية قارن القديم بالجديد.",
+
+"لا توقع شيء ما فهمته.",
+
+"اسأل عن الرسوم قبل التوقيع.",
+
+"لا تعطي رمز التحقق لأي أحد.",
+
+"تأكد من مبلغ التمويل النهائي.",
+
+"اعرف كم الصافي اللي بينزل لك.",
+
+"شراء المديونية يحتاج مقارنة دقيقة.",
+
+"في العقاري لا تركز على القسط فقط.",
+
+"اختر عقار يناسب ميزانية البيت.",
+
+"احتفظ بمبلغ للطوارئ.",
+
+"قبل البناء الذاتي افهم الدفعات.",
+
+"اسأل متى تنزل كل دفعة.",
+
+"احسب تكلفة البناء بشكل واقعي.",
+
+"قبل البيع على الخارطة راجع المشروع.",
+
+"قارن سعر العقار بالسوق.",
+
+"تأكد من الدفعة الأولى.",
+
+"قبل تمويل السيارة احسب التأمين.",
+
+"حافظ على انتظام السداد.",
+
+"تأكد من الجهة قبل إرسال مستنداتك.",
+
+"مو كل مشكلة مالية حلها تمويل.",
+
+"حدد هدف التمويل.",
+
+"لا تستنزف سيولتك بالكامل.",
+
+"ركز على الصافي الحقيقي.",
+
+"العروض التسويقية لها شروط.",
+
+"خذ وقتك قبل التوقيع.",
+
+"إذا ما فهمت بند اسأل.",
+
+"راجع بيانات العقد.",
+
+"لا تستعجل في التمويل.",
+
+"قارن واحسب واقرأ ثم قرر.",
+
+"التمويل المناسب ما يضغط حياتك.",
+
+"أي وعد مهم خله مكتوب.",
+
+"فهم العقد أهم من حفظ النسبة.",
+
+"قبل التمويل اسأل: كم راح أدفع بالنهاية؟",
+
+"خل عندك مساحة في الراتب للطوارئ.",
+
+"التمويل وسيلة مو هدف.",
+
+"الأمان المالي يبدأ من قسط مناسب.",
+
+"قارن كامل العقد مو النسبة فقط.",
+
+"خطتك المالية أهم من أكبر مبلغ متاح."
+
+];
+
+
+
+function buildTips(){
+
+  document
+    .getElementById(
+      "tipTrack"
+    )
+    .innerHTML =
+      [
+        ...tips,
+        ...tips
+      ]
+      .map(
+        t =>
+          `<span class="tip-item">${t}</span>`
+      )
+      .join("");
+
+}
+
+
+
+/* =====================================================
+   التنقل
+===================================================== */
+
+const pages = [
+
+  "home",
+
+  "real-estate",
+
+  "personal-finance",
+
+  "services"
+
+];
+
+
+
+function showPage(id){
+
+  if(
+    !pages.includes(id)
+  ){
+
+    id =
+      "home";
+
+  }
+
+
+  document
+    .querySelectorAll(
+      ".page-screen"
+    )
+    .forEach(
+      p => {
+
+        p
+          .classList
+          .remove(
+            "active"
+          );
+
+      }
+    );
+
+
+  const target =
+    document
+      .getElementById(id);
+
+
+  if(target){
+
+    target
+      .classList
+      .add(
+        "active"
+      );
+
+  }
+
+
+  document
+    .body
+    .classList
+    .toggle(
+      "detail-mode",
+      id !== "home"
+    );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"auto"
+  });
+
+}
+
+
+
+function openPage(id){
+
+  showPage(id);
+
+
+  history.pushState(
+    {
+      page:id
+    },
+    "",
+    "#" + id
+  );
+
+}
+
+
+
+function goHome(){
+
+  showPage(
+    "home"
+  );
+
+
+  history.replaceState(
+    {
+      page:"home"
+    },
+    "",
+    window.location.pathname
+  );
+
+}
+
+
+
+window.addEventListener(
+  "popstate",
+  () => {
+
+    const id =
+      location
+        .hash
+        .replace(
+          "#",
+          ""
+        );
+
+
+    showPage(
+      pages.includes(id)
+        ? id
+        : "home"
+    );
+
+  }
+);
+
+
+
+/* =====================================================
+   الحلول الإضافية
+===================================================== */
+
+function togglePersonal(){
+
+  document
+    .getElementById(
+      "personalExtra"
+    )
+    .classList
+    .toggle(
+      "open"
+    );
+
+}
+
+
+
+function toggleServices(){
+
+  document
+    .getElementById(
+      "servicesExtra"
+    )
+    .classList
+    .toggle(
+      "open"
+    );
+
+}
+
+
+
+/* =====================================================
+   خذ لقطة
+===================================================== */
+
+let toastTimer;
+
+
+
+function showToast(text){
+
+  const t =
+    document
+      .getElementById(
+        "toast"
+      );
+
+
+  t.textContent =
+    text;
+
+
+  t
+    .classList
+    .add(
+      "show"
+    );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () => {
+
+        t
+          .classList
+          .remove(
+            "show"
+          );
+
+      },
+      2100
+    );
+
+}
+
+
+
+async function takeScreenshot(){
+
+  if(
+    typeof html2canvas ===
+    "undefined"
+  ){
+
+    showToast(
+      "جاري تحميل أداة اللقطة، حاول مرة ثانية"
+    );
+
+    return;
+
+  }
+
+
+  showToast(
+    "جاري تجهيز اللقطة..."
+  );
+
+
+  try{
+
+
+    const active =
+      document
+        .querySelector(
+          ".page-screen.active"
+        );
+
+
+    const canvas =
+      await html2canvas(
+        active,
+        {
+
+          backgroundColor:
+            "#f6f7f9",
+
+          useCORS:true,
+
+          allowTaint:false,
+
+          logging:false,
+
+          scale:
+            Math.min(
+              window.devicePixelRatio || 1,
+              2
+            )
+
+        }
+      );
+
+
+    const link =
+      document
+        .createElement(
+          "a"
+        );
+
+
+    link.download =
+      "حلول-تمويلية.png";
+
+
+    link.href =
+      canvas
+        .toDataURL(
+          "image/png"
+        );
+
+
+    document
+      .body
+      .appendChild(
+        link
+      );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    showToast(
+      "تم حفظ اللقطة ✓"
+    );
+
+
+  }
+
+  catch(e){
+
+    console.error(e);
+
+
+    showToast(
+      "تعذر أخذ اللقطة"
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   التشغيل
+===================================================== */
+
+updateDateTime();
+
+
+setInterval(
+  updateDateTime,
+  30000
+);
+
+
+buildTips();
+
+
+showPage(
+  "home"
+);
+
+
+history.replaceState(
+  {
+    page:"home"
+  },
+  "",
+  window.location.pathname
+);
+
+</script>
+
+
+</body>
+</html>
