@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,7 +10,7 @@
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
 
-<title>حلول تمويلية | خدمات وحلول تمويلية بدون تعقيدات</title>
+<title>حلول تمويلية | بدون تعقيدات</title>
 
 <meta name="theme-color" content="#ffffff">
 
@@ -23,37 +24,47 @@
 
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-  defer>
-</script>
+  defer
+></script>
+
 
 <style>
 
-/* =====================================================
+/* =========================================================
    الأساس
-===================================================== */
+========================================================= */
 
 :root{
 
-  --bg:#f7f8fa;
+  --bg:#f5f7f9;
   --white:#ffffff;
 
-  --text:#182227;
-  --soft:#5e6c72;
-  --muted:#909b9f;
+  --text:#172126;
+  --soft:#617078;
+  --muted:#8b969b;
 
-  --blue:#366fe8;
-  --purple:#7363d9;
-  --gold:#d9992e;
-  --green:#18845f;
-  --green2:#20a979;
+  --blue:#316de5;
+  --blue-soft:#edf3ff;
 
-  --line:rgba(35,52,61,.075);
+  --green:#168462;
+  --green-soft:#edf8f4;
+
+  --gold:#c68a2c;
+  --gold-soft:#fff5e6;
+
+  --warm:#b96b55;
+  --warm2:#d6916f;
+  --warm-soft:#fff4ef;
+
+  --purple:#6c63d5;
+
+  --border:rgba(27,43,52,.075);
 
   --shadow:
-    0 15px 44px rgba(28,43,51,.075);
+    0 14px 42px rgba(26,42,50,.07);
 
-  --shadow-lg:
-    0 25px 70px rgba(28,43,51,.13);
+  --shadow-large:
+    0 27px 70px rgba(25,41,50,.12);
 
 }
 
@@ -83,14 +94,17 @@ body{
     linear-gradient(
       180deg,
       #ffffff 0%,
-      #f9fafb 48%,
-      #f4f6f8 100%
+      #f8fafb 48%,
+      #f3f5f7 100%
+    );
+
+  padding-bottom:
+    calc(
+      108px +
+      env(safe-area-inset-bottom)
     );
 
   overflow-x:hidden;
-
-  padding-bottom:
-    calc(105px + env(safe-area-inset-bottom));
 
 }
 
@@ -107,8 +121,8 @@ button{
 
 
 a{
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 
@@ -118,11 +132,11 @@ svg{
 
 
 
-/* =====================================================
-   خلفية هادئة
-===================================================== */
+/* =========================================================
+   الخلفية
+========================================================= */
 
-.page-bg{
+.background{
 
   position:fixed;
 
@@ -130,160 +144,69 @@ svg{
 
   z-index:-10;
 
-  pointer-events:none;
-
   overflow:hidden;
+
+  pointer-events:none;
 
 }
 
 
-.bg-light{
+.light{
 
   position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(80px);
+
+  opacity:.075;
+
+}
+
+
+.light.one{
 
   width:380px;
   height:380px;
 
-  border-radius:50%;
+  right:-180px;
+  top:-180px;
 
-  filter:blur(75px);
-
-  opacity:.08;
-
-}
-
-
-.bg-light.one{
-
-  top:-190px;
-  right:-170px;
-
-  background:#4a82e9;
+  background:#5489ed;
 
 }
 
 
-.bg-light.two{
+.light.two{
 
+  width:350px;
+  height:350px;
+
+  left:-190px;
   top:40%;
-  left:-200px;
 
-  background:#8667dd;
+  background:#cc8c70;
 
 }
 
 
-.bg-light.three{
+.light.three{
 
-  bottom:-210px;
+  width:330px;
+  height:330px;
+
   right:-170px;
+  bottom:-180px;
 
-  background:#49b992;
-
-}
-
-
-
-/* عناصر خلفية خفيفة */
-
-.float-finance{
-
-  position:absolute;
-
-  width:75px;
-  height:75px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:25px;
-
-  background:rgba(255,255,255,.52);
-
-  border:
-    1px solid rgba(255,255,255,.82);
-
-  box-shadow:
-    0 15px 45px rgba(34,51,60,.045);
-
-  backdrop-filter:blur(12px);
-
-  opacity:.18;
-
-  animation:
-    slowFall linear infinite;
-
-}
-
-
-.float-finance svg{
-
-  width:36px;
-  height:36px;
-
-}
-
-
-.ff1{
-  color:#467de2;
-  right:6%;
-  top:-100px;
-  animation-duration:35s;
-}
-
-
-.ff2{
-  color:#168968;
-  right:39%;
-  top:-150px;
-  animation-duration:43s;
-  animation-delay:-19s;
-}
-
-
-.ff3{
-  color:#c88b2c;
-  right:72%;
-  top:-130px;
-  animation-duration:39s;
-  animation-delay:-11s;
-}
-
-
-.ff4{
-  color:#7e69d4;
-  right:87%;
-  top:-170px;
-  animation-duration:47s;
-  animation-delay:-28s;
-}
-
-
-@keyframes slowFall{
-
-  from{
-
-    transform:
-      translateY(-150px)
-      rotate(-5deg);
-
-  }
-
-  to{
-
-    transform:
-      translateY(120vh)
-      rotate(5deg);
-
-  }
+  background:#54af90;
 
 }
 
 
 
-/* =====================================================
-   التطبيق
-===================================================== */
+/* =========================================================
+   APP
+========================================================= */
 
 .app{
 
@@ -297,45 +220,49 @@ svg{
 
 
 
-/* =====================================================
-   أعلى الصفحة
-===================================================== */
+/* =========================================================
+   HEADER
+========================================================= */
 
-.topbar{
+.header{
 
   position:sticky;
 
   top:0;
 
-  z-index:300;
+  z-index:500;
 
   padding:
-    max(9px,env(safe-area-inset-top))
+    max(
+      9px,
+      env(safe-area-inset-top)
+    )
     14px
-    7px;
+    8px;
 
   background:
-    rgba(255,255,255,.84);
+    rgba(255,255,255,.90);
 
   backdrop-filter:
-    blur(22px)
+    blur(23px)
     saturate(145%);
 
   -webkit-backdrop-filter:
-    blur(22px)
+    blur(23px)
     saturate(145%);
 
   border-bottom:
-    1px solid rgba(32,47,55,.04);
+    1px solid
+    rgba(35,50,59,.045);
 
 }
 
 
-.topbar-inner{
+.header-inner{
 
   max-width:850px;
 
-  height:60px;
+  min-height:63px;
 
   margin:auto;
 
@@ -352,54 +279,54 @@ svg{
 
 .brand{
 
-  min-width:0;
-
   display:flex;
 
   align-items:center;
 
-  gap:11px;
+  gap:10px;
+
+  min-width:0;
 
 }
 
 
-.brand-logo{
+.logo{
 
-  width:46px;
-  height:46px;
+  width:45px;
+  height:45px;
 
-  flex:0 0 auto;
+  border-radius:16px;
 
   display:grid;
   place-items:center;
 
-  border-radius:16px;
+  flex:0 0 auto;
 
   color:#fff;
 
   background:
     linear-gradient(
-      135deg,
-      #3674e5,
-      #7666d7,
-      #199b82
+      145deg,
+      #356fdf,
+      #7164cf
     );
 
   box-shadow:
-    0 12px 27px rgba(67,97,185,.18);
+    0 11px 25px
+    rgba(60,91,181,.18);
 
 }
 
 
-.brand-logo svg{
+.logo svg{
 
-  width:25px;
-  height:25px;
+  width:24px;
+  height:24px;
 
 }
 
 
-.brand-name{
+.brand-title{
 
   font-size:15px;
 
@@ -408,36 +335,33 @@ svg{
 }
 
 
-.brand-sub{
+.brand-desc{
 
   margin-top:2px;
 
-  color:#849096;
+  color:#7d898e;
 
   font-size:10.5px;
 
   font-weight:700;
 
-  white-space:nowrap;
-
 }
 
 
-.brand-sub strong{
-
-  color:#18845f;
-
-  font-weight:900;
-
+.brand-desc strong{
+  color:#166f55;
 }
 
 
-.back-button{
 
-  min-width:82px;
-  height:43px;
+/* رجوع */
 
-  padding:0 13px;
+.back-btn{
+
+  min-width:80px;
+  height:42px;
+
+  padding:0 12px;
 
   border-radius:14px;
 
@@ -449,14 +373,15 @@ svg{
 
   gap:6px;
 
-  color:#45565d;
+  color:#48585f;
 
   background:#fff;
 
-  border:1px solid var(--line);
+  border:1px solid var(--border);
 
   box-shadow:
-    0 7px 20px rgba(32,48,57,.055);
+    0 6px 18px
+    rgba(30,46,54,.05);
 
   font-size:12px;
 
@@ -467,7 +392,7 @@ svg{
 }
 
 
-.back-button svg{
+.back-btn svg{
 
   width:18px;
   height:18px;
@@ -475,25 +400,139 @@ svg{
 }
 
 
-body.detail-mode .back-button{
+body.detail .back-btn{
   display:flex;
 }
 
 
 
-/* =====================================================
-   نصيحة اليوم
-===================================================== */
+/* =========================================================
+   الترحيب والتاريخ
+========================================================= */
 
-.tip-wrap{
-
-  position:relative;
-
-  z-index:15;
+.welcome-wrap{
 
   padding:
-    7px
-    13px
+    12px
+    14px
+    2px;
+
+}
+
+
+.welcome{
+
+  padding:
+    17px 18px;
+
+  border-radius:22px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  background:
+    rgba(255,255,255,.92);
+
+  border:
+    1px solid
+    rgba(28,43,51,.06);
+
+  box-shadow:
+    var(--shadow);
+
+}
+
+
+.welcome-main{
+
+  min-width:0;
+
+}
+
+
+.greeting{
+
+  font-size:20px;
+
+  line-height:1.25;
+
+  font-weight:900;
+
+}
+
+
+.greeting span{
+
+  color:#3b68c8;
+
+}
+
+
+.welcome-word{
+
+  margin-top:3px;
+
+  color:#708087;
+
+  font-size:12px;
+
+  font-weight:700;
+
+}
+
+
+.date-side{
+
+  flex:0 0 auto;
+
+  text-align:left;
+
+}
+
+
+.live-time{
+
+  color:#24353c;
+
+  font-size:19px;
+
+  font-weight:900;
+
+  direction:ltr;
+
+}
+
+
+.date-line{
+
+  margin-top:2px;
+
+  color:#839096;
+
+  font-size:9.8px;
+
+  font-weight:700;
+
+  white-space:nowrap;
+
+}
+
+
+
+/* =========================================================
+   نصيحة اليوم - هادئة جداً
+========================================================= */
+
+.tip-holder{
+
+  padding:
+    8px
+    14px
     0;
 
 }
@@ -501,26 +540,26 @@ body.detail-mode .back-button{
 
 .tip-bar{
 
-  height:45px;
+  height:44px;
+
+  border-radius:17px;
+
+  overflow:hidden;
 
   display:flex;
 
   align-items:center;
 
-  overflow:hidden;
-
-  border-radius:17px;
-
   background:
-    rgba(255,255,255,.80);
+    rgba(255,255,255,.88);
 
   border:
-    1px solid rgba(30,54,45,.07);
+    1px solid
+    rgba(88,60,50,.065);
 
   box-shadow:
-    0 8px 25px rgba(30,50,43,.045);
-
-  backdrop-filter:blur(16px);
+    0 7px 22px
+    rgba(52,39,35,.04);
 
 }
 
@@ -529,9 +568,9 @@ body.detail-mode .back-button{
 
   height:100%;
 
-  flex:0 0 auto;
-
   padding:0 13px;
+
+  flex:0 0 auto;
 
   display:flex;
 
@@ -544,11 +583,11 @@ body.detail-mode .back-button{
   background:
     linear-gradient(
       135deg,
-      #147454,
-      #20a477
+      #a96351,
+      #cb8065
     );
 
-  font-size:10.8px;
+  font-size:10.5px;
 
   font-weight:900;
 
@@ -557,7 +596,7 @@ body.detail-mode .back-button{
 }
 
 
-.tip-lamp{
+.tip-icon{
 
   width:23px;
   height:23px;
@@ -573,7 +612,7 @@ body.detail-mode .back-button{
 }
 
 
-.tip-lamp svg{
+.tip-icon svg{
 
   width:14px;
   height:14px;
@@ -602,54 +641,44 @@ body.detail-mode .back-button{
 
   align-items:center;
 
-  gap:65px;
+  gap:90px;
 
-  padding:0 25px;
+  padding:
+    0 55px;
 
   animation:
-    tipsMove 520s linear infinite;
+    moveTips 850s linear infinite;
 
 }
 
 
-.tip-item{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:9px;
+.tip{
 
   direction:rtl;
 
   white-space:nowrap;
 
-  color:#68777d;
+  color:#6d787d;
 
-  font-size:11.5px;
+  font-size:11.3px;
 
-  font-weight:650;
-
-}
-
-
-.tip-item span{
-
-  width:6px;
-  height:6px;
-
-  flex:0 0 auto;
-
-  border-radius:50%;
-
-  background:#2b9b76;
-
-  opacity:.65;
+  font-weight:600;
 
 }
 
 
-@keyframes tipsMove{
+.tip::before{
+
+  content:"•";
+
+  margin-left:9px;
+
+  color:#bd755f;
+
+}
+
+
+@keyframes moveTips{
 
   from{
     transform:translateX(0);
@@ -663,9 +692,9 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
+/* =========================================================
    Screens
-===================================================== */
+========================================================= */
 
 .screen{
   display:none;
@@ -677,83 +706,39 @@ body.detail-mode .back-button{
   display:block;
 
   animation:
-    screenIn .38s ease both;
+    screenShow .38s ease both;
 
 }
 
 
-@keyframes screenIn{
+@keyframes screenShow{
 
   from{
-
     opacity:0;
-
-    transform:translateY(13px);
-
+    transform:translateY(12px);
   }
 
   to{
-
     opacity:1;
-
     transform:translateY(0);
-
   }
 
 }
 
 
 
-/* =====================================================
+/* =========================================================
    الرئيسية
-===================================================== */
+========================================================= */
 
 .hero{
 
   padding:
-    50px
+    44px
     18px
-    19px;
+    20px;
 
   text-align:center;
-
-}
-
-
-.hero-logo{
-
-  width:92px;
-  height:92px;
-
-  margin:
-    0 auto
-    24px;
-
-  border-radius:30px;
-
-  display:grid;
-  place-items:center;
-
-  color:#fff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #3575e6,
-      #7464d8,
-      #169d82
-    );
-
-  box-shadow:
-    0 21px 50px rgba(68,94,183,.18);
-
-}
-
-
-.hero-logo svg{
-
-  width:42px;
-  height:42px;
 
 }
 
@@ -764,12 +749,10 @@ body.detail-mode .back-button{
 
   font-size:
     clamp(
-      30px,
-      8.5vw,
+      31px,
+      8.6vw,
       46px
     );
-
-  line-height:1.25;
 
   font-weight:900;
 
@@ -779,17 +762,15 @@ body.detail-mode .back-button{
 
 
 .hero h1 span{
-
-  color:#24755f;
-
+  color:#336bd6;
 }
 
 
-.hero-subtitle{
+.hero-sub{
 
-  margin-top:8px;
+  margin-top:7px;
 
-  color:#66767c;
+  color:#64747a;
 
   font-size:15px;
 
@@ -798,30 +779,29 @@ body.detail-mode .back-button{
 }
 
 
-.choose-title{
+.choose{
 
-  margin-top:35px;
+  margin-top:31px;
 
-  color:#66767d;
+  color:#6b797f;
 
   font-size:13px;
 
-  font-weight:800;
+  font-weight:900;
 
 }
 
 
 
-/* =====================================================
+/* =========================================================
    بطاقات الرئيسية
-===================================================== */
+========================================================= */
 
-.service-grid{
+.services{
 
   padding:
-    9px
-    14px
-    0;
+    8px
+    14px;
 
   display:grid;
 
@@ -830,13 +810,13 @@ body.detail-mode .back-button{
 }
 
 
-.service-card{
+.service{
 
   width:100%;
 
-  min-height:130px;
+  min-height:132px;
 
-  padding:13px;
+  padding:12px;
 
   display:flex;
 
@@ -848,30 +828,29 @@ body.detail-mode .back-button{
 
   border-radius:27px;
 
-  background:
-    rgba(255,255,255,.91);
+  background:#fff;
 
-  border:
-    1px solid rgba(32,49,57,.06);
+  border:1px solid var(--border);
 
   box-shadow:var(--shadow);
 
   cursor:pointer;
 
-  transition:.2s ease;
+  transition:
+    transform .2s ease;
 
 }
 
 
-.service-card:active{
+.service:active{
   transform:scale(.985);
 }
 
 
-.service-photo{
+.photo{
 
-  width:103px;
-  height:102px;
+  width:107px;
+  height:106px;
 
   flex:0 0 auto;
 
@@ -881,24 +860,29 @@ body.detail-mode .back-button{
 
   border-radius:22px;
 
-  background:#eef1f2;
+  background:
+    linear-gradient(
+      145deg,
+      #eef1f4,
+      #e4e8eb
+    );
 
 }
 
 
-.service-photo img{
+.photo img{
 
   width:100%;
   height:100%;
 
-  display:block;
-
   object-fit:cover;
+
+  display:block;
 
 }
 
 
-.service-photo::after{
+.photo::after{
 
   content:"";
 
@@ -906,12 +890,13 @@ body.detail-mode .back-button{
 
   inset:0;
 
-  background:
-    linear-gradient(
-      to top,
-      rgba(15,25,30,.15),
-      transparent 55%
-    );
+  border:
+    1px solid
+    rgba(255,255,255,.22);
+
+  border-radius:inherit;
+
+  pointer-events:none;
 
 }
 
@@ -934,13 +919,13 @@ body.detail-mode .back-button{
 }
 
 
-.service-description{
+.service-text{
 
   margin-top:5px;
 
-  color:#758389;
+  color:#76848a;
 
-  font-size:12.3px;
+  font-size:12px;
 
   line-height:1.65;
 
@@ -949,26 +934,26 @@ body.detail-mode .back-button{
 }
 
 
-.enter{
+.service-go{
 
   width:38px;
   height:38px;
 
-  flex:0 0 auto;
-
   display:grid;
   place-items:center;
 
+  flex:0 0 auto;
+
   border-radius:14px;
 
-  color:#607078;
+  background:#f3f5f7;
 
-  background:#f3f5f6;
+  color:#617178;
 
 }
 
 
-.enter svg{
+.service-go svg{
 
   width:18px;
   height:18px;
@@ -977,33 +962,42 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   التواصل الرئيسية
-===================================================== */
+/* =========================================================
+   تواصل الرئيسية
+========================================================= */
 
-.main-contact{
+.home-contact{
 
   margin:
-    16px
+    9px
     14px
     0;
+
+  padding:13px;
 
   display:grid;
 
   grid-template-columns:
-    1.45fr 1fr;
+    1.35fr 1fr;
 
   gap:9px;
+
+  border-radius:24px;
+
+  background:#fff;
+
+  border:
+    1px solid var(--border);
+
+  box-shadow:var(--shadow);
 
 }
 
 
-.main-call,
-.main-wa{
+.call-big,
+.wa-big{
 
-  min-height:60px;
-
-  border-radius:20px;
+  min-height:55px;
 
   display:flex;
 
@@ -1013,43 +1007,34 @@ body.detail-mode .back-button{
 
   gap:8px;
 
-  font-size:14px;
+  border-radius:17px;
+
+  font-size:13.5px;
 
   font-weight:900;
 
 }
 
 
-.main-call{
+.call-big{
 
-  color:#fff;
+  color:#2d5fbf;
 
-  background:
-    linear-gradient(
-      135deg,
-      #326bdc,
-      #4c83e9
-    );
-
-  box-shadow:
-    0 12px 28px rgba(49,105,218,.18);
+  background:#edf3ff;
 
 }
 
 
-.main-wa{
+.wa-big{
 
-  color:#17785c;
+  color:#18775c;
 
-  background:#fff;
-
-  border:
-    1px solid rgba(27,145,106,.11);
+  background:#eff8f5;
 
 }
 
 
-.main-contact svg{
+.home-contact svg{
 
   width:20px;
   height:20px;
@@ -1058,41 +1043,39 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   التفاصيل
-===================================================== */
+/* =========================================================
+   صفحات التفاصيل
+========================================================= */
 
-.detail{
+.detail-page{
 
   padding:
-    20px
+    18px
     14px
-    30px;
+    28px;
 
 }
 
 
-/* رأس التفاصيل أبيض */
-
-.detail-header{
-
-  overflow:hidden;
+.detail-head{
 
   padding:13px;
+
+  overflow:hidden;
 
   border-radius:29px;
 
   background:#fff;
 
   border:
-    1px solid rgba(33,50,59,.065);
+    1px solid var(--border);
 
-  box-shadow:var(--shadow-lg);
+  box-shadow:var(--shadow-large);
 
 }
 
 
-.detail-title-row{
+.detail-heading{
 
   padding:
     8px
@@ -1102,7 +1085,7 @@ body.detail-mode .back-button{
 }
 
 
-.detail-title{
+.detail-heading h2{
 
   margin:0;
 
@@ -1113,13 +1096,13 @@ body.detail-mode .back-button{
 }
 
 
-.detail-title-sub{
+.detail-heading div{
 
-  margin-top:4px;
+  margin-top:3px;
 
   color:#7b888d;
 
-  font-size:12.5px;
+  font-size:12px;
 
   font-weight:650;
 
@@ -1127,25 +1110,55 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   الصور العقارية الطبيعية
-===================================================== */
+/* =========================================================
+   صور العقار
+========================================================= */
 
-.property-gallery{
+.property-photos{
 
-  height:183px;
+  height:205px;
 
   display:grid;
 
   grid-template-columns:
-    1.5fr 1fr;
+    1.45fr 1fr;
 
   gap:7px;
 
 }
 
 
-.property-gallery-left{
+.picture{
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #e7ebee,
+      #dfe4e7
+    );
+
+}
+
+
+.picture img{
+
+  width:100%;
+  height:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+}
+
+
+.two-pictures{
 
   display:grid;
 
@@ -1157,85 +1170,37 @@ body.detail-mode .back-button{
 }
 
 
-.property-image{
 
-  width:100%;
-  height:100%;
+/* =========================================================
+   شخصي - الصور
+========================================================= */
 
-  position:relative;
+.personal-scene{
 
-  overflow:hidden;
-
-  border-radius:18px;
-
-  background:#edf0f2;
-
-}
-
-
-.property-image img{
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  display:block;
-
-}
-
-
-.property-image::after{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 55%,
-      rgba(10,18,23,.15)
-    );
-
-}
-
-
-
-/* =====================================================
-   الشخصي
-===================================================== */
-
-.personal-visual{
-
-  height:180px;
+  height:197px;
 
   display:grid;
 
   grid-template-columns:
-    1.4fr 1fr;
+    1.38fr 1fr;
 
   gap:7px;
 
 }
 
 
-.money-photo{
-
-  position:relative;
+.cash-image{
 
   overflow:hidden;
 
-  border-radius:20px;
+  border-radius:19px;
 
-  background:#eceff0;
+  background:#e8ecee;
 
 }
 
 
-.money-photo img{
+.cash-image img{
 
   width:100%;
   height:100%;
@@ -1245,20 +1210,22 @@ body.detail-mode .back-button{
 }
 
 
-.money-stack{
+.cash-side{
 
-  display:flex;
+  display:grid;
 
-  flex-direction:column;
+  grid-template-rows:
+    1fr 1fr;
 
   gap:7px;
 
 }
 
 
-.riyals{
+.riyal-card,
+.speed-card{
 
-  flex:1;
+  border-radius:18px;
 
   display:flex;
 
@@ -1268,95 +1235,94 @@ body.detail-mode .back-button{
 
   flex-direction:column;
 
-  position:relative;
-
   overflow:hidden;
-
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #eef5f1,
-      #ffffff
-    );
-
-  border:
-    1px solid rgba(24,132,95,.10);
 
 }
 
 
-.riyals::before,
-.riyals::after{
+.riyal-card{
+
+  color:#1b7359;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf7f2,
+      #fff
+    );
+
+  border:
+    1px solid
+    rgba(25,123,91,.10);
+
+}
+
+
+.note-stack{
+
+  position:relative;
+
+  width:80px;
+  height:44px;
+
+  margin-bottom:5px;
+
+}
+
+
+.note-stack::before,
+.note-stack::after{
 
   content:"";
 
   position:absolute;
 
-  width:78%;
-  height:51px;
+  inset:0;
 
-  border-radius:8px;
-
-  border:
-    1px solid rgba(26,126,91,.15);
+  border-radius:7px;
 
   background:
-    linear-gradient(
-      120deg,
-      #e7f3ed,
-      #f9fcfa
-    );
+    #e4f2eb;
 
-  box-shadow:
-    0 7px 15px rgba(31,91,68,.07);
+  border:
+    1px solid
+    rgba(22,126,91,.18);
 
 }
 
 
-.riyals::before{
-
-  transform:
-    translateY(9px)
-    rotate(-4deg);
-
+.note-stack::before{
+  transform:rotate(-5deg);
 }
 
 
-.riyals::after{
-
-  transform:
-    translateY(1px)
-    rotate(2deg);
-
+.note-stack::after{
+  transform:rotate(3deg);
 }
 
 
-.riyals strong{
+.note-stack strong{
 
-  position:relative;
+  position:absolute;
 
   z-index:3;
 
-  color:#187857;
+  inset:0;
 
-  font-size:18px;
+  display:flex;
 
-  font-weight:900;
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:15px;
 
 }
 
 
-.riyals small{
+.riyal-card small{
 
-  position:relative;
-
-  z-index:3;
-
-  margin-top:3px;
-
-  color:#769189;
+  color:#789087;
 
   font-size:9px;
 
@@ -1365,38 +1331,25 @@ body.detail-mode .back-button{
 }
 
 
-.speed-box{
+.speed-card{
 
-  flex:1;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  flex-direction:column;
-
-  gap:6px;
-
-  border-radius:18px;
-
-  color:#a27020;
+  color:#9c6c24;
 
   background:
     linear-gradient(
       145deg,
-      #fff6e6,
-      #ffffff
+      #fff4df,
+      #fff
     );
 
   border:
-    1px solid rgba(204,143,42,.11);
+    1px solid
+    rgba(191,132,40,.10);
 
 }
 
 
-.speed-box svg{
+.speed-card svg{
 
   width:31px;
   height:31px;
@@ -1404,9 +1357,11 @@ body.detail-mode .back-button{
 }
 
 
-.speed-box strong{
+.speed-card strong{
 
-  font-size:11px;
+  margin-top:5px;
+
+  font-size:10px;
 
   font-weight:900;
 
@@ -1414,9 +1369,9 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   سؤال العقار
-===================================================== */
+/* =========================================================
+   المحتوى
+========================================================= */
 
 .content-card{
 
@@ -1426,11 +1381,10 @@ body.detail-mode .back-button{
 
   border-radius:26px;
 
-  background:
-    rgba(255,255,255,.91);
+  background:#fff;
 
   border:
-    1px solid rgba(31,48,57,.06);
+    1px solid var(--border);
 
   box-shadow:var(--shadow);
 
@@ -1439,16 +1393,17 @@ body.detail-mode .back-button{
 
 .question{
 
+  margin-bottom:14px;
+
   padding:16px;
 
-  margin-bottom:15px;
-
-  border-radius:19px;
+  border-radius:18px;
 
   background:#f7f9fb;
 
   border:
-    1px solid rgba(47,72,82,.055);
+    1px solid
+    rgba(44,62,71,.05);
 
 }
 
@@ -1457,9 +1412,9 @@ body.detail-mode .back-button{
 
   display:block;
 
-  margin-bottom:7px;
+  margin-bottom:6px;
 
-  color:#3368c5;
+  color:#315fba;
 
   font-size:12px;
 
@@ -1468,13 +1423,15 @@ body.detail-mode .back-button{
 }
 
 
-.question div{
+.question p{
 
-  color:#485b63;
+  margin:0;
 
-  font-size:14.5px;
+  color:#44575f;
 
-  line-height:1.95;
+  font-size:14px;
+
+  line-height:1.9;
 
   font-weight:650;
 
@@ -1482,9 +1439,9 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   المزايا
-===================================================== */
+/* =========================================================
+   المميزات
+========================================================= */
 
 .features{
 
@@ -1509,16 +1466,17 @@ body.detail-mode .back-button{
 
   border-radius:17px;
 
+  color:#415159;
+
   background:#f8fafb;
 
   border:
-    1px solid rgba(37,53,62,.05);
-
-  color:#405158;
+    1px solid
+    rgba(36,52,61,.05);
 
   font-size:14px;
 
-  line-height:1.72;
+  line-height:1.7;
 
   font-weight:650;
 
@@ -1532,32 +1490,32 @@ body.detail-mode .back-button{
 
   flex:0 0 auto;
 
+  border-radius:10px;
+
   display:grid;
   place-items:center;
 
-  border-radius:10px;
+  color:#326bd3;
 
-  color:#2f6edb;
+  background:#eaf1fd;
 
-  background:#eaf2ff;
+}
+
+
+.feature-icon.warm{
+
+  color:#a97021;
+
+  background:#fff2dc;
 
 }
 
 
 .feature-icon.green{
 
-  color:#18845f;
+  color:#17795a;
 
   background:#eaf6f1;
-
-}
-
-
-.feature-icon.gold{
-
-  color:#bd7d1d;
-
-  background:#fff3df;
 
 }
 
@@ -1572,7 +1530,7 @@ body.detail-mode .back-button{
 
 .feature strong{
 
-  color:#2767ce;
+  color:#2e67ca;
 
   font-weight:900;
 
@@ -1580,43 +1538,42 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   الاعتماد
-===================================================== */
+/* =========================================================
+   الخبرة
+========================================================= */
 
 .experience{
 
   margin-top:11px;
 
-  padding:16px;
+  padding:15px;
 
   display:flex;
 
   align-items:center;
 
-  gap:11px;
+  gap:10px;
 
-  border-radius:20px;
-
-  color:#26383e;
+  border-radius:19px;
 
   background:
     linear-gradient(
-      135deg,
-      #fffaf0,
-      #ffffff
+      145deg,
+      #fff8ec,
+      #fff
     );
 
   border:
-    1px solid rgba(207,151,51,.14);
+    1px solid
+    rgba(195,139,45,.13);
 
 }
 
 
-.experience-icon{
+.exp-icon{
 
-  width:44px;
-  height:44px;
+  width:43px;
+  height:43px;
 
   flex:0 0 auto;
 
@@ -1625,17 +1582,17 @@ body.detail-mode .back-button{
 
   border-radius:14px;
 
-  color:#c58b29;
+  color:#b98029;
 
   background:#fff0d3;
 
 }
 
 
-.experience-icon svg{
+.exp-icon svg{
 
-  width:24px;
-  height:24px;
+  width:23px;
+  height:23px;
 
 }
 
@@ -1657,7 +1614,7 @@ body.detail-mode .back-button{
 
   margin-top:2px;
 
-  color:#7c888c;
+  color:#7c898e;
 
   font-size:10.5px;
 
@@ -1667,9 +1624,9 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
+/* =========================================================
    الخدمات الأخرى
-===================================================== */
+========================================================= */
 
 .other-grid{
 
@@ -1683,123 +1640,93 @@ body.detail-mode .back-button{
 }
 
 
-.other-item{
+.other-card{
 
-  min-height:154px;
+  min-height:153px;
 
   padding:10px;
-
-  overflow:hidden;
-
-  position:relative;
 
   border-radius:21px;
 
   background:#fff;
 
   border:
-    1px solid rgba(36,52,60,.06);
+    1px solid var(--border);
 
   box-shadow:
-    0 8px 25px rgba(31,46,54,.045);
+    0 7px 22px rgba(28,43,51,.04);
+
+  cursor:pointer;
 
 }
 
 
-.other-photo{
+.other-picture{
 
   height:91px;
 
   overflow:hidden;
 
-  position:relative;
-
   border-radius:16px;
 
-  background:#eef0f1;
+  background:#e8ecef;
 
 }
 
 
-.other-photo img{
+.other-picture img{
 
   width:100%;
   height:100%;
-
-  display:block;
 
   object-fit:cover;
 
 }
 
 
-.other-icon-box{
+.other-icon{
 
   height:91px;
+
+  border-radius:16px;
 
   display:grid;
   place-items:center;
 
-  border-radius:16px;
+}
+
+
+.other-icon svg{
+
+  width:39px;
+  height:39px;
 
 }
 
 
-.other-icon-box svg{
-
-  width:40px;
-  height:40px;
-
+.pos{
+  color:#197b5c;
+  background:#eaf6f1;
 }
 
 
-.pos-bg{
-
-  color:#18845f;
-
-  background:
-    linear-gradient(
-      145deg,
-      #eaf7f2,
-      #f8fcfa
-    );
-
+.business{
+  color:#5c62c8;
+  background:#eff0ff;
 }
 
 
-.business-bg{
-
-  color:#5b6ad5;
-
-  background:
-    linear-gradient(
-      145deg,
-      #eef0ff,
-      #fafaff
-    );
-
-}
-
-
-.speed-bg{
-
-  color:#c1882c;
-
-  background:
-    linear-gradient(
-      145deg,
-      #fff3dc,
-      #fffaf1
-    );
-
+.fast{
+  color:#a87525;
+  background:#fff3de;
 }
 
 
 .other-name{
 
-  margin-top:10px;
+  margin-top:9px;
 
-  color:#34464d;
+  color:#35474e;
 
   font-size:12.5px;
 
@@ -1811,69 +1738,56 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   الضغط على حلول متنوعة
-===================================================== */
+/* =========================================================
+   حلول إضافية
+========================================================= */
 
-.expandable{
-
-  cursor:pointer;
-
-}
-
-
-.solution-extra{
+.extra{
 
   max-height:0;
 
-  overflow:hidden;
+  margin-top:0;
 
   opacity:0;
 
-  margin-top:0;
+  overflow:hidden;
 
   transition:
-    max-height .35s ease,
-    opacity .3s ease,
-    margin .3s ease;
+    .35s ease;
 
 }
 
 
-.solution-extra.open{
+.extra.open{
 
   max-height:180px;
 
-  opacity:1;
-
   margin-top:10px;
+
+  opacity:1;
 
 }
 
 
-.solution-message{
+.extra-message{
 
   padding:15px;
 
   display:flex;
 
-  align-items:flex-start;
-
   gap:10px;
+
+  align-items:flex-start;
 
   border-radius:18px;
 
-  background:
-    linear-gradient(
-      145deg,
-      #edf8f4,
-      #fbfefd
-    );
+  color:#40555d;
+
+  background:#f0f8f5;
 
   border:
-    1px solid rgba(25,137,99,.10);
-
-  color:#42565d;
+    1px solid
+    rgba(26,126,93,.09);
 
   font-size:13.5px;
 
@@ -1884,42 +1798,44 @@ body.detail-mode .back-button{
 }
 
 
-.solution-message svg{
+.extra-message svg{
 
   width:24px;
   height:24px;
 
   flex:0 0 auto;
 
-  color:#18845f;
+  color:#187a5b;
 
 }
 
 
 
-/* =====================================================
+/* =========================================================
    التواصل
-===================================================== */
+========================================================= */
 
 .contact-card{
 
   margin-top:14px;
 
-  padding:19px;
+  padding:18px;
 
-  border-radius:26px;
+  border-radius:25px;
 
   background:#fff;
 
   border:
-    1px solid rgba(32,48,57,.06);
+    1px solid var(--border);
 
   box-shadow:var(--shadow);
 
 }
 
 
-.contact-title{
+.contact-card h3{
+
+  margin:0;
 
   font-size:18px;
 
@@ -1928,37 +1844,40 @@ body.detail-mode .back-button{
 }
 
 
-.contact-note{
+.contact-card p{
 
-  margin-top:4px;
+  margin:
+    3px 0 0;
 
   color:#879196;
 
-  font-size:11.5px;
+  font-size:11px;
 
   font-weight:650;
 
 }
 
 
-.contact-buttons{
+.contact-actions{
 
-  margin-top:14px;
+  margin-top:13px;
 
   display:grid;
 
   grid-template-columns:
-    1.4fr 1fr;
+    1.35fr 1fr;
 
   gap:9px;
 
 }
 
 
-.call-btn,
-.wa-btn{
+.contact-call,
+.contact-wa{
 
-  min-height:54px;
+  min-height:53px;
+
+  border-radius:17px;
 
   display:flex;
 
@@ -1968,8 +1887,6 @@ body.detail-mode .back-button{
 
   gap:8px;
 
-  border-radius:17px;
-
   font-size:13.5px;
 
   font-weight:900;
@@ -1977,30 +1894,25 @@ body.detail-mode .back-button{
 }
 
 
-.call-btn{
+.contact-call{
 
-  color:#fff;
+  color:#295ebc;
 
-  background:
-    linear-gradient(
-      135deg,
-      #316cdd,
-      #5086e9
-    );
+  background:#edf3ff;
 
 }
 
 
-.wa-btn{
+.contact-wa{
 
-  color:#17795c;
+  color:#17775b;
 
   background:#eef8f4;
 
 }
 
 
-.contact-buttons svg{
+.contact-actions svg{
 
   width:19px;
   height:19px;
@@ -2009,22 +1921,50 @@ body.detail-mode .back-button{
 
 
 
-/* =====================================================
-   Footer
-===================================================== */
+/* =========================================================
+   Footer داخل الصفحة
+========================================================= */
 
-footer{
+.page-footer{
 
-  padding:
-    36px
-    14px
-    13px;
+  margin:
+    24px 14px
+    8px;
+
+  padding:16px;
+
+  border-radius:20px;
 
   text-align:center;
 
-  color:#98a1a5;
+  background:
+    rgba(255,255,255,.72);
 
-  font-size:10.5px;
+  border:
+    1px solid
+    rgba(31,47,56,.05);
+
+}
+
+
+.footer-time{
+
+  color:#405159;
+
+  font-size:11px;
+
+  font-weight:800;
+
+}
+
+
+.footer-copy{
+
+  margin-top:4px;
+
+  color:#929ca0;
+
+  font-size:10px;
 
   font-weight:650;
 
@@ -2032,11 +1972,11 @@ footer{
 
 
 
-/* =====================================================
-   القائمة السفلية
-===================================================== */
+/* =========================================================
+   القائمة السفلية الجديدة
+========================================================= */
 
-.bottom-shell{
+.bottom-wrap{
 
   position:fixed;
 
@@ -2044,11 +1984,11 @@ footer{
   left:0;
   bottom:0;
 
-  z-index:500;
+  z-index:600;
 
   padding:
     8px
-    12px
+    11px
     max(
       10px,
       env(safe-area-inset-bottom)
@@ -2057,10 +1997,8 @@ footer{
   background:
     linear-gradient(
       to top,
-      rgba(245,247,249,.99)
-      45%,
-      rgba(245,247,249,.76)
-      76%,
+      rgba(244,247,249,1) 45%,
+      rgba(244,247,249,.82) 75%,
       transparent
     );
 
@@ -2073,31 +2011,33 @@ footer{
 
   max-width:620px;
 
-  height:70px;
+  height:72px;
 
   margin:auto;
 
-  padding:6px;
+  padding:7px;
 
   display:grid;
 
   grid-template-columns:
-    1.05fr 1.35fr 1fr 1fr;
+    repeat(4,1fr);
 
-  gap:3px;
+  gap:5px;
 
-  border-radius:24px;
+  border-radius:25px;
 
   background:
-    rgba(255,255,255,.96);
+    rgba(255,255,255,.97);
 
   border:
-    1px solid rgba(255,255,255,.98);
+    1px solid
+    rgba(255,255,255,1);
 
   box-shadow:
-    0 17px 50px rgba(25,42,50,.14);
+    0 18px 52px
+    rgba(26,42,50,.15);
 
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(22px);
 
 }
 
@@ -2110,23 +2050,25 @@ footer{
 
   display:flex;
 
+  flex-direction:column;
+
   align-items:center;
 
   justify-content:center;
-
-  flex-direction:column;
 
   gap:3px;
 
   background:transparent;
 
-  color:#718086;
+  color:#758288;
 
-  font-size:10.3px;
+  cursor:pointer;
+
+  font-size:10px;
 
   font-weight:850;
 
-  cursor:pointer;
+  transition:.2s ease;
 
 }
 
@@ -2139,44 +2081,57 @@ footer{
 }
 
 
-/* الرئيسية ثابتة */
+/* الزر الأزرق الآن الرئيسية فقط */
 
-.nav-item.home-active{
+.nav-home{
 
-  color:#176f54;
+  color:#fff;
 
-  background:#edf7f3;
+  background:
+    linear-gradient(
+      145deg,
+      #316ade,
+      #4a7de4
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(47,103,214,.20);
 
 }
 
 
 .nav-call{
 
-  color:#fff;
+  color:#315eb3;
 
-  flex-direction:row;
+  background:#f2f6fd;
 
-  gap:6px;
+}
 
-  font-size:13px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #326cdc,
-      #4d82e8
-    );
+.nav-wa{
 
-  box-shadow:
-    0 8px 20px rgba(49,103,211,.17);
+  color:#187359;
+
+  background:#f1f8f5;
+
+}
+
+
+.nav-shot{
+
+  color:#8d6656;
+
+  background:#faf4f1;
 
 }
 
 
 
-/* =====================================================
+/* =========================================================
    Toast
-===================================================== */
+========================================================= */
 
 .toast{
 
@@ -2186,7 +2141,7 @@ footer{
 
   bottom:
     calc(
-      97px +
+      102px +
       env(safe-area-inset-bottom)
     );
 
@@ -2197,14 +2152,14 @@ footer{
     translateY(15px);
 
   padding:
-    12px 17px;
+    11px 16px;
 
-  border-radius:15px;
+  border-radius:14px;
 
   color:#fff;
 
   background:
-    rgba(27,39,45,.92);
+    rgba(25,38,44,.92);
 
   font-size:12px;
 
@@ -2222,7 +2177,6 @@ footer{
 .toast.show{
 
   opacity:1;
-
   visibility:visible;
 
   transform:
@@ -2233,13 +2187,13 @@ footer{
 
 
 
-/* =====================================================
+/* =========================================================
    Desktop
-===================================================== */
+========================================================= */
 
 @media(min-width:720px){
 
-  .service-grid{
+  .services{
 
     grid-template-columns:
       repeat(3,1fr);
@@ -2247,51 +2201,50 @@ footer{
   }
 
 
-  .service-card{
+  .service{
 
-    min-height:270px;
-
-    align-items:flex-start;
+    min-height:290px;
 
     flex-direction:column;
 
+    align-items:flex-start;
+
   }
 
 
-  .service-photo{
+  .photo{
 
     width:100%;
-    height:140px;
+    height:160px;
 
   }
 
 
-  .enter{
+  .service-go{
 
     position:absolute;
 
     left:18px;
-    bottom:18px;
 
   }
 
 
-  .property-gallery{
-    height:245px;
+  .property-photos{
+    height:260px;
   }
 
 
-  .personal-visual{
-    height:240px;
+  .personal-scene{
+    height:250px;
   }
 
 }
 
 
 
-/* =====================================================
-   تقليل الحركة
-===================================================== */
+/* =========================================================
+   Reduced motion
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2306,12 +2259,13 @@ footer{
 
 </head>
 
+
 <body>
 
 
-<!-- =====================================================
-     SVG
-===================================================== -->
+<!-- =========================================================
+     SVG ICONS
+========================================================= -->
 
 <svg
   width="0"
@@ -2323,175 +2277,204 @@ footer{
 <defs>
 
 
-<symbol id="bank" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M8 25h48"/>
-<path d="M13 25v27"/>
-<path d="M24 25v27"/>
-<path d="M40 25v27"/>
-<path d="M51 25v27"/>
-<path d="M8 52h48"/>
-<path d="M32 7 7 19h50L32 7Z"/>
-
+<symbol
+  id="bank"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 25h48"/>
+  <path d="M13 25v27"/>
+  <path d="M24 25v27"/>
+  <path d="M40 25v27"/>
+  <path d="M51 25v27"/>
+  <path d="M8 52h48"/>
+  <path d="M32 7 7 19h50L32 7Z"/>
 </symbol>
 
 
-<symbol id="home" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="m3 11 9-8 9 8"/>
-<path d="M5 10v10h14V10"/>
-<path d="M9 20v-6h6v6"/>
-
+<symbol
+  id="home"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m3 11 9-8 9 8"/>
+  <path d="M5 10v10h14V10"/>
+  <path d="M9 20v-6h6v6"/>
 </symbol>
 
 
-<symbol id="phone" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/>
-
+<symbol
+  id="phone"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9Z"/>
 </symbol>
 
 
-<symbol id="message" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9.5 9.5 0 0 1-3.8-.8L3 21l1.7-5A8.5 8.5 0 1 1 21 11.5Z"/>
-<path d="M8.5 9.2c.6 2.5 3 4.8 5.7 5.5"/>
-
+<symbol
+  id="message"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21 11.5a8.5 8.5 0 0 1-9 8.5 9.5 9.5 0 0 1-3.8-.8L3 21l1.7-5A8.5 8.5 0 1 1 21 11.5Z"/>
 </symbol>
 
 
-<symbol id="back" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M19 12H5"/>
-<path d="m12 19-7-7 7-7"/>
-
+<symbol
+  id="back"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M19 12H5"/>
+  <path d="m12 19-7-7 7-7"/>
 </symbol>
 
 
-<symbol id="left" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="m15 18-6-6 6-6"/>
-
+<symbol
+  id="left"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6"/>
 </symbol>
 
 
-<symbol id="check" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2.6"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="m5 12 4 4L19 6"/>
-
+<symbol
+  id="check"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m5 12 4 4L19 6"/>
 </symbol>
 
 
-<symbol id="camera" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M14.5 4 16 7h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4l1.5-3h5Z"/>
-<circle cx="12" cy="13" r="4"/>
-
+<symbol
+  id="camera"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.5 4 16 7h4a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4l1.5-3h5Z"/>
+  <circle cx="12" cy="13" r="4"/>
 </symbol>
 
 
-<symbol id="percent" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linecap="round">
-
-<circle cx="19" cy="19" r="7"/>
-<circle cx="45" cy="45" r="7"/>
-<path d="M17 48 47 16"/>
-
+<symbol
+  id="bulb"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+>
+  <path d="M9 18h6"/>
+  <path d="M10 22h4"/>
+  <path d="M8.5 15.5A7 7 0 1 1 15.5 15.5c-.9.8-1.5 1.6-1.5 2.5h-4c0-.9-.6-1.7-1.5-2.5Z"/>
 </symbol>
 
 
-<symbol id="cash" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linejoin="round">
-
-<rect x="7" y="15" width="50" height="34" rx="5"/>
-<circle cx="32" cy="32" r="8"/>
-
+<symbol
+  id="speed"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M10 44a23 23 0 1 1 44 0"/>
+  <path d="m32 38 13-15"/>
+  <circle cx="32" cy="38" r="4"/>
+  <path d="M16 44h32"/>
 </symbol>
 
 
-<symbol id="car" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M13 39h38l-4-13a7 7 0 0 0-7-5H24a7 7 0 0 0-7 5l-4 13Z"/>
-<circle cx="20" cy="43" r="4"/>
-<circle cx="44" cy="43" r="4"/>
-
+<symbol
+  id="cash"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linejoin="round"
+>
+  <rect x="7" y="15" width="50" height="34" rx="5"/>
+  <circle cx="32" cy="32" r="8"/>
 </symbol>
 
 
-<symbol id="bulb" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linecap="round">
-
-<path d="M9 18h6"/>
-<path d="M10 22h4"/>
-<path d="M8.5 15.5A7 7 0 1 1 15.5 15.5c-.9.8-1.5 1.6-1.5 2.5h-4c0-.9-.6-1.7-1.5-2.5Z"/>
-
+<symbol
+  id="pos"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect x="17" y="7" width="30" height="50" rx="6"/>
+  <rect x="22" y="13" width="20" height="12" rx="2"/>
+  <path d="M24 34h3M31 34h3M38 34h3"/>
+  <path d="M24 41h3M31 41h3M38 41h3"/>
+  <path d="M24 48h17"/>
 </symbol>
 
 
-<symbol id="speed" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linecap="round" stroke-linejoin="round">
-
-<path d="M10 44a23 23 0 1 1 44 0"/>
-<path d="m32 38 13-15"/>
-<circle cx="32" cy="38" r="4"/>
-<path d="M16 44h32"/>
-
+<symbol
+  id="business"
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect x="9" y="21" width="46" height="33" rx="4"/>
+  <path d="M23 21v-8h18v8"/>
+  <path d="M9 33h46"/>
 </symbol>
 
 
-<symbol id="pos" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linecap="round" stroke-linejoin="round">
-
-<rect x="17" y="7" width="30" height="50" rx="6"/>
-<rect x="22" y="13" width="20" height="12" rx="2"/>
-<path d="M24 34h3M31 34h3M38 34h3"/>
-<path d="M24 41h3M31 41h3M38 41h3"/>
-<path d="M24 48h17"/>
-
-</symbol>
-
-
-<symbol id="business" viewBox="0 0 64 64" fill="none"
-stroke="currentColor" stroke-width="4"
-stroke-linecap="round" stroke-linejoin="round">
-
-<rect x="9" y="21" width="46" height="33" rx="4"/>
-<path d="M23 21v-8h18v8"/>
-<path d="M9 33h46"/>
-<path d="M27 31v5h10v-5"/>
-
-</symbol>
-
-
-<symbol id="star" viewBox="0 0 24 24" fill="none"
-stroke="currentColor" stroke-width="2"
-stroke-linejoin="round">
-
-<path d="m12 2 3 6 6.5 1-4.8 4.7 1.1 6.6L12 17.2l-5.8 3.1 1.1-6.6L2.5 9 9 8l3-6Z"/>
-
+<symbol
+  id="star"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linejoin="round"
+>
+  <path d="m12 2 3 6 6.5 1-4.8 4.7 1.1 6.6L12 17.2l-5.8 3.1 1.1-6.6L2.5 9 9 8l3-6Z"/>
 </symbol>
 
 
@@ -2501,67 +2484,43 @@ stroke-linejoin="round">
 
 
 
-<!-- =====================================================
-     الخلفية
-===================================================== -->
+<div class="background">
 
-<div class="page-bg">
-
-  <div class="bg-light one"></div>
-  <div class="bg-light two"></div>
-  <div class="bg-light three"></div>
-
-  <div class="float-finance ff1">
-    <svg>
-      <use href="#percent"></use>
-    </svg>
-  </div>
-
-  <div class="float-finance ff2">
-    <svg>
-      <use href="#cash"></use>
-    </svg>
-  </div>
-
-  <div class="float-finance ff3">
-    <svg>
-      <use href="#car"></use>
-    </svg>
-  </div>
-
-  <div class="float-finance ff4">
-    <svg>
-      <use href="#bank"></use>
-    </svg>
-  </div>
+  <div class="light one"></div>
+  <div class="light two"></div>
+  <div class="light three"></div>
 
 </div>
 
 
 
-<!-- =====================================================
-     الهيدر
-===================================================== -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-<header class="topbar">
+<header class="header">
 
-  <div class="topbar-inner">
+  <div class="header-inner">
+
 
     <div class="brand">
 
-      <div class="brand-logo">
+      <div class="logo">
+
         <svg>
           <use href="#bank"></use>
         </svg>
+
       </div>
+
 
       <div>
 
-        <div class="brand-name">
+        <div class="brand-title">
           حلول تمويلية
         </div>
 
-        <div class="brand-sub">
+        <div class="brand-desc">
           خدمات وحلول تمويلية
           <strong>
             بدون تعقيدات
@@ -2573,9 +2532,10 @@ stroke-linejoin="round">
     </div>
 
 
+
     <button
-      class="back-button"
       type="button"
+      class="back-btn"
       onclick="goHome()"
     >
 
@@ -2587,23 +2547,79 @@ stroke-linejoin="round">
 
     </button>
 
+
   </div>
 
 </header>
 
 
 
-<!-- =====================================================
-     النصائح
-===================================================== -->
+<!-- =========================================================
+     الترحيب
+========================================================= -->
 
-<div class="tip-wrap">
+<div class="welcome-wrap">
+
+  <div class="welcome">
+
+
+    <div class="welcome-main">
+
+      <div
+        class="greeting"
+        id="greeting"
+      >
+      </div>
+
+      <div class="welcome-word">
+        حياك الله 👋
+      </div>
+
+    </div>
+
+
+
+    <div class="date-side">
+
+      <div
+        class="live-time"
+        id="liveTime"
+      >
+      </div>
+
+      <div
+        class="date-line"
+        id="hijriDate"
+      >
+      </div>
+
+      <div
+        class="date-line"
+        id="gregorianDate"
+      >
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     نصيحة اليوم
+========================================================= -->
+
+<div class="tip-holder">
 
   <div class="tip-bar">
 
+
     <div class="tip-label">
 
-      <span class="tip-lamp">
+      <span class="tip-icon">
 
         <svg>
           <use href="#bulb"></use>
@@ -2615,6 +2631,7 @@ stroke-linejoin="round">
 
     </div>
 
+
     <div class="tip-window">
 
       <div
@@ -2624,41 +2641,35 @@ stroke-linejoin="round">
 
     </div>
 
+
   </div>
 
 </div>
 
 
 
-<!-- =====================================================
-     المحتوى
-===================================================== -->
+<!-- =========================================================
+     APP
+========================================================= -->
 
 <main
-  id="captureArea"
   class="app"
+  id="captureArea"
 >
 
 
 
-<!-- =====================================================
-     الرئيسية
-===================================================== -->
+<!-- =========================================================
+     HOME
+========================================================= -->
 
 <section
-  class="screen active"
   id="home"
+  class="screen active"
 >
 
+
   <div class="hero">
-
-    <div class="hero-logo">
-
-      <svg>
-        <use href="#bank"></use>
-      </svg>
-
-    </div>
 
     <h1>
       حلول تمويلية
@@ -2667,11 +2678,11 @@ stroke-linejoin="round">
       </span>
     </h1>
 
-    <div class="hero-subtitle">
+    <div class="hero-sub">
       بدون تعقيدات
     </div>
 
-    <div class="choose-title">
+    <div class="choose">
       اختر الخدمة المناسبة لك
     </div>
 
@@ -2679,25 +2690,26 @@ stroke-linejoin="round">
 
 
 
-  <div class="service-grid">
+  <div class="services">
 
 
-    <!-- عقاري -->
+    <!-- العقاري -->
 
     <button
       type="button"
-      class="service-card"
+      class="service"
       onclick="openScreen('real-estate')"
     >
 
-      <div class="service-photo">
+      <div class="photo">
 
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=82"
-          alt=""
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=85"
+          alt="فيلا"
         >
 
       </div>
+
 
       <div class="service-copy">
 
@@ -2705,40 +2717,42 @@ stroke-linejoin="round">
           التمويل العقاري
         </div>
 
-        <div class="service-description">
+        <div class="service-text">
           حلول عقارية تناسب احتياجك
         </div>
 
       </div>
 
-      <div class="enter">
+
+      <span class="service-go">
 
         <svg>
           <use href="#left"></use>
         </svg>
 
-      </div>
+      </span>
 
     </button>
 
 
 
-    <!-- شخصي -->
+    <!-- الشخصي -->
 
     <button
       type="button"
-      class="service-card"
+      class="service"
       onclick="openScreen('personal-finance')"
     >
 
-      <div class="service-photo">
+      <div class="photo">
 
         <img
-          src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=500&q=82"
-          alt=""
+          src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=85"
+          alt="تمويل شخصي"
         >
 
       </div>
+
 
       <div class="service-copy">
 
@@ -2746,40 +2760,42 @@ stroke-linejoin="round">
           التمويل الشخصي
         </div>
 
-        <div class="service-description">
+        <div class="service-text">
           حلول تمويل وسداد وإعادة
         </div>
 
       </div>
 
-      <div class="enter">
+
+      <span class="service-go">
 
         <svg>
           <use href="#left"></use>
         </svg>
 
-      </div>
+      </span>
 
     </button>
 
 
 
-    <!-- خدمات -->
+    <!-- خدمات أخرى -->
 
     <button
       type="button"
-      class="service-card"
+      class="service"
       onclick="openScreen('services')"
     >
 
-      <div class="service-photo">
+      <div class="photo">
 
         <img
-          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=82"
-          alt=""
+          src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=85"
+          alt="سيارات"
         >
 
       </div>
+
 
       <div class="service-copy">
 
@@ -2787,30 +2803,33 @@ stroke-linejoin="round">
           الخدمات الأخرى
         </div>
 
-        <div class="service-description">
+        <div class="service-text">
           خدمات وحلول تمويلية متنوعة
         </div>
 
       </div>
 
-      <div class="enter">
+
+      <span class="service-go">
 
         <svg>
           <use href="#left"></use>
         </svg>
 
-      </div>
+      </span>
 
     </button>
+
 
   </div>
 
 
 
-  <div class="main-contact">
+  <div class="home-contact">
+
 
     <a
-      class="main-call"
+      class="call-big"
       href="tel:0506214458"
     >
 
@@ -2824,10 +2843,9 @@ stroke-linejoin="round">
 
 
     <a
-      class="main-wa"
+      class="wa-big"
       href="https://wa.me/966506214458"
       target="_blank"
-      rel="noopener noreferrer"
     >
 
       <svg>
@@ -2838,82 +2856,91 @@ stroke-linejoin="round">
 
     </a>
 
+
   </div>
 
 
-  <footer>
-    © سرعة تملك العقار والحلول التمويلية
-  </footer>
+
+  <div class="page-footer">
+
+    <div
+      class="footer-time"
+      id="footerDateHome"
+    ></div>
+
+    <div class="footer-copy">
+      © سرعة تملك العقار والحلول التمويلية
+    </div>
+
+  </div>
+
 
 </section>
 
 
 
-<!-- =====================================================
-     العقاري
-===================================================== -->
+<!-- =========================================================
+     REAL ESTATE
+========================================================= -->
 
 <section
-  class="screen"
   id="real-estate"
+  class="screen"
 >
 
-  <div class="detail">
+
+  <div class="detail-page">
 
 
-    <div class="detail-header">
+    <div class="detail-head">
 
-      <div class="detail-title-row">
 
-        <h2 class="detail-title">
+      <div class="detail-heading">
+
+        <h2>
           التمويل العقاري
         </h2>
 
-        <div class="detail-title-sub">
+        <div>
           حلول عقارية تناسب احتياجك
         </div>
 
       </div>
 
 
-      <!-- بدون أسماء عقار جاهز / بناء / أرض -->
 
-      <div class="property-gallery">
+      <!-- صور فقط بدون كتابة مسمياتها -->
+
+      <div class="property-photos">
 
 
-        <!-- فيلا -->
-
-        <div class="property-image">
+        <div class="picture">
 
           <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=84"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=86"
             alt=""
           >
 
         </div>
 
 
-        <div class="property-gallery-left">
+        <div class="two-pictures">
 
 
-          <!-- مشروع تحت البناء -->
-
-          <div class="property-image">
+          <div class="picture">
 
             <img
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=84"
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=650&q=86"
               alt=""
             >
 
           </div>
 
 
-          <!-- عقار / أرض -->
-
-          <div class="property-image">
+          <div class="picture">
 
             <img
-              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=84"
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=650&q=86"
               alt=""
             >
 
@@ -2922,7 +2949,9 @@ stroke-linejoin="round">
 
         </div>
 
+
       </div>
+
 
     </div>
 
@@ -2937,14 +2966,14 @@ stroke-linejoin="round">
           وش احتياجك العقاري؟
         </strong>
 
-        <div>
+        <p>
           بتشتري فيلا، دور، شقة 🏠؟
           أو تبني 🏗️؟
           أو ترهن؟
           او حجزت من مشاريع البيع على الخارطة؟
           متلخبط؟
           محتار وش أفضل بنك؟
-        </div>
+        </p>
 
       </div>
 
@@ -2956,48 +2985,36 @@ stroke-linejoin="round">
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
             ننجزك بأفضل نسبة حتى لو بالإستثناء،
-            <strong>
-              ابشر بالسعد
-            </strong>
+            <strong>ابشر بالسعد</strong>
           </span>
 
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
             الإقساط تبدأ بـ
-            <strong>
-              500 ريال لأول 5 سنوات
-            </strong>
+            <strong>500 ريال لأول 5 سنوات</strong>
             ☺️
           </span>
 
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3007,13 +3024,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3023,13 +3037,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3039,13 +3050,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3055,13 +3063,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3071,13 +3076,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon green">
-            <svg>
-              <use href="#check"></use>
-            </svg>
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3096,13 +3098,13 @@ stroke-linejoin="round">
 
       <div class="experience">
 
-        <div class="experience-icon">
+        <span class="exp-icon">
 
           <svg>
             <use href="#star"></use>
           </svg>
 
-        </div>
+        </span>
 
         <div>
 
@@ -3118,45 +3120,42 @@ stroke-linejoin="round">
 
       </div>
 
+
     </div>
 
 
 
     <div class="contact-card">
 
-      <div class="contact-title">
+      <h3>
         تواصل معنا
-      </div>
+      </h3>
 
-      <div class="contact-note">
+      <p>
         اختر الطريقة الأنسب لك
-      </div>
+      </p>
 
-      <div class="contact-buttons">
+      <div class="contact-actions">
 
         <a
-          class="call-btn"
+          class="contact-call"
           href="tel:0506214458"
         >
 
-          <svg>
-            <use href="#phone"></use>
-          </svg>
+          <svg><use href="#phone"></use></svg>
 
           اتصال مباشر
 
         </a>
 
+
         <a
-          class="wa-btn"
+          class="contact-wa"
           href="https://wa.me/966506214458"
           target="_blank"
-          rel="noopener noreferrer"
         >
 
-          <svg>
-            <use href="#message"></use>
-          </svg>
+          <svg><use href="#message"></use></svg>
 
           واتساب
 
@@ -3167,9 +3166,19 @@ stroke-linejoin="round">
     </div>
 
 
-    <footer>
-      © سرعة تملك العقار والحلول التمويلية
-    </footer>
+
+    <div class="page-footer">
+
+      <div
+        class="footer-time liveFooter"
+      ></div>
+
+      <div class="footer-copy">
+        © سرعة تملك العقار والحلول التمويلية
+      </div>
+
+    </div>
+
 
   </div>
 
@@ -3177,27 +3186,29 @@ stroke-linejoin="round">
 
 
 
-<!-- =====================================================
-     الشخصي
-===================================================== -->
+<!-- =========================================================
+     PERSONAL
+========================================================= -->
 
 <section
-  class="screen"
   id="personal-finance"
+  class="screen"
 >
 
-  <div class="detail">
+
+  <div class="detail-page">
 
 
-    <div class="detail-header">
+    <div class="detail-head">
 
-      <div class="detail-title-row">
 
-        <h2 class="detail-title">
+      <div class="detail-heading">
+
+        <h2>
           التمويل الشخصي
         </h2>
 
-        <div class="detail-title-sub">
+        <div>
           حلول تمويل شخصية متنوعة
         </div>
 
@@ -3205,15 +3216,13 @@ stroke-linejoin="round">
 
 
 
-      <div class="personal-visual">
+      <div class="personal-scene">
 
 
-        <!-- صورة نقد -->
-
-        <div class="money-photo">
+        <div class="cash-image">
 
           <img
-            src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=700&q=84"
+            src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=900&q=86"
             alt=""
           >
 
@@ -3221,16 +3230,14 @@ stroke-linejoin="round">
 
 
 
-        <div class="money-stack">
+        <div class="cash-side">
 
 
-          <!-- 500 ريال بشكل تمثيلي -->
+          <div class="riyal-card">
 
-          <div class="riyals">
-
-            <strong>
-              500 ر.س
-            </strong>
+            <div class="note-stack">
+              <strong>500</strong>
+            </div>
 
             <small>
               ريال سعودي
@@ -3239,16 +3246,15 @@ stroke-linejoin="round">
           </div>
 
 
-          <!-- السرعة -->
 
-          <div class="speed-box">
+          <div class="speed-card">
 
             <svg>
               <use href="#speed"></use>
             </svg>
 
             <strong>
-              حلول سريعة
+              إنجاز سريع
             </strong>
 
           </div>
@@ -3256,7 +3262,9 @@ stroke-linejoin="round">
 
         </div>
 
+
       </div>
+
 
     </div>
 
@@ -3271,33 +3279,22 @@ stroke-linejoin="round">
         <div class="feature">
 
           <span class="feature-icon">
-
-            <svg>
-              <use href="#check"></use>
-            </svg>
-
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
             ننجزك بأقل نسبة
-            <strong>
-              ولو نسويك استثناء
-            </strong>
+            <strong>ولو نسويك استثناء</strong>
             ☺️
           </span>
 
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-
-            <svg>
-              <use href="#check"></use>
-            </svg>
-
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3308,15 +3305,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-
-            <svg>
-              <use href="#check"></use>
-            </svg>
-
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3326,15 +3318,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon green">
-
-            <svg>
-              <use href="#check"></use>
-            </svg>
-
+            <svg><use href="#check"></use></svg>
           </span>
 
           <span>
@@ -3347,15 +3334,10 @@ stroke-linejoin="round">
         </div>
 
 
-
         <div class="feature">
 
           <span class="feature-icon">
-
-            <svg>
-              <use href="#cash"></use>
-            </svg>
-
+            <svg><use href="#cash"></use></svg>
           </span>
 
           <span>
@@ -3370,11 +3352,12 @@ stroke-linejoin="round">
 
 
         <div
-          class="feature expandable"
-          onclick="togglePersonalExtra()"
+          class="feature"
+          onclick="togglePersonal()"
+          style="cursor:pointer"
         >
 
-          <span class="feature-icon gold">
+          <span class="feature-icon warm">
 
             <svg>
               <use href="#speed"></use>
@@ -3397,10 +3380,10 @@ stroke-linejoin="round">
 
       <div
         id="personalExtra"
-        class="solution-extra"
+        class="extra"
       >
 
-        <div class="solution-message">
+        <div class="extra-message">
 
           <svg>
             <use href="#speed"></use>
@@ -3415,49 +3398,38 @@ stroke-linejoin="round">
 
       </div>
 
+
     </div>
 
 
 
     <div class="contact-card">
 
-      <div class="contact-title">
+      <h3>
         تواصل معنا
-      </div>
+      </h3>
 
-      <div class="contact-note">
+      <p>
         اختر الطريقة الأنسب لك
-      </div>
+      </p>
 
-
-      <div class="contact-buttons">
+      <div class="contact-actions">
 
         <a
-          class="call-btn"
+          class="contact-call"
           href="tel:0506214458"
         >
-
-          <svg>
-            <use href="#phone"></use>
-          </svg>
-
+          <svg><use href="#phone"></use></svg>
           اتصال مباشر
-
         </a>
 
         <a
-          class="wa-btn"
+          class="contact-wa"
           href="https://wa.me/966506214458"
           target="_blank"
-          rel="noopener noreferrer"
         >
-
-          <svg>
-            <use href="#message"></use>
-          </svg>
-
+          <svg><use href="#message"></use></svg>
           واتساب
-
         </a>
 
       </div>
@@ -3465,9 +3437,17 @@ stroke-linejoin="round">
     </div>
 
 
-    <footer>
-      © سرعة تملك العقار والحلول التمويلية
-    </footer>
+
+    <div class="page-footer">
+
+      <div class="footer-time liveFooter"></div>
+
+      <div class="footer-copy">
+        © سرعة تملك العقار والحلول التمويلية
+      </div>
+
+    </div>
+
 
   </div>
 
@@ -3475,27 +3455,28 @@ stroke-linejoin="round">
 
 
 
-<!-- =====================================================
-     الخدمات الأخرى
-===================================================== -->
+<!-- =========================================================
+     SERVICES
+========================================================= -->
 
 <section
-  class="screen"
   id="services"
+  class="screen"
 >
 
-  <div class="detail">
+
+  <div class="detail-page">
 
 
-    <div class="detail-header">
+    <div class="detail-head">
 
-      <div class="detail-title-row">
+      <div class="detail-heading">
 
-        <h2 class="detail-title">
+        <h2>
           الخدمات الأخرى
         </h2>
 
-        <div class="detail-title-sub">
+        <div>
           خدمات وحلول تمويلية متنوعة
         </div>
 
@@ -3511,14 +3492,12 @@ stroke-linejoin="round">
       <div class="other-grid">
 
 
-        <!-- تمويل سيارات -->
+        <div class="other-card">
 
-        <div class="other-item">
-
-          <div class="other-photo">
+          <div class="other-picture">
 
             <img
-              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=82"
+              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=700&q=84"
               alt=""
             >
 
@@ -3532,14 +3511,12 @@ stroke-linejoin="round">
 
 
 
-        <!-- ثروة / عقار -->
+        <div class="other-card">
 
-        <div class="other-item">
-
-          <div class="other-photo">
+          <div class="other-picture">
 
             <img
-              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=500&q=82"
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=700&q=84"
               alt=""
             >
 
@@ -3553,14 +3530,12 @@ stroke-linejoin="round">
 
 
 
-        <!-- أسطول -->
+        <div class="other-card">
 
-        <div class="other-item">
-
-          <div class="other-photo">
+          <div class="other-picture">
 
             <img
-              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=500&q=82"
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=84"
               alt=""
             >
 
@@ -3574,11 +3549,9 @@ stroke-linejoin="round">
 
 
 
-        <!-- نقاط البيع -->
+        <div class="other-card">
 
-        <div class="other-item">
-
-          <div class="other-icon-box pos-bg">
+          <div class="other-icon pos">
 
             <svg>
               <use href="#pos"></use>
@@ -3594,11 +3567,9 @@ stroke-linejoin="round">
 
 
 
-        <!-- تجاري -->
+        <div class="other-card">
 
-        <div class="other-item">
-
-          <div class="other-icon-box business-bg">
+          <div class="other-icon business">
 
             <svg>
               <use href="#business"></use>
@@ -3614,14 +3585,12 @@ stroke-linejoin="round">
 
 
 
-        <!-- حلول متنوعة -->
-
         <div
-          class="other-item expandable"
-          onclick="toggleOtherExtra()"
+          class="other-card"
+          onclick="toggleServices()"
         >
 
-          <div class="other-icon-box speed-bg">
+          <div class="other-icon fast">
 
             <svg>
               <use href="#speed"></use>
@@ -3641,11 +3610,11 @@ stroke-linejoin="round">
 
 
       <div
-        id="otherExtra"
-        class="solution-extra"
+        id="servicesExtra"
+        class="extra"
       >
 
-        <div class="solution-message">
+        <div class="extra-message">
 
           <svg>
             <use href="#speed"></use>
@@ -3678,12 +3647,13 @@ stroke-linejoin="round">
         <span>
           حلول مع البنوك وشركات التمويل
           <strong>
-            بأفضل النسب المتاحة،
+            بأفضل النسب المتاحة
           </strong>
           وبأسرع وقت وبدون تعقيدات.
         </span>
 
       </div>
+
 
     </div>
 
@@ -3691,40 +3661,36 @@ stroke-linejoin="round">
 
     <div class="contact-card">
 
-      <div class="contact-title">
+      <h3>
         تواصل معنا
-      </div>
+      </h3>
 
-      <div class="contact-note">
+      <p>
         اختر الطريقة الأنسب لك
-      </div>
+      </p>
 
 
-      <div class="contact-buttons">
+      <div class="contact-actions">
 
         <a
-          class="call-btn"
+          class="contact-call"
           href="tel:0506214458"
         >
 
-          <svg>
-            <use href="#phone"></use>
-          </svg>
+          <svg><use href="#phone"></use></svg>
 
           اتصال مباشر
 
         </a>
 
+
         <a
-          class="wa-btn"
+          class="contact-wa"
           href="https://wa.me/966506214458"
           target="_blank"
-          rel="noopener noreferrer"
         >
 
-          <svg>
-            <use href="#message"></use>
-          </svg>
+          <svg><use href="#message"></use></svg>
 
           واتساب
 
@@ -3735,9 +3701,17 @@ stroke-linejoin="round">
     </div>
 
 
-    <footer>
-      © سرعة تملك العقار والحلول التمويلية
-    </footer>
+
+    <div class="page-footer">
+
+      <div class="footer-time liveFooter"></div>
+
+      <div class="footer-copy">
+        © سرعة تملك العقار والحلول التمويلية
+      </div>
+
+    </div>
+
 
   </div>
 
@@ -3748,20 +3722,20 @@ stroke-linejoin="round">
 
 
 
-<!-- =====================================================
-     القائمة السفلية ثابتة
-===================================================== -->
+<!-- =========================================================
+     القائمة السفلية
+========================================================= -->
 
-<div class="bottom-shell">
+<div class="bottom-wrap">
 
   <nav class="bottom-nav">
 
 
-    <!-- الرئيسية تبقى مميزة دائمًا -->
+    <!-- الرئيسية هي المميزة -->
 
     <button
       type="button"
-      class="nav-item home-active"
+      class="nav-item nav-home"
       onclick="goHome()"
     >
 
@@ -3791,10 +3765,9 @@ stroke-linejoin="round">
 
 
     <a
-      class="nav-item"
+      class="nav-item nav-wa"
       href="https://wa.me/966506214458"
       target="_blank"
-      rel="noopener noreferrer"
     >
 
       <svg>
@@ -3809,7 +3782,7 @@ stroke-linejoin="round">
 
     <button
       type="button"
-      class="nav-item"
+      class="nav-item nav-shot"
       onclick="takeScreenshot()"
     >
 
@@ -3829,171 +3802,268 @@ stroke-linejoin="round">
 
 
 <div
-  class="toast"
   id="toast"
+  class="toast"
 ></div>
 
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
+   الترحيب + الوقت + التاريخ
+========================================================= */
+
+function updateDateTime(){
+
+  const now =
+    new Date();
+
+
+  const hour =
+    now.getHours();
+
+
+  let greeting =
+    "صباح الخير";
+
+
+  if(hour >= 12){
+    greeting =
+      "مساء الخير";
+  }
+
+
+  document
+    .getElementById("greeting")
+    .innerHTML =
+      `<span>${greeting}</span>`;
+
+
+  const time =
+    new Intl.DateTimeFormat(
+      "ar-SA",
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit",
+        hour12:true
+      }
+    ).format(now);
+
+
+  document
+    .getElementById("liveTime")
+    .textContent =
+      time;
+
+
+  /* التاريخ الهجري - أم القرى */
+
+  let hijri = "";
+
+
+  try{
+
+    hijri =
+      new Intl.DateTimeFormat(
+        "ar-SA-u-ca-islamic-umalqura",
+        {
+          weekday:"long",
+          day:"numeric",
+          month:"long",
+          year:"numeric"
+        }
+      ).format(now);
+
+  }catch(e){
+
+    hijri =
+      new Intl.DateTimeFormat(
+        "ar-SA-u-ca-islamic",
+        {
+          weekday:"long",
+          day:"numeric",
+          month:"long",
+          year:"numeric"
+        }
+      ).format(now);
+
+  }
+
+
+  const gregorian =
+    new Intl.DateTimeFormat(
+      "ar-SA",
+      {
+        calendar:"gregory",
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+      }
+    ).format(now);
+
+
+  document
+    .getElementById("hijriDate")
+    .textContent =
+      "هـ " + hijri;
+
+
+  document
+    .getElementById("gregorianDate")
+    .textContent =
+      "م " + gregorian;
+
+
+  const footerText =
+    hijri +
+    " • " +
+    gregorian;
+
+
+  document
+    .getElementById(
+      "footerDateHome"
+    )
+    .textContent =
+      footerText;
+
+
+  document
+    .querySelectorAll(
+      ".liveFooter"
+    )
+    .forEach(
+      item => {
+
+        item.textContent =
+          footerText;
+
+      }
+    );
+
+}
+
+
+updateDateTime();
+
+
+setInterval(
+  updateDateTime,
+  1000
+);
+
+
+
+/* =========================================================
    النصائح
-===================================================== */
+========================================================= */
 
-const financeTips = [
+const tips = [
 
-"قبل تأخذ تمويل اسأل نفسك: هل احتياجك فعلاً يستاهل الالتزام؟",
-"لا تقارن بالقسط فقط، قارن إجمالي المبلغ اللي راح تدفعه.",
-"قارن أكثر من عرض قبل اتخاذ القرار.",
-"اقرأ العقد كامل قبل أي موافقة.",
-"اعرف كم بيبقى من راتبك بعد جميع الأقساط.",
-"لا تجعل هدفك الوصول لأكبر مبلغ تمويل.",
+"قبل تأخذ تمويل اسأل نفسك: هل الحاجة تستاهل الالتزام؟",
+"لا تقارن بالقسط فقط، قارن إجمالي اللي راح تدفعه.",
+"قارن أكثر من عرض قبل ما تقرر.",
+"اقرأ العقد كامل قبل الموافقة.",
+"اعرف كم يبقى من راتبك بعد الأقساط.",
+"لا تجعل هدفك أكبر مبلغ تمويل.",
 "اختر قسط تقدر تتحمله براحة.",
-"قارن المدة والنسبة والقسط وإجمالي الأرباح.",
-"النسبة الأقل مو دائمًا معناها العرض الأفضل.",
-"كل ما طالت المدة قد يزيد إجمالي ما تدفعه.",
-"قبل شراء عقار احسب القسط مع مصاريف البيت.",
+"قارن النسبة والمدة والقسط وإجمالي الأرباح.",
+"النسبة الأقل مو دائمًا العرض الأفضل.",
+"كل ما زادت المدة قد تزيد التكلفة النهائية.",
+"قبل العقار احسب القسط ومصاريف البيت.",
 "لا تعتمد على أول عرض يوصلك.",
 "راجع تقريرك الائتماني قبل التقديم.",
-"أي التزام جديد قد يؤثر على قدرتك التمويلية.",
+"أي التزام جديد قد يؤثر على تمويلك.",
 "البطاقات الائتمانية قد تؤثر على الاستقطاع.",
-"اعرف تكلفة السداد المبكر من البداية.",
-"إذا ناوي تنقل المديونية افهم عقدك الحالي أول.",
-"لا توقع على شيء ما تعرف طريقة احتسابه.",
+"اعرف السداد المبكر من البداية.",
+"قبل نقل المديونية قارن القديم بالجديد.",
+"لا توقع شيء ما فهمته.",
 "قارن العروض على نفس المدة.",
-"لا تقارن قسط تمويل 5 سنوات بتمويل 3 سنوات فقط.",
-"اسأل عن جميع الرسوم قبل التوقيع.",
-"تأكد هل العرض مؤقت أو مستمر.",
+"اسأل عن الرسوم قبل التوقيع.",
 "احتفظ بنسخة من العقد.",
-"لا تعطي رمز التحقق لأي شخص.",
-"اقرأ قبل الضغط على موافق.",
+"لا تعطي رمز التحقق لأي أحد.",
+"اقرأ قبل ما تضغط موافق.",
 "تأكد من مبلغ التمويل النهائي.",
-"تأكد كم الصافي اللي بينزل لك فعليًا.",
-"إذا عندك قرض حالي اطلب مبلغ السداد المبكر.",
-"شراء المديونية يحتاج مقارنة بين القديم والجديد.",
-"لا تنقل مديونيتك فقط عشان كاش إضافي.",
-"قارن إجمالي الأرباح قبل نقل المديونية.",
-"الفرق البسيط في النسبة قد يفرق كثير على المدة الطويلة.",
+"اعرف كم الصافي اللي بينزل لك.",
+"اطلب السداد المبكر رسميًا.",
+"شراء المديونية يحتاج مقارنة دقيقة.",
+"لا تنقل مديونيتك فقط عشان كاش.",
+"قارن إجمالي الأرباح.",
 "في العقاري لا تركز على القسط فقط.",
-"راقب النسبة والمدة وإجمالي الأرباح.",
 "اختر عقار يناسب ميزانية البيت.",
 "السكن المناسب أهم من أعلى مبلغ تمويل.",
-"احسب الصيانة والخدمات مع القسط.",
-"لا تنس تكلفة الأثاث بعد شراء العقار.",
+"احسب الصيانة والخدمات.",
+"لا تنس تكلفة الأثاث.",
 "احتفظ بمبلغ للطوارئ.",
-"لا تستخدم كل مدخراتك وتبقى بدون سيولة.",
-"قبل البناء الذاتي افهم طريقة الدفعات.",
-"اسأل متى تنزل كل دفعة بناء.",
-"تأكد من ميزانية البناء الحقيقية.",
-"لا تعتمد على تكلفة بناء متفائلة جدًا.",
-"قبل البيع على الخارطة راجع المشروع جيدًا.",
-"الإعلان وحده ما يكفي لاتخاذ القرار.",
-"الموقع وجودة العقار مهمة مثل التمويل.",
-"قارن سعر العقار بأسعار المنطقة.",
+"لا تستخدم كل مدخراتك.",
+"قبل البناء الذاتي افهم الدفعات.",
+"اسأل متى تنزل كل دفعة.",
+"احسب تكلفة البناء بشكل واقعي.",
+"قبل البيع على الخارطة راجع المشروع.",
+"الإعلان وحده ما يكفي.",
+"قارن سعر العقار بالسوق.",
 "التقييم قد يختلف عن سعر البيع.",
-"تأكد من الدفعة الأولى المطلوبة.",
-"لا تأخذ التزام جديد وقت إجراءات العقاري بدون حاجة.",
-"إذا قرب التقاعد احسب القسط على دخلك بعد التقاعد.",
+"تأكد من الدفعة الأولى.",
+"إذا قرب التقاعد احسب دخلك بعد التقاعد.",
 "لا تعتمد على بدلات غير ثابتة.",
-"رتب ميزانيتك على الدخل الثابت.",
-"لا تعتبر الدخل الإضافي مضمون دائمًا.",
-"مبلغ الطوارئ يقلل حاجتك لتمويل جديد.",
+"مبلغ الطوارئ مهم.",
 "قبل تمويل السيارة احسب التأمين.",
-"احسب صيانة السيارة والوقود.",
-"قارن التمويل بالتأجير حسب احتياجك.",
-"اقرأ شروط التملك النهائي.",
+"احسب الصيانة والوقود.",
 "اعرف هل فيه دفعة أخيرة.",
-"لا تعتمد على القسط المعلن وحده.",
 "حافظ على انتظام السداد.",
-"لا تأخذ تمويل باسمك لشخص ثاني.",
-"أي تمويل باسمك مسؤوليتك أنت.",
-"لا تعطي بياناتك التمويلية لأي جهة مجهولة.",
-"تأكد من الجهة قبل إرسال المستندات.",
-"لا تدفع عمولة بدون معرفة الخدمة والعقد.",
-"انتبه من الوعود المالية غير المنطقية.",
-"الحاجة للكاش لا تبرر تمويل عالي التكلفة.",
-"مو كل مشكلة مالية حلها تمويل جديد.",
-"حدد هدف التمويل من البداية.",
-"السكن يختلف عن تمويل الكماليات.",
-"لا تمول شيء عمره أقصر من مدة أقساطه.",
-"الأقساط الصغيرة إذا اجتمعت قد تصير مبلغ كبير.",
-"دوّن جميع التزاماتك الشهرية.",
-"احسب الأقساط قبل أي طلب جديد.",
-"رتب الأولويات قبل التمويل.",
+"لا تأخذ تمويل لشخص ثاني باسمك.",
+"تأكد من الجهة قبل إرسال مستنداتك.",
+"انتبه من الوعود غير المنطقية.",
+"مو كل مشكلة مالية حلها تمويل.",
+"حدد هدف التمويل.",
+"لا تجمع أقساط صغيرة بدون حسابها.",
+"دوّن جميع التزاماتك.",
+"رتب أولوياتك قبل التمويل.",
 "الادخار قد يقلل حاجتك للتمويل.",
-"كل مبلغ تقلله من التمويل قد يقلل عليك الأرباح.",
-"الدفعة الأولى الأعلى قد تقلل التمويل.",
-"لكن لا تستنزف كامل سيولتك.",
-"المرونة المالية مهمة مثل انخفاض النسبة.",
-"اطلب السداد المبكر رسميًا من الجهة.",
-"لا تعتبر حسبة السداد المبكر اليدوية نهائية.",
-"مبلغ السداد المبكر يتغير مع الوقت.",
-"إذا عندك أكثر من التزام رتبها حسب الأولوية.",
-"إعادة التمويل لازم تنحسب بالأرقام.",
-"احسب كم دفعت وكم باقي.",
-"ركز على الصافي الحقيقي بعد السداد.",
+"لا تستنزف سيولتك بالكامل.",
+"المرونة المالية مهمة.",
+"لا تعتبر حسبة السداد اليدوية نهائية.",
+"إعادة التمويل لازم تنحسب.",
+"ركز على الصافي الحقيقي.",
 "لا تنخدع بمبلغ تمويل كبير.",
-"اسأل كم راح يصفي لك فعليًا.",
+"اسأل كم يصفي لك فعليًا.",
 "العروض التسويقية لها شروط.",
-"النسبة تختلف حسب جهة العمل والراتب.",
-"لا تقارن نسب شخصين بدون مقارنة ظروفهم.",
+"النسبة تختلف حسب حالة كل عميل.",
 "العرض النهائي هو الأهم.",
 "خذ وقتك قبل التوقيع.",
-"قرار تمويل سنوات يستاهل مقارنة دقيقة.",
-"إذا ما فهمت بند اسأل عنه.",
-"اطلب توضيح الأرقام بالريال.",
-"اعرف هل القسط ثابت أو يتغير.",
-"لا تفترض كل التمويلات بنفس الطريقة.",
+"إذا ما فهمت بند اسأل.",
+"اطلب الأرقام بالريال.",
+"اعرف هل القسط ثابت.",
 "الشخصي غير العقاري وغير التأجيري.",
-"قارن كل منتج بشكل صحيح.",
-"احتفظ بصورة من العرض.",
-"إذا تغيرت النسبة أعد الحساب.",
-"راجع بيانات العقد قبل الموافقة.",
-"تأكد من الراتب والمدة والمبلغ والقسط.",
-"لا تتخذ قرار تمويل وأنت مستعجل.",
-"الاستعجال في التمويل قد يكلفك سنوات.",
-"حدد احتياجك قبل تعرف أكبر مبلغ ممكن.",
-"كلما كانت ميزانيتك واضحة كان قرارك أفضل.",
+"إذا تغير العرض أعد الحساب.",
+"راجع بيانات العقد.",
+"لا تستعجل في التمويل.",
+"حدد احتياجك قبل أكبر مبلغ.",
 "قارن واحسب واقرأ ثم قرر.",
-"خل هدفك تمويل يناسبك.",
 "التمويل المناسب ما يضغط حياتك.",
-"اسأل عن أكثر من خيار.",
-"ركز على إجمالي اللي تدفعه بالنهاية.",
-"القسط المنخفض قد يكون بسبب مدة طويلة.",
-"اختر مدة توازن بين القسط والتكلفة.",
-"احسب تأثير التمويل على خططك الجاية.",
-"إذا ناوي عقار لا تكثر التزامات شخصية.",
-"رتب أهدافك التمويلية.",
+"ركز على إجمالي اللي تدفعه.",
+"القسط المنخفض قد يعني مدة أطول.",
+"احسب تأثير التمويل على خططك.",
 "أي وعد مهم خله مكتوب.",
 "الكلام الشفهي وحده ما يكفي.",
-"راجع رسائل الموافقة قبل التنفيذ.",
-"لا توافق على مستند ما تعرف محتواه.",
-"رموزك البنكية ما تنعطى لأي أحد.",
 "فهم العقد أهم من حفظ النسبة.",
-"ظروفك تختلف عن ظروف غيرك.",
-"اختيار التمويل يعتمد على دخلك والتزاماتك.",
+"ظروفك المالية تختلف عن غيرك.",
 "قبل التمويل اسأل: كم راح أدفع بالنهاية؟",
-"اسأل عن الصافي قبل ما تنبهر بمبلغ التمويل.",
-"لا تركز على كلمة عرض قبل تعرف شروطه.",
-"إذا تغيرت المدة تغيرت المقارنة.",
-"التمويل قرار مالي طويل، مو مجرد قسط.",
-"قارن العرض الحالي بعرضك القديم بالأرقام.",
-"تأكد أن القسط يترك لك مجال للطوارئ.",
-"لا ترفع التزاماتك لأقصى حد بدون حاجة.",
-"إذا عندك خيار أقل مبلغ فكر فيه.",
-"اسأل عن كل بند ما فهمته قبل التوقيع.",
-"العقار المناسب أهم من العقار الأغلى.",
-"السيارة المناسبة أهم من أعلى فئة تقدر تمولها.",
-"رتب احتياجاتك قبل رغباتك.",
-"التمويل وسيلة، مو هدف.",
-"لا تخل الإعلان يقرر عنك.",
-"خذ القرار بعد مقارنة واضحة.",
+"خل عندك مساحة في الراتب للطوارئ.",
+"لا ترفع التزاماتك لأقصى حد.",
+"التمويل وسيلة مو هدف.",
+"لا تخلي الإعلان يقرر عنك.",
 "الأمان المالي يبدأ من قسط مناسب.",
-"لا تبني خطتك على دخل غير مضمون.",
-"احسب ميزانيتك بعد التمويل مو قبله فقط.",
-"أي التزام جديد له أثر على خططك القادمة.",
-"احسب التكلفة كاملة من أول قسط لآخر قسط."
+"احسب ميزانيتك بعد التمويل.",
+"قارن كامل العقد مو النسبة فقط.",
+"اعرف احتياجك قبل ما تبدأ.",
+"احسب الربح قبل التوقيع.",
+"القرار الصحيح يبدأ بالمقارنة.",
+"لا تستعجل على العرض المؤقت.",
+"كل تمويل جديد يؤثر على قدرتك القادمة.",
+"خطتك المالية أهم من أكبر مبلغ متاح."
 
 ];
 
@@ -4001,20 +4071,22 @@ const financeTips = [
 function buildTips(){
 
   const track =
-    document.getElementById("tipsTrack");
+    document.getElementById(
+      "tipsTrack"
+    );
+
 
   const list = [
-    ...financeTips,
-    ...financeTips
+    ...tips,
+    ...tips
   ];
 
+
   track.innerHTML =
-    list.map(tip => `
-      <div class="tip-item">
-        <span></span>
-        ${tip}
-      </div>
-    `).join("");
+    list.map(
+      tip =>
+        `<div class="tip">${tip}</div>`
+    ).join("");
 
 }
 
@@ -4023,9 +4095,9 @@ buildTips();
 
 
 
-/* =====================================================
+/* =========================================================
    التنقل
-===================================================== */
+========================================================= */
 
 const screens = [
   "home",
@@ -4037,35 +4109,47 @@ const screens = [
 
 function activateScreen(id){
 
-  if(!screens.includes(id)){
+  if(
+    !screens.includes(id)
+  ){
     id = "home";
   }
 
+
   document
-    .querySelectorAll(".screen")
-    .forEach(screen => {
-      screen.classList.remove("active");
-    });
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      screen => {
+
+        screen
+          .classList
+          .remove("active");
+
+      }
+    );
 
 
-  const target =
-    document.getElementById(id);
-
-
-  target.classList.add("active");
+  document
+    .getElementById(id)
+    .classList
+    .add("active");
 
 
   if(id === "home"){
 
-    document.body.classList.remove(
-      "detail-mode"
-    );
+    document
+      .body
+      .classList
+      .remove("detail");
 
   }else{
 
-    document.body.classList.add(
-      "detail-mode"
-    );
+    document
+      .body
+      .classList
+      .add("detail");
 
   }
 
@@ -4107,9 +4191,9 @@ function goHome(){
 
 
 
-/* يفتح الموقع على الرئيسية دائمًا */
+/* يفتح الرئيسية دائمًا */
 
-document.addEventListener(
+window.addEventListener(
   "DOMContentLoaded",
   () => {
 
@@ -4126,32 +4210,38 @@ document.addEventListener(
 
 
 
-/* =====================================================
-   فتح الحلول المتنوعة
-===================================================== */
+/* =========================================================
+   الحلول المتنوعة
+========================================================= */
 
-function togglePersonalExtra(){
+function togglePersonal(){
 
   document
-    .getElementById("personalExtra")
-    .classList.toggle("open");
+    .getElementById(
+      "personalExtra"
+    )
+    .classList
+    .toggle("open");
 
 }
 
 
-function toggleOtherExtra(){
+function toggleServices(){
 
   document
-    .getElementById("otherExtra")
-    .classList.toggle("open");
+    .getElementById(
+      "servicesExtra"
+    )
+    .classList
+    .toggle("open");
 
 }
 
 
 
-/* =====================================================
-   لقطة الشاشة
-===================================================== */
+/* =========================================================
+   خذ لقطة
+========================================================= */
 
 let toastTimer;
 
@@ -4159,18 +4249,33 @@ let toastTimer;
 function showToast(text){
 
   const toast =
-    document.getElementById("toast");
+    document.getElementById(
+      "toast"
+    );
 
-  toast.textContent = text;
 
-  toast.classList.add("show");
+  toast.textContent =
+    text;
 
-  clearTimeout(toastTimer);
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
 
   toastTimer =
     setTimeout(
       () => {
-        toast.classList.remove("show");
+
+        toast
+          .classList
+          .remove("show");
+
       },
       2100
     );
@@ -4182,7 +4287,8 @@ function showToast(text){
 async function takeScreenshot(){
 
   if(
-    typeof html2canvas === "undefined"
+    typeof html2canvas ===
+    "undefined"
   ){
 
     showToast(
@@ -4201,10 +4307,12 @@ async function takeScreenshot(){
 
   try{
 
+
     const active =
-      document.querySelector(
-        ".screen.active"
-      );
+      document
+        .querySelector(
+          ".screen.active"
+        );
 
 
     const canvas =
@@ -4212,26 +4320,28 @@ async function takeScreenshot(){
         active,
         {
 
-          backgroundColor:"#f7f8fa",
-
-          scale:
-            Math.min(
-              window.devicePixelRatio || 1,
-              2
-            ),
+          backgroundColor:
+            "#f5f7f9",
 
           useCORS:true,
 
           allowTaint:false,
 
-          logging:false
+          logging:false,
+
+          scale:
+            Math.min(
+              window.devicePixelRatio || 1,
+              2
+            )
 
         }
       );
 
 
     const link =
-      document.createElement("a");
+      document
+        .createElement("a");
 
 
     link.download =
@@ -4239,12 +4349,16 @@ async function takeScreenshot(){
 
 
     link.href =
-      canvas.toDataURL("image/png");
+      canvas
+        .toDataURL("image/png");
 
 
-    document.body.appendChild(link);
+    document.body
+      .appendChild(link);
+
 
     link.click();
+
 
     link.remove();
 
@@ -4254,9 +4368,13 @@ async function takeScreenshot(){
     );
 
 
-  }catch(error){
+  }
+
+  catch(error){
+
 
     console.error(error);
+
 
     showToast(
       "تعذر أخذ اللقطة"
@@ -4267,6 +4385,7 @@ async function takeScreenshot(){
 }
 
 </script>
+
 
 </body>
 </html>
